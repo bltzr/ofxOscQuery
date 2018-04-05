@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This openFrameworks addon allows to create an OSCQuery server, based on the specifications available at: https://github.com/mrRay/OSCQueryProposal
+This openFrameworks addon allows to create an OSCQuery server, based on the specifications available at: https://github.com/mrRay/OSCQueryProposal.
 Basically it is a wrapper for [libossia](https://github.com/OSSIA/libossia) ([safeC++ implementation](https://ossia.github.io/?cpp--98)). 
 
 It works in a similar way to ofxOscParameterSync from the ofxOsc addon: 
