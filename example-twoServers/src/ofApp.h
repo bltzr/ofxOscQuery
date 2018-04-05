@@ -23,8 +23,10 @@ class ofApp : public ofBaseApp{
 		CirclesRenderer renderer1,renderer2;
 		ofTrueTypeFont font;
 
-        //***************************************************//
-        //     This is where we setup our OSCQuery Server:   //
-        ofxOssiaServer server; //We will set it up in ofApp.cpp
-        //***************************************************//
+        //*****************************************************//
+        //     This is where we setup our OSCQuery Servers     //
+        ofxOssiaServer server1;
+        ofxOssiaServer server2;
+        //We will set it up in ofApp.cpp
+        //*****************************************************//
 };

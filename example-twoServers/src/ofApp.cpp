@@ -14,8 +14,9 @@ void ofApp::setup(){
 
 
     //*************************************************//
-    //   This is where we setup our OSCQuery Server:   //
-    server.setup(parameters, 1233, 4677, "ofxOssiaDemo");
+    //   This is where we setup our OSCQuery Servers:   //
+    server1.setup(renderer1.parameters, 1235, 4678, "Renderer1");
+    server2.setup(renderer2.parameters, 1236, 4679, "Renderer2");
     //*************************************************//
     // NB this is the only change with the ParameterGroupExample from of
 
