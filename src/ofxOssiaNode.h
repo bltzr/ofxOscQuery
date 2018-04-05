@@ -90,16 +90,7 @@ public:
   /*
    * Destructor
    * */
-  ~ofxOssiaNode ()
-  {
-    if (currentNode)
-    {
-      cout << " -- Deleting Node: " << currentNode.get_name() << '\n';
-      //currentNode.remove_children();
-      //currentNode.get
-      //parentNode.remove_child(currentNode.get_name());
-    }
-  }
+  ~ofxOssiaNode (){}
 
   /*
    * Utilities
@@ -120,15 +111,15 @@ public:
 
 
 private:
-  //opp::node& parentNode;
+
   opp::node currentNode;
   ofAbstractParameter* ofParam = nullptr;
   std::string path;
   opp::callback_index _callbackIt;
 
-  /*
-   * Private Methods
-   */
+   //******************************************//
+   //            Private Methods               //
+   //******************************************//
 
   template<typename DataValue>
   void publishValue(DataValue val){
@@ -181,7 +172,6 @@ private:
           for(size_t i=0;i<hierarchy.size()-1;i++){
               address+=hierarchy[i] + "/";
           }
-          cout << "Group address: " << address << ofParam->getName() << '\n' ;
 
       }else{
           address = "";
@@ -190,9 +180,7 @@ private:
               address+= "/" + hierarchy[i];
           }
           if(address.length()) address += "/";
-          if (ofParam->getName() !="")
-              cout << "Param address: " << address << ofParam->getName()  << '\n' ;
-
+          //if (ofParam->getName() !="")
       }
       return address;
   }

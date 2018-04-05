@@ -48,11 +48,7 @@ public:
 
 
 private:
-    //void parameterChanged( ofAbstractParameter & parameter);
-    //ofParameterGroup serverGroup;
-
     opp::oscquery_server device;
-    //ofxOssiaNode root_node;
     std::list<ofxOssiaNode> nodes;
 
     bool updatingParameter;
