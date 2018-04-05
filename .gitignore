@@ -1,0 +1,5 @@
+libossia.a
+CMakeLists.txt.user
+/example-singleServer/bin
+/build-example-singleServer-Desktop_Qt_5_8_0_clang_64bit-Debug
+/build-example-singleServer-Desktop_Qt_5_8_0_clang_64bit-Default
