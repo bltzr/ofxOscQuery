@@ -11,7 +11,14 @@ void ofApp::setup(){
 	parameters.add(renderer2.parameters);
 
 	gui.setup(parameters);
+
+
+    //*************************************************//
+    //   This is where we setup our OSCQuery Server:   //
     device.setup(parameters, 1235, 4678, "ofxOssiaDemo");
+    //*************************************************//
+    // NB this is the only change with the ParameterGroupExample from of
+
 
 	gui.loadFromFile("settings.xml");
 
