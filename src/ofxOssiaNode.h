@@ -22,9 +22,7 @@ public:
         currentNode{dev.get_root_node()},
         ofParam{&group},
         path{"/"}
-    {
-        std::cout << "Create Root Group " << group.getName() << " from  root Node \n";
-    }
+    {}
 
   /*
    *Constructor for ParameterGroup Nodes
@@ -34,9 +32,7 @@ public:
       currentNode{parentNode.getNode().create_child(group.getName())},
       ofParam{&group},
       path{getHierarchy()}
-    {
-        std::cout << "Create Group " << group.getName() << " from  parent: " << parentNode.getName() << " at address: " << path << "\n";
-    }
+    {}
 
   /*
    *Constructor for all Parameter Nodes
@@ -203,124 +199,3 @@ private:
 
 
 };
-
-
-
-
-
-  /**
-   * Methods to communicate via OSSIA to score or other OSCquery clients
-   **/
-/*
-  void cleanup(const opp::node)
-  {
-    currentNode.~node();
-  }
-
-  // Creates the node without setting domain
-  void createNode (opp::node& parentNode, const std::string& name)
-  {
-    currentNode = parentNode.create_child(name);
-  }
-
-  template<typename DataValue>
-  void createNode(opp::node& parentNode, const std::string& name, DataValue data)
-  {
-    using ossia_type = ossia::MatchingType<DataValue>;
-
-    // creates node with parameter
-    currentNode = ossia_type::create_parameter(name, parentNode);
-    //sets value
-    currentNode.set_value(ossia_type::convert(data));
-  }
-
-  // Creates the node setting domain
-  template<typename DataValue>
-  void createNode(opp::node& parentNode, const std::string& name, DataValue data, DataValue min, DataValue max)
-  {
-    using ossia_type = ossia::MatchingType<DataValue>;
-
-    /// creates node with parameter
-    currentNode = ossia_type::create_parameter(name, parentNode);
-    //sets value
-    currentNode.set_value(ossia_type::convert(data));
-
-    //sets domain
-    currentNode.set_min(ossia_type::convert(min));
-    currentNode.set_max(ossia_type::convert(max));
-  }
-
-  // Publishes value to the node
-  template<typename DataValue>
-  void publishValue(DataValue other)
-  {
-    using ossia_type = ossia::MatchingType<DataValue>;
-    currentNode.set_value(ossia_type::convert(other));
-  }
-
-  // Pulls the node value
-  template<typename DataValue>
-  DataValue pullNodeValue()
-  {
-    using ossia_type = ossia::MatchingType<DataValue>;
-
-    try
-    {
-      auto val = currentNode.get_value();
-      if(ossia_type::is_valid(val))
-        return ossia_type::convertFromOssia(val);
-      else
-        std::cerr <<  "error [ofxOssia::pullNodeValue()] : of and ossia types do not match \n" ; // Was:
-                   // <<(int) val.getType()  << " " << (int) ossia_type::val << "\n" ; // Can we still do that with safeC++ ??
-      return {};
-    }
-    catch(std::exception& e)
-    {
-      std::cerr <<  "error [ofxOssia::pullNodeValue()] : " << e.what() << "\n" ;
-      return {};
-
-    }
-
-    catch(...)
-    {
-      auto val = currentNode.get_value();
-      std::cerr <<  "error [ofxOssia::pullNodeValue()] : : of and ossia types do not match \n" ; // Was:
-                 // << ossia::value_to_pretty_string(val)  << " " << (int) ossia_type::val << "\n" ; // Can we still do that with safeC++ ??
-      return {};
-    }
-  }
-
-
-  // Pulls the node value
-  template<typename DataValue>
-  DataValue cloneNodeValue()
-  {
-    using ossia_type = ossia::MatchingType<DataValue>;
-
-    try
-    {
-      auto val = currentNode.get_value();
-      if(ossia_type::is_valid(val))
-        return ossia_type::convertFromOssia(val);
-      else
-          std::cerr <<  "error [ofxOssia::cloneNodeValue()] : of and ossia types do not match\n" ; // Was:
-                     // <<(int) val.getType()  << " " << (int) ossia_type::val << "\n" ; // Can we still do that with safeC++ ??
-        return {};
-    }
-    catch(std::exception& e)
-    {
-      std::cerr <<  "error [ofxOssia::cloneNodeValue()] : " << e.what() << "\n" ;
-      return {};
-
-    }
-
-    catch(...)
-    {
-      auto val = currentNode.get_value();
-      std::cerr <<  "error [ofxOssia::cloneNodeValue()] : : of and ossia types do not match \n" ; // Was:
-                 // << ossia::value_to_pretty_string(val)  << " " << (int) ossia_type::val << "\n" ; // Can we still do that with safeC++ ??
-      return {};
-    }
-  }
-
- */

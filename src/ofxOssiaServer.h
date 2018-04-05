@@ -21,7 +21,7 @@ public:
     }
 
     ~ofxOssiaServer(){
-        //ofRemoveListener(serverGroup.parameterChangedE(),this,&ofxOssiaServer::parameterChanged);
+
     }
 
     /**
@@ -45,12 +45,6 @@ public:
      **/
     opp::oscquery_server& getDevice(){return device;}
     ofxOssiaNode& getRootNode(){ return nodes.front();}
-
-    //ofParameterGroup& get_root(){return serverGroup;}
-
-//    ossia::ParameterGroup & getNode(std::string & name);
-//    ossia::Parameter & getNode(std::string & name);
-
 
 
 private:
