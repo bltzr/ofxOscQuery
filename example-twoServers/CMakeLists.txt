@@ -21,6 +21,7 @@ set(SOURCES
     src/CirclesRenderer.h
     src/CirclesRenderer.cpp
     ../src/ofxOssiaTypes.h
+    ../src/ofxOssiaServer.h
     ../src/ofxOssiaNode.h
     ../libs/ossia/include/ossia-cpp98.hpp
 )

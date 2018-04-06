@@ -14,10 +14,10 @@
 
 class ofxOssiaServer {
 
-public:
+  public:
     ofxOssiaServer():
-        device(){
-        updatingParameter = false;
+      device(){
+      updatingParameter = false;
     }
 
     ~ofxOssiaServer(){
@@ -47,7 +47,7 @@ public:
     ofxOssiaNode& getRootNode(){ return nodes.front();}
 
 
-private:
+  private:
     opp::oscquery_server device;
     std::list<ofxOssiaNode> nodes;
 
