@@ -4,7 +4,6 @@
 #include "ofxOssiaTypes.h"
 #include "ofxOssiaServer.h"
 
-
 /*
  * Class encapsulating ossia node, parent_node and ofAbstractParameter*
  * */
@@ -31,8 +30,10 @@ class ofxOssiaNode {
     ofxOssiaNode(ofxOssiaNode& parentNode, ofParameterGroup& group):
       currentNode{parentNode.getNode().create_child(group.getName())},
       ofParam{&group},
-      path{getHierarchy()}
-    {}
+      path{parentNode.getPath()+currentNode.get_name()+"/"}
+    {
+      ofParam->setName(currentNode.get_name());
+    }
 
     /*
    *Constructor for all Parameter Nodes
@@ -41,11 +42,13 @@ class ofxOssiaNode {
     ofxOssiaNode(ofxOssiaNode& parentNode, ofParameter<DataValue>& param):
       currentNode{ossia::MatchingType<DataValue>::create_parameter(param.getName(), parentNode.getNode())},
       ofParam{&param},
-      path{getHierarchy()+param.getName()}
+      path{parentNode.getPath()+currentNode.get_name()+"/"}
     {
       using ossia_type = ossia::MatchingType<DataValue>;
 
-      std::cout << "Create Param " << param.getName() << " from  parent: " << parentNode.getName() << " at address: " << path << "\n";
+      ofParam->setName(currentNode.get_name());
+
+      std::cout << "Create Param " << param.getName() << " from  parent: " << parentNode.getNode().get_name() << " at address: " << path << "\n";
 
       std::cout << "Min: " << param.getMin() << " / Max: " << param.getMax() << endl;
       //sets value
