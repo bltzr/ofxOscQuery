@@ -63,7 +63,7 @@ class ofxOssiaNode {
       param.addListener(this, &ofxOssiaNode::listen<DataValue>);
 
       //adds callback from ossia Node to ofParameter
-      currentNode.set_value_callback([](void* context, const opp::value& val)
+      callbackIt = currentNode.set_value_callback([](void* context, const opp::value& val)
       {
         ofParameter<DataValue>* self = reinterpret_cast<ofParameter<DataValue>*>(context);
         //using value_type = const typename ossia_type::ossia_type;
@@ -96,7 +96,10 @@ class ofxOssiaNode {
     /*
    * Destructor
    * */
-    ~ofxOssiaNode (){}
+    ~ofxOssiaNode (){
+      if (callbackIt) currentNode.remove_value_callback(callbackIt);
+      //removeParamListener();
+    }
 
     /*
    * Utilities
@@ -121,13 +124,15 @@ class ofxOssiaNode {
     opp::node currentNode;
     ofAbstractParameter* ofParam = nullptr;
     std::string path;
-    opp::callback_index _callbackIt;
+    opp::callback_index callbackIt;
 
 
 
     //******************************************//
     //            Private Methods               //
     //******************************************//
+
+
 
     template<typename DataValue>
     void publishValue(DataValue val){
@@ -166,8 +171,16 @@ class ofxOssiaNode {
       }
     }
 
+    /*
+    template<typename DataValue>
+    void removeParamListener(){
+        ofParam->get<DataValue>->removeListener(this, &ofxOssiaNode::listen<DataValue>);
+    }
+    */
+
     opp::node& getNode() {return currentNode;}
 
+    /*
     std::string getHierarchy(){
 
       std::string address = "";
@@ -192,6 +205,7 @@ class ofxOssiaNode {
       }
       return address;
     }
+    */
 
 
 };
