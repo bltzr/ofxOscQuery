@@ -2,10 +2,11 @@
 
 #include <ossia-cpp98.hpp>
 #include "ofxOssiaTypes.h"
-#include "ofxOssiaServer.h"
+#include "ofxOscQueryServer.h"
 
 /*
  * Class encapsulating ossia node, parent_node and ofAbstractParameter*
+ * Largely inspired from https://github.com/OSSIA/ofxOssia/blob/master/src/ParamNode.h
  * */
 
 class ofxOssiaNode {

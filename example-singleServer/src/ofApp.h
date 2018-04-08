@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "ofxOssiaServer.h"
+#include "ofxOscQueryServer.h"
 #include "CirclesRenderer.h"
 
 class ofApp : public ofBaseApp{
@@ -25,6 +25,6 @@ class ofApp : public ofBaseApp{
 
         //***************************************************//
         //     This is where we setup our OSCQuery Server:   //
-        ofxOssiaServer server; //We will set it up in ofApp.cpp
+        ofxOscQueryServer server; //We will set it up in ofApp.cpp
         //***************************************************//
 };

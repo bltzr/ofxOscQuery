@@ -12,15 +12,15 @@
 #include <iostream>
 #include <list>
 
-class ofxOssiaServer {
+class ofxOscQueryServer {
 
   public:
-    ofxOssiaServer():
+    ofxOscQueryServer():
       device(){
       updatingParameter = false;
     }
 
-    ~ofxOssiaServer(){
+    ~ofxOscQueryServer(){
 
     }
 

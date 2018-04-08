@@ -17,6 +17,7 @@ namespace ossia
 /**
  * These classes contain the conversion mechanism from and to
  * the compatible OSSIA & OpenFrameworks types.
+ * Copied from https://github.com/OSSIA/ofxOssia/blob/master/src/OssiaTypes.h
  *
  */
 template<typename> struct MatchingType;

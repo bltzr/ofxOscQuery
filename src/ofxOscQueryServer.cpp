@@ -6,10 +6,10 @@
 //
 //
 
-#include "ofxOssiaServer.h"
+#include "ofxOscQueryServer.h"
 
 
-void ofxOssiaServer::setup(ofParameterGroup& group,
+void ofxOscQueryServer::setup(ofParameterGroup& group,
                            int localportOSC, int localPortWS,
                            std::string localname)
 {
@@ -25,7 +25,7 @@ void ofxOssiaServer::setup(ofParameterGroup& group,
 
 }
 
-void ofxOssiaServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& node)
+void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& node)
 {
 
   // Traverse all children recursively and create Nodes for each of them
