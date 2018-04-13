@@ -17,9 +17,14 @@ void ofApp::setup(){
 
   //*************************************************//
   //   This is where we setup our OSCQuery Server:   //
-  server.setup(parameters, 1233, 4677, "ofxOssiaDemo");
+  // NB this is the only change from of's ParameterGroupExample
+  server.setup(parameters, 1233, 4677, "ofxOscQueryDemo");
+  // i.e. this will create an OSCquery server from 'parameters' ParameterGroup
+  // scan all sub-ParameterGroups and children Parameters recursively
+  // and expose the whole thing to ports 1233 for OSC and 4677 for Websocket
+  // All network communication (sending, receving, listening, queries and replies)
+  // will then be managed by the internal implmentation of libossia
   //*************************************************//
-  // NB this is the only change with the ParameterGroupExample from of
 
 
   gui.loadFromFile("settings.xml");
