@@ -87,28 +87,6 @@ template<> struct MatchingType<bool> {
     }
 };
 
-
-template<> struct MatchingType<std::string> {
-    using ofx_type = string;
-    using ossia_type = string;
-
-    static opp::node create_parameter(const std::string& name,
-                                      opp::node parent)
-    {return parent.create_string(name);}
-
-    static bool is_valid(opp::value v){ return v.is_string(); }
-
-    static ofx_type convertFromOssia(const opp::value& v)
-    {
-      return v.to_string();
-    }
-
-    static ossia_type convert(ofx_type f)
-    {
-      return std::string(f);
-    }
-};
-
 template<> struct MatchingType<double> {
     using ofx_type = double;
     using ossia_type = float;
@@ -229,4 +207,27 @@ template<> struct MatchingType<ofFloatColor> {
       return ossia_type{f.a, f.r, f.g, f.b};
     }
 };
+
+
+template<> struct MatchingType<std::string> {
+    using ofx_type = string;
+    using ossia_type = string;
+
+    static opp::node create_parameter(const std::string& name,
+                                      opp::node parent)
+    {return parent.create_string(name);}
+
+    static bool is_valid(opp::value v){ return v.is_string(); }
+
+    static ofx_type convertFromOssia(const opp::value& v)
+    {
+      return v.to_string();
+    }
+
+    static ossia_type convert(ofx_type f)
+    {
+      return std::string(f);
+    }
+};
+
 } // namespace ossia

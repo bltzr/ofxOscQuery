@@ -45,6 +45,8 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
       // Check parameter type:
       if(type == typeid(ofParameter <int32_t> ).name())
         nodes.emplace_back(node, group.get<int32_t>(i));
+      else if(type == typeid(ofParameter <int> ).name())
+        nodes.emplace_back(node, group.get<int>(i));
       else if(type == typeid(ofParameter <float> ).name())
         nodes.emplace_back(node, group.get<float>(i));
       else if(type == typeid(ofParameter <double> ).name())
@@ -53,9 +55,18 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
         nodes.emplace_back(node, group.get<bool>(i));
       else if(type == typeid(ofParameter <ofVec2f> ).name())
         nodes.emplace_back(node, group.get<ofVec2f>(i));
+      else if(type == typeid(ofParameter <ofVec3f> ).name())
+        nodes.emplace_back(node, group.get<ofVec3f>(i));
+      else if(type == typeid(ofParameter <ofVec4f> ).name())
+        nodes.emplace_back(node, group.get<ofVec4f>(i));
       else if(type == typeid(ofParameter <ofColor> ).name())
         nodes.emplace_back(node, group.get<ofColor>(i));
-      else{   ofLogWarning() << "ofxBaseGroup; no support for parameter of type " << type; break; }
+      else if(type == typeid(ofParameter <ofFloatColor> ).name())
+        nodes.emplace_back(node, group.get<ofFloatColor>(i));
+      else if(type == typeid(ofParameter <std::string> ).name())
+        nodes.emplace_back(node, group.get<std::string>(i));
+      else{   ofLogWarning() <<
+              "ofxBaseGroup; no support for parameter of type " << type; break; }
 
     }
 
