@@ -62,6 +62,7 @@ class ofxOssiaNode {
       //adds callback from ofParameter to ossia Node
       param.addListener(this, &ofxOssiaNode::listen<DataValue>);
 
+
       //adds callback from ossia Node to ofParameter
       callbackIt = currentNode.set_value_callback([](void* context, const opp::value& val)
       {
@@ -82,6 +83,7 @@ class ofxOssiaNode {
           return;
         }
       },  ofParam);
+
 
     }
 

@@ -44,17 +44,17 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 
       // Check parameter type:
       if(type == typeid(ofParameter <int32_t> ).name())
-        nodes.emplace_back(node, group.getInt(i));
+        nodes.emplace_back(node, group.get<int32_t>(i));
       else if(type == typeid(ofParameter <float> ).name())
-        nodes.emplace_back(node, group.getFloat(i));
+        nodes.emplace_back(node, group.get<float>(i));
       else if(type == typeid(ofParameter <double> ).name())
         nodes.emplace_back(node, group.get<double>(i));
       else if(type == typeid(ofParameter <bool> ).name())
-        nodes.emplace_back(node, group.getBool(i));
+        nodes.emplace_back(node, group.get<bool>(i));
       else if(type == typeid(ofParameter <ofVec2f> ).name())
-        nodes.emplace_back(node, group.getVec2f(i));
+        nodes.emplace_back(node, group.get<ofVec2f>(i));
       else if(type == typeid(ofParameter <ofColor> ).name())
-        nodes.emplace_back(node, group.getColor(i));
+        nodes.emplace_back(node, group.get<ofColor>(i));
       else{   ofLogWarning() << "ofxBaseGroup; no support for parameter of type " << type; break; }
 
     }
