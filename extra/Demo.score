@@ -2,7 +2,7 @@
     "Document": {
         "BaseScenario": {
             "Constraint": {
-                "Center": 8231.47369042114,
+                "Center": 8241.64979757085,
                 "Components": [
                 ],
                 "DefaultDuration": 15000,
@@ -12,7 +12,7 @@
                         "Process": 1
                     }
                 ],
-                "GuiDuration": 25310.49173084207,
+                "GuiDuration": 16500,
                 "HeightPercentage": 0,
                 "MaxDuration": 15000,
                 "MaxInf": true,
@@ -36,21 +36,21 @@
                                 "Center": 0,
                                 "Components": [
                                 ],
-                                "DefaultDuration": 759.2585406237723,
+                                "DefaultDuration": 935.2226720647774,
                                 "EndState": 1,
                                 "FullViewRack": [
                                 ],
-                                "GuiDuration": 835.6538631485926,
-                                "HeightPercentage": 0.02266666666666667,
-                                "MaxDuration": 759.2585406237723,
+                                "GuiDuration": 1028.7449392712551,
+                                "HeightPercentage": 0.02,
+                                "MaxDuration": 935.2226720647774,
                                 "MaxInf": false,
                                 "Metadata": {
                                     "Color": "Transparent1",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "hulk24sept28"
+                                    "ScriptingName": "Interval.bock57"
                                 },
-                                "MinDuration": 759.2585406237723,
+                                "MinDuration": 935.2226720647774,
                                 "MinNull": false,
                                 "ObjectName": "Scenario::IntervalModel",
                                 "Processes": [
@@ -68,7 +68,7 @@
                                 "Center": 0,
                                 "Components": [
                                 ],
-                                "DefaultDuration": 9301.513066532005,
+                                "DefaultDuration": 7298.076923076924,
                                 "EndState": 2,
                                 "FullViewRack": [
                                     {
@@ -112,22 +112,19 @@
                                     },
                                     {
                                         "Process": 14
-                                    },
-                                    {
-                                        "Process": 15
                                     }
                                 ],
-                                "GuiDuration": 10068.609960863529,
-                                "HeightPercentage": 0.02266666666666667,
-                                "MaxDuration": 9301.513066532005,
+                                "GuiDuration": 7807.439271255062,
+                                "HeightPercentage": 0.02,
+                                "MaxDuration": 7298.076923076924,
                                 "MaxInf": false,
                                 "Metadata": {
                                     "Color": "Transparent1",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "tass55soul42"
+                                    "ScriptingName": "Interval.real56"
                                 },
-                                "MinDuration": 9301.513066532005,
+                                "MinDuration": 7298.076923076924,
                                 "MinNull": false,
                                 "ObjectName": "Scenario::IntervalModel",
                                 "Processes": [
@@ -137,8 +134,8 @@
                                             ],
                                             "Unit": "none",
                                             "address": {
-                                                "Device": "ofxOssiaDemo",
-                                                "Path": "renderer1/number"
+                                                "Device": "Renderer2",
+                                                "Path": "size"
                                             }
                                         },
                                         "Components": [
@@ -165,16 +162,16 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "Height": 300,
-                                        "Max": 15,
+                                        "Max": 83.16326904296875,
                                         "Metadata": {
                                             "Color": "Base1",
                                             "Comment": "",
                                             "Label": "",
                                             "ScriptingName": "Automation.1"
                                         },
-                                        "Min": 2,
+                                        "Min": 17.314054489135742,
                                         "ObjectName": "Automation",
                                         "Tween": false,
                                         "id": 1,
@@ -186,8 +183,8 @@
                                             ],
                                             "Unit": "none",
                                             "address": {
-                                                "Device": "ofxOssiaDemo",
-                                                "Path": "renderer2/size"
+                                                "Device": "Renderer2",
+                                                "Path": "number"
                                             }
                                         },
                                         "Components": [
@@ -198,7 +195,7 @@
                                                 {
                                                     "End": [
                                                         1,
-                                                        1
+                                                        0
                                                     ],
                                                     "Following": null,
                                                     "ObjectName": "CurveSegmentModel",
@@ -206,7 +203,7 @@
                                                     "Previous": null,
                                                     "Start": [
                                                         0,
-                                                        0
+                                                        1
                                                     ],
                                                     "id": 1,
                                                     "uuid": "1e7cb83f-4e47-4b14-814d-2242a9c75991"
@@ -214,16 +211,16 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "Height": 300,
-                                        "Max": 22.959182739257812,
+                                        "Max": 11,
                                         "Metadata": {
                                             "Color": "Base1",
                                             "Comment": "",
                                             "Label": "",
                                             "ScriptingName": "Automation.2"
                                         },
-                                        "Min": 11.812435150146484,
+                                        "Min": 4,
                                         "ObjectName": "Automation",
                                         "Tween": false,
                                         "id": 2,
@@ -235,8 +232,8 @@
                                             ],
                                             "Unit": "none",
                                             "address": {
-                                                "Device": "ofxOssiaDemo",
-                                                "Path": "renderer2/number"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer/size"
                                             }
                                         },
                                         "Components": [
@@ -247,7 +244,7 @@
                                                 {
                                                     "End": [
                                                         1,
-                                                        1
+                                                        0.9999999999999999
                                                     ],
                                                     "Following": null,
                                                     "ObjectName": "CurveSegmentModel",
@@ -263,16 +260,16 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "Height": 300,
-                                        "Max": 14,
+                                        "Max": 70.91836547851562,
                                         "Metadata": {
                                             "Color": "Base1",
                                             "Comment": "",
                                             "Label": "",
                                             "ScriptingName": "Automation.3"
                                         },
-                                        "Min": 4,
+                                        "Min": 40.306121826171875,
                                         "ObjectName": "Automation",
                                         "Tween": false,
                                         "id": 3,
@@ -284,8 +281,8 @@
                                             ],
                                             "Unit": "none",
                                             "address": {
-                                                "Device": "Renderer2",
-                                                "Path": "size"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer/number"
                                             }
                                         },
                                         "Components": [
@@ -296,7 +293,7 @@
                                                 {
                                                     "End": [
                                                         1,
-                                                        0
+                                                        1
                                                     ],
                                                     "Following": null,
                                                     "ObjectName": "CurveSegmentModel",
@@ -304,7 +301,7 @@
                                                     "Previous": null,
                                                     "Start": [
                                                         0,
-                                                        1
+                                                        0
                                                     ],
                                                     "id": 1,
                                                     "uuid": "1e7cb83f-4e47-4b14-814d-2242a9c75991"
@@ -312,16 +309,16 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "Height": 300,
-                                        "Max": 20.80785369873047,
+                                        "Max": 7,
                                         "Metadata": {
                                             "Color": "Base1",
                                             "Comment": "",
                                             "Label": "",
                                             "ScriptingName": "Automation.4"
                                         },
-                                        "Min": 11.224489212036133,
+                                        "Min": 5,
                                         "ObjectName": "Automation",
                                         "Tween": false,
                                         "id": 4,
@@ -333,8 +330,8 @@
                                             ],
                                             "Unit": "none",
                                             "address": {
-                                                "Device": "Renderer2",
-                                                "Path": "number"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer.1/size"
                                             }
                                         },
                                         "Components": [
@@ -345,7 +342,7 @@
                                                 {
                                                     "End": [
                                                         1,
-                                                        0
+                                                        0.9999999999999999
                                                     ],
                                                     "Following": null,
                                                     "ObjectName": "CurveSegmentModel",
@@ -353,7 +350,7 @@
                                                     "Previous": null,
                                                     "Start": [
                                                         0,
-                                                        1
+                                                        0
                                                     ],
                                                     "id": 1,
                                                     "uuid": "1e7cb83f-4e47-4b14-814d-2242a9c75991"
@@ -361,16 +358,16 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "Height": 300,
-                                        "Max": 16,
+                                        "Max": 42.34693908691406,
                                         "Metadata": {
                                             "Color": "Base1",
                                             "Comment": "",
                                             "Label": "",
                                             "ScriptingName": "Automation.5"
                                         },
-                                        "Min": 3,
+                                        "Min": 22.959182739257812,
                                         "ObjectName": "Automation",
                                         "Tween": false,
                                         "id": 5,
@@ -382,8 +379,8 @@
                                             ],
                                             "Unit": "none",
                                             "address": {
-                                                "Device": "Renderer1",
-                                                "Path": "size"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer.1/number"
                                             }
                                         },
                                         "Components": [
@@ -394,7 +391,7 @@
                                                 {
                                                     "End": [
                                                         1,
-                                                        0
+                                                        1
                                                     ],
                                                     "Following": null,
                                                     "ObjectName": "CurveSegmentModel",
@@ -402,7 +399,7 @@
                                                     "Previous": null,
                                                     "Start": [
                                                         0,
-                                                        1
+                                                        0
                                                     ],
                                                     "id": 1,
                                                     "uuid": "1e7cb83f-4e47-4b14-814d-2242a9c75991"
@@ -410,16 +407,16 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "Height": 300,
-                                        "Max": 42.44086456298828,
+                                        "Max": 20,
                                         "Metadata": {
                                             "Color": "Base1",
                                             "Comment": "",
                                             "Label": "",
                                             "ScriptingName": "Automation.6"
                                         },
-                                        "Min": 25.510204315185547,
+                                        "Min": 16,
                                         "ObjectName": "Automation",
                                         "Tween": false,
                                         "id": 6,
@@ -431,8 +428,8 @@
                                             ],
                                             "Unit": "none",
                                             "address": {
-                                                "Device": "Renderer1",
-                                                "Path": "number"
+                                                "Device": "Renderer2",
+                                                "Path": "position"
                                             }
                                         },
                                         "Components": [
@@ -459,29 +456,40 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
+                                        "End": {
+                                            "Vec2f": [
+                                                192.34652709960938,
+                                                680.03662109375
+                                            ]
+                                        },
                                         "Height": 300,
-                                        "Max": 16,
                                         "Metadata": {
                                             "Color": "Base1",
                                             "Comment": "",
                                             "Label": "",
-                                            "ScriptingName": "Automation.7"
+                                            "ScriptingName": "Interpolation.7"
                                         },
-                                        "Min": 13,
-                                        "ObjectName": "Automation",
+                                        "ObjectName": "Interpolation",
+                                        "Start": {
+                                            "Vec2f": [
+                                                602.513916015625,
+                                                344.6689147949219
+                                            ]
+                                        },
                                         "Tween": false,
+                                        "Unit": "none",
                                         "id": 7,
-                                        "uuid": "d2a67bd8-5d3f-404e-b6e9-e350cf2a833f"
+                                        "uuid": "aa569e11-03a9-4023-92c2-b590e88fec90"
                                     },
                                     {
                                         "Address": {
                                             "Accessors": [
                                             ],
-                                            "Unit": "none",
+                                            "Unit": "color.rgba",
                                             "address": {
-                                                "Device": "ofxOssiaDemo",
-                                                "Path": "renderer1/position"
+                                                "Device": "Renderer2",
+                                                "Path": "color"
                                             }
                                         },
                                         "Components": [
@@ -508,11 +516,13 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "End": {
-                                            "Vec2f": [
-                                                757.4443969726562,
-                                                108.27488708496094
+                                            "Vec4f": [
+                                                0.15294118225574493,
+                                                0.8274509906768799,
+                                                0.2235294133424759,
+                                                1
                                             ]
                                         },
                                         "Height": 300,
@@ -524,9 +534,11 @@
                                         },
                                         "ObjectName": "Interpolation",
                                         "Start": {
-                                            "Vec2f": [
-                                                512,
-                                                384
+                                            "Vec4f": [
+                                                0.377728670835495,
+                                                0.43921568989753723,
+                                                0.6840400695800781,
+                                                1
                                             ]
                                         },
                                         "Tween": false,
@@ -538,10 +550,10 @@
                                         "Address": {
                                             "Accessors": [
                                             ],
-                                            "Unit": "color.rgba",
+                                            "Unit": "none",
                                             "address": {
-                                                "Device": "ofxOssiaDemo",
-                                                "Path": "renderer1/color"
+                                                "Device": "Renderer1",
+                                                "Path": "position"
                                             }
                                         },
                                         "Components": [
@@ -568,13 +580,11 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "End": {
-                                            "Vec4f": [
-                                                0.8784313797950745,
-                                                0.16862745583057404,
-                                                0.49803921580314636,
-                                                1
+                                            "Vec2f": [
+                                                522.87548828125,
+                                                88.28321838378906
                                             ]
                                         },
                                         "Height": 300,
@@ -586,11 +596,9 @@
                                         },
                                         "ObjectName": "Interpolation",
                                         "Start": {
-                                            "Vec4f": [
-                                                0.49803921580314636,
-                                                0.49803921580314636,
-                                                0.49803921580314636,
-                                                1
+                                            "Vec2f": [
+                                                586.6227416992188,
+                                                418.1949157714844
                                             ]
                                         },
                                         "Tween": false,
@@ -602,10 +610,10 @@
                                         "Address": {
                                             "Accessors": [
                                             ],
-                                            "Unit": "none",
+                                            "Unit": "color.rgba",
                                             "address": {
-                                                "Device": "ofxOssiaDemo",
-                                                "Path": "renderer2/position"
+                                                "Device": "Renderer1",
+                                                "Path": "color"
                                             }
                                         },
                                         "Components": [
@@ -632,11 +640,13 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "End": {
-                                            "Vec2f": [
-                                                309.6309814453125,
-                                                692.0316162109375
+                                            "Vec4f": [
+                                                0.800000011920929,
+                                                0.2078431397676468,
+                                                0.6509804129600525,
+                                                0.48627451062202454
                                             ]
                                         },
                                         "Height": 300,
@@ -648,9 +658,11 @@
                                         },
                                         "ObjectName": "Interpolation",
                                         "Start": {
-                                            "Vec2f": [
-                                                512,
-                                                384
+                                            "Vec4f": [
+                                                0.6490329504013062,
+                                                0.6209919452667236,
+                                                0.22757171094417572,
+                                                0.9399533271789551
                                             ]
                                         },
                                         "Tween": false,
@@ -662,10 +674,10 @@
                                         "Address": {
                                             "Accessors": [
                                             ],
-                                            "Unit": "color.rgba",
+                                            "Unit": "none",
                                             "address": {
-                                                "Device": "ofxOssiaDemo",
-                                                "Path": "renderer2/color"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer/position"
                                             }
                                         },
                                         "Components": [
@@ -692,13 +704,11 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "End": {
-                                            "Vec4f": [
-                                                0.37254902720451355,
-                                                0.49803921580314636,
-                                                1,
-                                                1
+                                            "Vec2f": [
+                                                554.8621215820312,
+                                                100.27822875976562
                                             ]
                                         },
                                         "Height": 300,
@@ -710,11 +720,9 @@
                                         },
                                         "ObjectName": "Interpolation",
                                         "Start": {
-                                            "Vec4f": [
-                                                0.49803921580314636,
-                                                0.49803921580314636,
-                                                0.49803921580314636,
-                                                1
+                                            "Vec2f": [
+                                                736.1199340820312,
+                                                640.0533447265625
                                             ]
                                         },
                                         "Tween": false,
@@ -726,10 +734,10 @@
                                         "Address": {
                                             "Accessors": [
                                             ],
-                                            "Unit": "none",
+                                            "Unit": "color.rgba",
                                             "address": {
-                                                "Device": "Renderer2",
-                                                "Path": "position"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer/color"
                                             }
                                         },
                                         "Components": [
@@ -756,11 +764,13 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "End": {
-                                            "Vec2f": [
-                                                378.9354553222656,
-                                                680.03662109375
+                                            "Vec4f": [
+                                                0.20000000298023224,
+                                                0.9529411792755127,
+                                                0.5176470875740051,
+                                                0.8745098114013672
                                             ]
                                         },
                                         "Height": 300,
@@ -772,9 +782,11 @@
                                         },
                                         "ObjectName": "Interpolation",
                                         "Start": {
-                                            "Vec2f": [
-                                                730.788818359375,
-                                                152.25656127929688
+                                            "Vec4f": [
+                                                0.8588235378265381,
+                                                0.16862745583057404,
+                                                0.8117647171020508,
+                                                0.27450981736183167
                                             ]
                                         },
                                         "Tween": false,
@@ -786,10 +798,10 @@
                                         "Address": {
                                             "Accessors": [
                                             ],
-                                            "Unit": "color.rgba",
+                                            "Unit": "none",
                                             "address": {
-                                                "Device": "Renderer2",
-                                                "Path": "color"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer.1/position"
                                             }
                                         },
                                         "Components": [
@@ -816,13 +828,11 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "End": {
-                                            "Vec4f": [
-                                                0.7490196228027344,
-                                                0.43921568989753723,
-                                                0.13333334028720856,
-                                                1
+                                            "Vec2f": [
+                                                618.8355102539062,
+                                                688.0333251953125
                                             ]
                                         },
                                         "Height": 300,
@@ -834,11 +844,9 @@
                                         },
                                         "ObjectName": "Interpolation",
                                         "Start": {
-                                            "Vec4f": [
-                                                0.16470588743686676,
-                                                0.43921568989753723,
-                                                1,
-                                                1
+                                            "Vec2f": [
+                                                469.5643615722656,
+                                                28.308212280273438
                                             ]
                                         },
                                         "Tween": false,
@@ -850,10 +858,10 @@
                                         "Address": {
                                             "Accessors": [
                                             ],
-                                            "Unit": "none",
+                                            "Unit": "color.rgba",
                                             "address": {
-                                                "Device": "Renderer1",
-                                                "Path": "position"
+                                                "Device": "ofxOscQueryDemo",
+                                                "Path": "renderer.1/color"
                                             }
                                         },
                                         "Components": [
@@ -880,11 +888,13 @@
                                             ],
                                             "id": 45345
                                         },
-                                        "Duration": 9301.513066532005,
+                                        "Duration": 7298.076923076924,
                                         "End": {
-                                            "Vec2f": [
-                                                762.7755126953125,
-                                                80.28655242919922
+                                            "Vec4f": [
+                                                0.8823529481887817,
+                                                0.0470588244497776,
+                                                0.14901961386203766,
+                                                0.30588236451148987
                                             ]
                                         },
                                         "Height": 300,
@@ -896,86 +906,24 @@
                                         },
                                         "ObjectName": "Interpolation",
                                         "Start": {
-                                            "Vec2f": [
-                                                485.55767822265625,
-                                                612.06494140625
+                                            "Vec4f": [
+                                                0.3686274588108063,
+                                                0.7843137383460999,
+                                                0.9921568632125854,
+                                                0.9843137264251709
                                             ]
                                         },
                                         "Tween": false,
                                         "Unit": "none",
                                         "id": 14,
                                         "uuid": "aa569e11-03a9-4023-92c2-b590e88fec90"
-                                    },
-                                    {
-                                        "Address": {
-                                            "Accessors": [
-                                            ],
-                                            "Unit": "color.rgba",
-                                            "address": {
-                                                "Device": "Renderer1",
-                                                "Path": "color"
-                                            }
-                                        },
-                                        "Components": [
-                                        ],
-                                        "Curve": {
-                                            "ObjectName": "CurveModel",
-                                            "Segments": [
-                                                {
-                                                    "End": [
-                                                        1,
-                                                        1
-                                                    ],
-                                                    "Following": null,
-                                                    "ObjectName": "CurveSegmentModel",
-                                                    "Power": 11.05,
-                                                    "Previous": null,
-                                                    "Start": [
-                                                        0,
-                                                        0
-                                                    ],
-                                                    "id": 1,
-                                                    "uuid": "1e7cb83f-4e47-4b14-814d-2242a9c75991"
-                                                }
-                                            ],
-                                            "id": 45345
-                                        },
-                                        "Duration": 9301.513066532005,
-                                        "End": {
-                                            "Vec4f": [
-                                                0.05098039284348488,
-                                                0.8352941274642944,
-                                                0.30980393290519714,
-                                                0.8352941274642944
-                                            ]
-                                        },
-                                        "Height": 300,
-                                        "Metadata": {
-                                            "Color": "Base1",
-                                            "Comment": "",
-                                            "Label": "",
-                                            "ScriptingName": "Interpolation.15"
-                                        },
-                                        "ObjectName": "Interpolation",
-                                        "Start": {
-                                            "Vec4f": [
-                                                0.9921568632125854,
-                                                0.49803921580314636,
-                                                0.18039216101169586,
-                                                1
-                                            ]
-                                        },
-                                        "Tween": false,
-                                        "Unit": "none",
-                                        "id": 15,
-                                        "uuid": "aa569e11-03a9-4023-92c2-b590e88fec90"
                                     }
                                 ],
                                 "Rigidity": true,
                                 "SmallViewRack": [
                                     {
-                                        "Height": 108,
-                                        "Process": 15,
+                                        "Height": 201,
+                                        "Process": 14,
                                         "Processes": [
                                             1,
                                             2,
@@ -990,13 +938,12 @@
                                             11,
                                             12,
                                             13,
-                                            14,
-                                            15
+                                            14
                                         ]
                                     }
                                 ],
                                 "SmallViewShown": true,
-                                "StartDate": 759.2585406237723,
+                                "StartDate": 935.2226720647774,
                                 "StartState": 1,
                                 "Zoom": -1,
                                 "id": 2
@@ -1015,14 +962,14 @@
                                 },
                                 "Date": 0,
                                 "Extent": [
-                                    0.02266666666666667,
-                                    0.02266666666666667
+                                    0.02,
+                                    0.02
                                 ],
                                 "Metadata": {
                                     "Color": "Emphasis4",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "Event.0"
+                                    "ScriptingName": "Event.start"
                                 },
                                 "ObjectName": "Scenario::EventModel",
                                 "Offset": 0,
@@ -1041,16 +988,16 @@
                                     "RootNode": {
                                     }
                                 },
-                                "Date": 759.2585406237723,
+                                "Date": 935.2226720647774,
                                 "Extent": [
-                                    0.02266666666666667,
-                                    0.02266666666666667
+                                    0.02,
+                                    0.02
                                 ],
                                 "Metadata": {
                                     "Color": "Emphasis4",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "load41ding86"
+                                    "ScriptingName": "Event.eked77"
                                 },
                                 "ObjectName": "Scenario::EventModel",
                                 "Offset": 0,
@@ -1069,16 +1016,16 @@
                                     "RootNode": {
                                     }
                                 },
-                                "Date": 10060.771607155777,
+                                "Date": 8233.299595141702,
                                 "Extent": [
-                                    0.02266666666666667,
-                                    0.02266666666666667
+                                    0.02,
+                                    0.02
                                 ],
                                 "Metadata": {
                                     "Color": "Emphasis4",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "foil74abbe35"
+                                    "ScriptingName": "Event.jest76"
                                 },
                                 "ObjectName": "Scenario::EventModel",
                                 "Offset": 0,
@@ -1105,7 +1052,7 @@
                                 "Components": [
                                 ],
                                 "Event": 0,
-                                "HeightPercentage": 0.02266666666666667,
+                                "HeightPercentage": 0.02,
                                 "Messages": {
                                     "Accessors": [
                                     ],
@@ -1127,7 +1074,7 @@
                                     "Color": "Base1",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "State.0"
+                                    "ScriptingName": "State.start"
                                 },
                                 "NextConstraint": 1,
                                 "ObjectName": "Scenario::StateModel",
@@ -1140,258 +1087,11 @@
                                 "Components": [
                                 ],
                                 "Event": 1,
-                                "HeightPercentage": 0.02266666666666667,
+                                "HeightPercentage": 0.02,
                                 "Messages": {
                                     "Accessors": [
                                     ],
                                     "Children": [
-                                        {
-                                            "Accessors": [
-                                            ],
-                                            "Children": [
-                                                {
-                                                    "Accessors": [
-                                                    ],
-                                                    "Children": [
-                                                    ],
-                                                    "Following": [
-                                                    ],
-                                                    "Name": "vSync",
-                                                    "Previous": [
-                                                    ],
-                                                    "Priorities": [
-                                                        1,
-                                                        2,
-                                                        0
-                                                    ],
-                                                    "Unit": "none",
-                                                    "User": {
-                                                        "Bool": true
-                                                    }
-                                                },
-                                                {
-                                                    "Accessors": [
-                                                    ],
-                                                    "Children": [
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "size",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "none",
-                                                            "User": {
-                                                                "Float": 19.548437118530273
-                                                            }
-                                                        },
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "number",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "none",
-                                                            "User": {
-                                                                "Int": 2
-                                                            }
-                                                        },
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "position",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "none",
-                                                            "User": {
-                                                                "Vec2f": [
-                                                                    512,
-                                                                    384
-                                                                ]
-                                                            }
-                                                        },
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "color",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "color.rgba",
-                                                            "User": {
-                                                                "Vec4f": [
-                                                                    0.49803921580314636,
-                                                                    0.49803921580314636,
-                                                                    0.49803921580314636,
-                                                                    1
-                                                                ]
-                                                            }
-                                                        }
-                                                    ],
-                                                    "Following": [
-                                                    ],
-                                                    "Name": "renderer1",
-                                                    "Previous": [
-                                                    ],
-                                                    "Priorities": [
-                                                        1,
-                                                        2,
-                                                        0
-                                                    ],
-                                                    "Unit": "none"
-                                                },
-                                                {
-                                                    "Accessors": [
-                                                    ],
-                                                    "Children": [
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "size",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "none",
-                                                            "User": {
-                                                                "Float": 11.812435150146484
-                                                            }
-                                                        },
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "number",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "none",
-                                                            "User": {
-                                                                "Int": 4
-                                                            }
-                                                        },
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "position",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "none",
-                                                            "User": {
-                                                                "Vec2f": [
-                                                                    512,
-                                                                    384
-                                                                ]
-                                                            }
-                                                        },
-                                                        {
-                                                            "Accessors": [
-                                                            ],
-                                                            "Children": [
-                                                            ],
-                                                            "Following": [
-                                                            ],
-                                                            "Name": "color",
-                                                            "Previous": [
-                                                            ],
-                                                            "Priorities": [
-                                                                1,
-                                                                2,
-                                                                0
-                                                            ],
-                                                            "Unit": "color.rgba",
-                                                            "User": {
-                                                                "Vec4f": [
-                                                                    0.49803921580314636,
-                                                                    0.49803921580314636,
-                                                                    0.49803921580314636,
-                                                                    1
-                                                                ]
-                                                            }
-                                                        }
-                                                    ],
-                                                    "Following": [
-                                                    ],
-                                                    "Name": "renderer2",
-                                                    "Previous": [
-                                                    ],
-                                                    "Priorities": [
-                                                        1,
-                                                        2,
-                                                        0
-                                                    ],
-                                                    "Unit": "none"
-                                                }
-                                            ],
-                                            "Following": [
-                                            ],
-                                            "Name": "ofxOssiaDemo",
-                                            "Previous": [
-                                            ],
-                                            "Priorities": [
-                                                1,
-                                                2,
-                                                0
-                                            ],
-                                            "Unit": "none"
-                                        },
                                         {
                                             "Accessors": [
                                             ],
@@ -1413,7 +1113,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Float": 20.80785369873047
+                                                        "Float": 17.314054489135742
                                                     }
                                                 },
                                                 {
@@ -1433,7 +1133,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Int": 16
+                                                        "Int": 11
                                                     }
                                                 },
                                                 {
@@ -1454,8 +1154,8 @@
                                                     "Unit": "none",
                                                     "User": {
                                                         "Vec2f": [
-                                                            730.788818359375,
-                                                            152.25656127929688
+                                                            602.513916015625,
+                                                            344.6689147949219
                                                         ]
                                                     }
                                                 },
@@ -1477,9 +1177,9 @@
                                                     "Unit": "color.rgba",
                                                     "User": {
                                                         "Vec4f": [
-                                                            0.16470588743686676,
+                                                            0.377728670835495,
                                                             0.43921568989753723,
-                                                            1,
+                                                            0.6840400695800781,
                                                             1
                                                         ]
                                                     }
@@ -1518,7 +1218,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Float": 42.44086456298828
+                                                        "Float": 36.26846694946289
                                                     }
                                                 },
                                                 {
@@ -1538,7 +1238,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Int": 13
+                                                        "Int": 14
                                                     }
                                                 },
                                                 {
@@ -1559,8 +1259,8 @@
                                                     "Unit": "none",
                                                     "User": {
                                                         "Vec2f": [
-                                                            485.55767822265625,
-                                                            612.06494140625
+                                                            586.6227416992188,
+                                                            418.1949157714844
                                                         ]
                                                     }
                                                 },
@@ -1582,10 +1282,10 @@
                                                     "Unit": "color.rgba",
                                                     "User": {
                                                         "Vec4f": [
-                                                            0.9921568632125854,
-                                                            0.49803921580314636,
-                                                            0.18039216101169586,
-                                                            1
+                                                            0.6490329504013062,
+                                                            0.6209919452667236,
+                                                            0.22757171094417572,
+                                                            0.9399533271789551
                                                         ]
                                                     }
                                                 }
@@ -1601,42 +1301,7 @@
                                                 0
                                             ],
                                             "Unit": "none"
-                                        }
-                                    ],
-                                    "Following": [
-                                    ],
-                                    "Name": "",
-                                    "Previous": [
-                                    ],
-                                    "Priorities": [
-                                        1,
-                                        2,
-                                        0
-                                    ],
-                                    "Unit": "none"
-                                },
-                                "Metadata": {
-                                    "Color": "Base1",
-                                    "Comment": "",
-                                    "Label": "",
-                                    "ScriptingName": "State.1"
-                                },
-                                "NextConstraint": 2,
-                                "ObjectName": "Scenario::StateModel",
-                                "PreviousConstraint": 1,
-                                "StateProcesses": [
-                                ],
-                                "id": 1
-                            },
-                            {
-                                "Components": [
-                                ],
-                                "Event": 2,
-                                "HeightPercentage": 0.02266666666666667,
-                                "Messages": {
-                                    "Accessors": [
-                                    ],
-                                    "Children": [
+                                        },
                                         {
                                             "Accessors": [
                                             ],
@@ -1682,7 +1347,7 @@
                                                             ],
                                                             "Unit": "none",
                                                             "User": {
-                                                                "Float": 19.548437118530273
+                                                                "Float": 40.306121826171875
                                                             }
                                                         },
                                                         {
@@ -1702,7 +1367,7 @@
                                                             ],
                                                             "Unit": "none",
                                                             "User": {
-                                                                "Int": 15
+                                                                "Int": 5
                                                             }
                                                         },
                                                         {
@@ -1723,8 +1388,8 @@
                                                             "Unit": "none",
                                                             "User": {
                                                                 "Vec2f": [
-                                                                    757.4443969726562,
-                                                                    108.27488708496094
+                                                                    736.1199340820312,
+                                                                    640.0533447265625
                                                                 ]
                                                             }
                                                         },
@@ -1743,20 +1408,20 @@
                                                                 2,
                                                                 0
                                                             ],
-                                                            "Unit": "none",
+                                                            "Unit": "color.rgba",
                                                             "User": {
                                                                 "Vec4f": [
-                                                                    0.8784313797950745,
+                                                                    0.8588235378265381,
                                                                     0.16862745583057404,
-                                                                    0.49803921580314636,
-                                                                    1
+                                                                    0.8117647171020508,
+                                                                    0.27450981736183167
                                                                 ]
                                                             }
                                                         }
                                                     ],
                                                     "Following": [
                                                     ],
-                                                    "Name": "renderer1",
+                                                    "Name": "renderer",
                                                     "Previous": [
                                                     ],
                                                     "Priorities": [
@@ -1807,7 +1472,7 @@
                                                             ],
                                                             "Unit": "none",
                                                             "User": {
-                                                                "Int": 14
+                                                                "Int": 16
                                                             }
                                                         },
                                                         {
@@ -1828,8 +1493,8 @@
                                                             "Unit": "none",
                                                             "User": {
                                                                 "Vec2f": [
-                                                                    309.6309814453125,
-                                                                    692.0316162109375
+                                                                    469.5643615722656,
+                                                                    28.308212280273438
                                                                 ]
                                                             }
                                                         },
@@ -1848,20 +1513,20 @@
                                                                 2,
                                                                 0
                                                             ],
-                                                            "Unit": "none",
+                                                            "Unit": "color.rgba",
                                                             "User": {
                                                                 "Vec4f": [
-                                                                    0.37254902720451355,
-                                                                    0.49803921580314636,
-                                                                    1,
-                                                                    1
+                                                                    0.3686274588108063,
+                                                                    0.7843137383460999,
+                                                                    0.9921568632125854,
+                                                                    0.9843137264251709
                                                                 ]
                                                             }
                                                         }
                                                     ],
                                                     "Following": [
                                                     ],
-                                                    "Name": "renderer2",
+                                                    "Name": "renderer.1",
                                                     "Previous": [
                                                     ],
                                                     "Priorities": [
@@ -1874,7 +1539,7 @@
                                             ],
                                             "Following": [
                                             ],
-                                            "Name": "ofxOssiaDemo",
+                                            "Name": "ofxOscQueryDemo",
                                             "Previous": [
                                             ],
                                             "Priorities": [
@@ -1883,7 +1548,42 @@
                                                 0
                                             ],
                                             "Unit": "none"
-                                        },
+                                        }
+                                    ],
+                                    "Following": [
+                                    ],
+                                    "Name": "",
+                                    "Previous": [
+                                    ],
+                                    "Priorities": [
+                                        1,
+                                        2,
+                                        0
+                                    ],
+                                    "Unit": "none"
+                                },
+                                "Metadata": {
+                                    "Color": "Base1",
+                                    "Comment": "",
+                                    "Label": "",
+                                    "ScriptingName": "State.greg4"
+                                },
+                                "NextConstraint": 2,
+                                "ObjectName": "Scenario::StateModel",
+                                "PreviousConstraint": 1,
+                                "StateProcesses": [
+                                ],
+                                "id": 1
+                            },
+                            {
+                                "Components": [
+                                ],
+                                "Event": 2,
+                                "HeightPercentage": 0.02,
+                                "Messages": {
+                                    "Accessors": [
+                                    ],
+                                    "Children": [
                                         {
                                             "Accessors": [
                                             ],
@@ -1905,7 +1605,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Float": 11.224489212036133
+                                                        "Float": 83.16326904296875
                                                     }
                                                 },
                                                 {
@@ -1925,7 +1625,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Int": 3
+                                                        "Int": 4
                                                     }
                                                 },
                                                 {
@@ -1946,7 +1646,7 @@
                                                     "Unit": "none",
                                                     "User": {
                                                         "Vec2f": [
-                                                            378.9354553222656,
+                                                            192.34652709960938,
                                                             680.03662109375
                                                         ]
                                                     }
@@ -1969,9 +1669,9 @@
                                                     "Unit": "none",
                                                     "User": {
                                                         "Vec4f": [
-                                                            0.7490196228027344,
-                                                            0.43921568989753723,
-                                                            0.13333334028720856,
+                                                            0.15294118225574493,
+                                                            0.8274509906768799,
+                                                            0.2235294133424759,
                                                             1
                                                         ]
                                                     }
@@ -2010,7 +1710,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Float": 25.510204315185547
+                                                        "Float": 36.26846694946289
                                                     }
                                                 },
                                                 {
@@ -2030,7 +1730,7 @@
                                                     ],
                                                     "Unit": "none",
                                                     "User": {
-                                                        "Int": 16
+                                                        "Int": 14
                                                     }
                                                 },
                                                 {
@@ -2051,8 +1751,8 @@
                                                     "Unit": "none",
                                                     "User": {
                                                         "Vec2f": [
-                                                            762.7755126953125,
-                                                            80.28655242919922
+                                                            522.87548828125,
+                                                            88.28321838378906
                                                         ]
                                                     }
                                                 },
@@ -2074,10 +1774,10 @@
                                                     "Unit": "none",
                                                     "User": {
                                                         "Vec4f": [
-                                                            0.05098039284348488,
-                                                            0.8352941274642944,
-                                                            0.30980393290519714,
-                                                            0.8352941274642944
+                                                            0.800000011920929,
+                                                            0.2078431397676468,
+                                                            0.6509804129600525,
+                                                            0.48627451062202454
                                                         ]
                                                     }
                                                 }
@@ -2085,6 +1785,253 @@
                                             "Following": [
                                             ],
                                             "Name": "Renderer1",
+                                            "Previous": [
+                                            ],
+                                            "Priorities": [
+                                                1,
+                                                2,
+                                                0
+                                            ],
+                                            "Unit": "none"
+                                        },
+                                        {
+                                            "Accessors": [
+                                            ],
+                                            "Children": [
+                                                {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Children": [
+                                                    ],
+                                                    "Following": [
+                                                    ],
+                                                    "Name": "vSync",
+                                                    "Previous": [
+                                                    ],
+                                                    "Priorities": [
+                                                        1,
+                                                        2,
+                                                        0
+                                                    ],
+                                                    "Unit": "none",
+                                                    "User": {
+                                                        "Bool": true
+                                                    }
+                                                },
+                                                {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Children": [
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "size",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Float": 70.91836547851562
+                                                            }
+                                                        },
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "number",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Int": 7
+                                                            }
+                                                        },
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "position",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Vec2f": [
+                                                                    554.8621215820312,
+                                                                    100.27822875976562
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "color",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Vec4f": [
+                                                                    0.20000000298023224,
+                                                                    0.9529411792755127,
+                                                                    0.5176470875740051,
+                                                                    0.8745098114013672
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "Following": [
+                                                    ],
+                                                    "Name": "renderer",
+                                                    "Previous": [
+                                                    ],
+                                                    "Priorities": [
+                                                        1,
+                                                        2,
+                                                        0
+                                                    ],
+                                                    "Unit": "none"
+                                                },
+                                                {
+                                                    "Accessors": [
+                                                    ],
+                                                    "Children": [
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "size",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Float": 42.34693908691406
+                                                            }
+                                                        },
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "number",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Int": 20
+                                                            }
+                                                        },
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "position",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Vec2f": [
+                                                                    618.8355102539062,
+                                                                    688.0333251953125
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "Accessors": [
+                                                            ],
+                                                            "Children": [
+                                                            ],
+                                                            "Following": [
+                                                            ],
+                                                            "Name": "color",
+                                                            "Previous": [
+                                                            ],
+                                                            "Priorities": [
+                                                                1,
+                                                                2,
+                                                                0
+                                                            ],
+                                                            "Unit": "none",
+                                                            "User": {
+                                                                "Vec4f": [
+                                                                    0.8823529481887817,
+                                                                    0.0470588244497776,
+                                                                    0.14901961386203766,
+                                                                    0.30588236451148987
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "Following": [
+                                                    ],
+                                                    "Name": "renderer.1",
+                                                    "Previous": [
+                                                    ],
+                                                    "Priorities": [
+                                                        1,
+                                                        2,
+                                                        0
+                                                    ],
+                                                    "Unit": "none"
+                                                }
+                                            ],
+                                            "Following": [
+                                            ],
+                                            "Name": "ofxOscQueryDemo",
                                             "Previous": [
                                             ],
                                             "Priorities": [
@@ -2111,7 +2058,7 @@
                                     "Color": "Base1",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "State.2"
+                                    "ScriptingName": "State.rang9"
                                 },
                                 "NextConstraint": null,
                                 "ObjectName": "Scenario::StateModel",
@@ -2130,14 +2077,14 @@
                                     0
                                 ],
                                 "Extent": [
-                                    0.02266666666666667,
-                                    0.02266666666666667
+                                    0.02,
+                                    0.02
                                 ],
                                 "Metadata": {
                                     "Color": "Gray",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "Sync.0"
+                                    "ScriptingName": "Sync.start"
                                 },
                                 "ObjectName": "Scenario::TimeSyncModel",
                                 "Trigger": {
@@ -2154,19 +2101,19 @@
                             {
                                 "Components": [
                                 ],
-                                "Date": 759.2585406237723,
+                                "Date": 935.2226720647774,
                                 "Events": [
                                     1
                                 ],
                                 "Extent": [
-                                    0.02266666666666667,
-                                    0.02266666666666667
+                                    0.02,
+                                    0.02
                                 ],
                                 "Metadata": {
                                     "Color": "Gray",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "olin13putt88"
+                                    "ScriptingName": "Sync.heap87"
                                 },
                                 "ObjectName": "Scenario::TimeSyncModel",
                                 "Trigger": {
@@ -2183,19 +2130,19 @@
                             {
                                 "Components": [
                                 ],
-                                "Date": 10060.771607155777,
+                                "Date": 8233.299595141702,
                                 "Events": [
                                     2
                                 ],
                                 "Extent": [
-                                    0.02266666666666667,
-                                    0.02266666666666667
+                                    0.02,
+                                    0.02
                                 ],
                                 "Metadata": {
                                     "Color": "Gray",
                                     "Comment": "",
                                     "Label": "",
-                                    "ScriptingName": "tuff22mast54"
+                                    "ScriptingName": "Sync.dime48"
                                 },
                                 "ObjectName": "Scenario::TimeSyncModel",
                                 "Trigger": {
@@ -2220,7 +2167,7 @@
                 "SmallViewShown": false,
                 "StartDate": 0,
                 "StartState": 0,
-                "Zoom": 18.518500990823714,
+                "Zoom": 16.700404858299596,
                 "id": 0
             },
             "EndEvent": {
@@ -2241,7 +2188,7 @@
                     "Color": "Emphasis4",
                     "Comment": "",
                     "Label": "",
-                    "ScriptingName": "Event.1"
+                    "ScriptingName": "Event.end"
                 },
                 "ObjectName": "Scenario::EventModel",
                 "Offset": 0,
@@ -2277,7 +2224,7 @@
                     "Color": "Base1",
                     "Comment": "",
                     "Label": "",
-                    "ScriptingName": "State.1"
+                    "ScriptingName": "State.end"
                 },
                 "NextConstraint": null,
                 "ObjectName": "Scenario::StateModel",
@@ -2301,7 +2248,7 @@
                     "Color": "Gray",
                     "Comment": "",
                     "Label": "",
-                    "ScriptingName": "Sync.1"
+                    "ScriptingName": "Sync.end"
                 },
                 "ObjectName": "Scenario::TimeSyncModel",
                 "Trigger": {
@@ -2334,7 +2281,7 @@
                     "Color": "Emphasis4",
                     "Comment": "",
                     "Label": "",
-                    "ScriptingName": "Event.0"
+                    "ScriptingName": "Event.start"
                 },
                 "ObjectName": "Scenario::EventModel",
                 "Offset": 0,
@@ -2370,7 +2317,7 @@
                     "Color": "Base1",
                     "Comment": "",
                     "Label": "",
-                    "ScriptingName": "State.0"
+                    "ScriptingName": "State.start"
                 },
                 "NextConstraint": 0,
                 "ObjectName": "Scenario::StateModel",
@@ -2394,7 +2341,7 @@
                     "Color": "Gray",
                     "Comment": "",
                     "Label": "",
-                    "ScriptingName": "Sync.0"
+                    "ScriptingName": "Sync.start"
                 },
                 "ObjectName": "Scenario::TimeSyncModel",
                 "Trigger": {
@@ -2441,10 +2388,9 @@
                                 },
                                 "Extended": {
                                 },
-                                "Name": "renderer1",
+                                "Name": "renderer",
                                 "RepetitionFilter": false,
-                                "Unit": "none",
-                                "ioType": "<->"
+                                "Unit": "none"
                             },
                             "Children": [
                                 {
@@ -2454,7 +2400,7 @@
                                         },
                                         "Extended": {
                                         },
-                                        "Float": 19.548437118530273,
+                                        "Float": 70.91836547851562,
                                         "Name": "size",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
@@ -2470,7 +2416,7 @@
                                         },
                                         "Extended": {
                                         },
-                                        "Int": 15,
+                                        "Int": 7,
                                         "Name": "number",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
@@ -2485,13 +2431,14 @@
                                         "Domain": {
                                         },
                                         "Extended": {
+                                            "extended_type": "vecf"
                                         },
                                         "Name": "position",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
                                         "Vec2f": [
-                                            757.4443969726562,
-                                            108.27488708496094
+                                            554.8621215820312,
+                                            100.27822875976562
                                         ],
                                         "ioType": "<->"
                                     },
@@ -2504,15 +2451,16 @@
                                         "Domain": {
                                         },
                                         "Extended": {
+                                            "extended_type": "vecf"
                                         },
                                         "Name": "color",
                                         "RepetitionFilter": false,
                                         "Unit": "color.rgba",
                                         "Vec4f": [
-                                            0.8784313797950745,
-                                            0.16862745583057404,
-                                            0.49803921580314636,
-                                            1
+                                            0.20000000298023224,
+                                            0.9529411792755127,
+                                            0.5176470875740051,
+                                            0.8745098114013672
                                         ],
                                         "ioType": "<->"
                                     },
@@ -2528,10 +2476,9 @@
                                 },
                                 "Extended": {
                                 },
-                                "Name": "renderer2",
+                                "Name": "renderer.1",
                                 "RepetitionFilter": false,
-                                "Unit": "none",
-                                "ioType": "<->"
+                                "Unit": "none"
                             },
                             "Children": [
                                 {
@@ -2541,7 +2488,7 @@
                                         },
                                         "Extended": {
                                         },
-                                        "Float": 22.959182739257812,
+                                        "Float": 42.34693908691406,
                                         "Name": "size",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
@@ -2557,7 +2504,7 @@
                                         },
                                         "Extended": {
                                         },
-                                        "Int": 14,
+                                        "Int": 20,
                                         "Name": "number",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
@@ -2572,13 +2519,14 @@
                                         "Domain": {
                                         },
                                         "Extended": {
+                                            "extended_type": "vecf"
                                         },
                                         "Name": "position",
                                         "RepetitionFilter": false,
                                         "Unit": "none",
                                         "Vec2f": [
-                                            309.6309814453125,
-                                            692.0316162109375
+                                            618.8355102539062,
+                                            688.0333251953125
                                         ],
                                         "ioType": "<->"
                                     },
@@ -2591,15 +2539,16 @@
                                         "Domain": {
                                         },
                                         "Extended": {
+                                            "extended_type": "vecf"
                                         },
                                         "Name": "color",
                                         "RepetitionFilter": false,
                                         "Unit": "color.rgba",
                                         "Vec4f": [
-                                            0.37254902720451355,
-                                            0.49803921580314636,
-                                            1,
-                                            1
+                                            0.8823529481887817,
+                                            0.0470588244497776,
+                                            0.14901961386203766,
+                                            0.30588236451148987
                                         ],
                                         "ioType": "<->"
                                     },
@@ -2611,7 +2560,7 @@
                     ],
                     "DeviceSettings": {
                         "Host": "ws://bltzr.local.:4677",
-                        "Name": "ofxOssiaDemo",
+                        "Name": "ofxOscQueryDemo",
                         "Protocol": "1187fefe-0468-49d1-9eb7-92d7f4e11f6f"
                     }
                 },
@@ -2624,7 +2573,7 @@
                                 },
                                 "Extended": {
                                 },
-                                "Float": 25.510204315185547,
+                                "Float": 36.26846694946289,
                                 "Name": "size",
                                 "RepetitionFilter": false,
                                 "Unit": "none",
@@ -2640,7 +2589,7 @@
                                 },
                                 "Extended": {
                                 },
-                                "Int": 16,
+                                "Int": 14,
                                 "Name": "number",
                                 "RepetitionFilter": false,
                                 "Unit": "none",
@@ -2655,13 +2604,14 @@
                                 "Domain": {
                                 },
                                 "Extended": {
+                                    "extended_type": "vecf"
                                 },
                                 "Name": "position",
                                 "RepetitionFilter": false,
                                 "Unit": "none",
                                 "Vec2f": [
-                                    762.7755126953125,
-                                    80.28655242919922
+                                    522.87548828125,
+                                    88.28321838378906
                                 ],
                                 "ioType": "<->"
                             },
@@ -2674,15 +2624,16 @@
                                 "Domain": {
                                 },
                                 "Extended": {
+                                    "extended_type": "vecf"
                                 },
                                 "Name": "color",
                                 "RepetitionFilter": false,
                                 "Unit": "color.rgba",
                                 "Vec4f": [
-                                    0.05098039284348488,
-                                    0.8352941274642944,
-                                    0.30980393290519714,
-                                    0.8352941274642944
+                                    0.800000011920929,
+                                    0.2078431397676468,
+                                    0.6509804129600525,
+                                    0.48627451062202454
                                 ],
                                 "ioType": "<->"
                             },
@@ -2705,7 +2656,7 @@
                                 },
                                 "Extended": {
                                 },
-                                "Float": 11.224489212036133,
+                                "Float": 83.16326904296875,
                                 "Name": "size",
                                 "RepetitionFilter": false,
                                 "Unit": "none",
@@ -2721,7 +2672,7 @@
                                 },
                                 "Extended": {
                                 },
-                                "Int": 3,
+                                "Int": 4,
                                 "Name": "number",
                                 "RepetitionFilter": false,
                                 "Unit": "none",
@@ -2736,12 +2687,13 @@
                                 "Domain": {
                                 },
                                 "Extended": {
+                                    "extended_type": "vecf"
                                 },
                                 "Name": "position",
                                 "RepetitionFilter": false,
                                 "Unit": "none",
                                 "Vec2f": [
-                                    378.9354553222656,
+                                    192.34652709960938,
                                     680.03662109375
                                 ],
                                 "ioType": "<->"
@@ -2755,14 +2707,15 @@
                                 "Domain": {
                                 },
                                 "Extended": {
+                                    "extended_type": "vecf"
                                 },
                                 "Name": "color",
                                 "RepetitionFilter": false,
                                 "Unit": "color.rgba",
                                 "Vec4f": [
-                                    0.7490196228027344,
-                                    0.43921568989753723,
-                                    0.13333334028720856,
+                                    0.15294118225574493,
+                                    0.8274509906768799,
+                                    0.2235294133424759,
                                     1
                                 ],
                                 "ioType": "<->"
