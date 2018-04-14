@@ -118,7 +118,7 @@ template<> struct MatchingType<ofVec2f> {
 
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec2f().x, v.to_vec2f().y);
+      return ofx_type(v.to_vec2f()[0], v.to_vec2f()[1]);
     }
 
     static ossia_type convert(ofx_type f)
@@ -138,7 +138,7 @@ template<> struct MatchingType<ofVec3f> {
 
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec3f().x, v.to_vec3f().y, v.to_vec3f().z);
+      return ofx_type(v.to_vec3f()[0], v.to_vec3f()[1], v.to_vec3f()[2]);
     }
 
     static ossia_type convert(ofx_type f)
@@ -158,7 +158,7 @@ template<> struct MatchingType<ofVec4f> {
 
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec4f().x, v.to_vec4f().y, v.to_vec4f().z, v.to_vec4f().w);
+      return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
     }
 
     static ossia_type convert(ofx_type f)
@@ -178,7 +178,7 @@ template<> struct MatchingType<ofColor> {
 
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec4f().x*255., v.to_vec4f().y*255., v.to_vec4f().z*255., v.to_vec4f().w*255.);
+      return ofx_type(v.to_vec4f()[0]*255., v.to_vec4f()[1]*255., v.to_vec4f()[2]*255., v.to_vec4f()[3]*255.);
     }
 
     static ossia_type convert(ofx_type f)
@@ -199,7 +199,7 @@ template<> struct MatchingType<ofFloatColor> {
     // For those conversions, as there is no rgba8 type in ossia, we swap the 1st and 4th values
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec4f().x, v.to_vec4f().y, v.to_vec4f().z, v.to_vec4f().w);
+      return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
     }
 
     static ossia_type convert(ofx_type f)
