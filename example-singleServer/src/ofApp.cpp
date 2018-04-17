@@ -23,13 +23,18 @@ void ofApp::setup(){
   // scan all sub-ParameterGroups and children Parameters recursively
   // and expose the whole thing to ports 1233 for OSC and 4677 for Websocket
   // All network communication (sending, receving, listening, queries and replies)
-  // will then be managed by the internal implmentation of libossia
+  // will then be managed by the internal implementation of libossia
   //*************************************************//
 
   cout << "pathName: "<< server.findNode("/renderer.1/position").getName() << endl;
+  cout << "pathName: "<< server.findNode("/renderer.1/posaedaition").getName() << endl;
   cout << "paramName: " << renderer1.position.getName()  << " & " << & renderer1.position << endl;
   //cout << "foundName&: " << server.findNode(&renderer1.position).getName() << endl;
   cout << "foundName*: " << server.findNode(renderer1.position).getParam() << endl;
+
+  server.setUnit("/renderer.1/color", "color.rgba");
+  server.setUnit("/renderer.1/position", "cart2D");
+  server.setUnit(renderer2.position, "cart2D");
 
   gui.loadFromFile("settings.xml");
 

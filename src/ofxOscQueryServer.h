@@ -45,12 +45,27 @@ class ofxOscQueryServer {
      **/
     opp::oscquery_server& getDevice(){return device;}
     ofxOssiaNode& getRootNode(){ return nodes.front();}
-    ofxOssiaNode& findNode(const string& targetPath);
+
+    void setUnit(std::string targetPath, std::string attrVal){
+      findNode(targetPath).getNode().set_unit(attrVal);
+    }
+
+    void setUnit(ofAbstractParameter& targetParam, std::string attrVal){
+      findNode(targetParam).getNode().set_unit(attrVal);
+    }
+
+    // Find a specific node by:
+    // - path (ossia, relative to the server)
+    ofxOssiaNode& findNode(string targetPath);
+    // - or ofParameter reference
     ofxOssiaNode& findNode(ofAbstractParameter& targetParam);
+    // When no corresponding node is found, the reference to the root node
+    // (aka serverName.getRootNode()) is returned
 
   private:
     opp::oscquery_server device;
     std::list<ofxOssiaNode> nodes;
+    friend class ofxOssiaNode;
 
     bool updatingParameter;
 

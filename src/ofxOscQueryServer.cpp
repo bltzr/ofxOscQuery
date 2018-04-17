@@ -42,7 +42,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 
     } else {  // This is a Parameter
 
-      // Check parameter type:
+      // Check parameter type, and create Node accordingly:
       if(type == typeid(ofParameter <int32_t>).name())
         nodes.emplace_back(node, group.get<int32_t>(i));
       else if(type == typeid(ofParameter <int>).name())
@@ -74,7 +74,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 
 }
 
-ofxOssiaNode& ofxOscQueryServer::findNode(const std::string& targetPath)
+ofxOssiaNode& ofxOscQueryServer::findNode(string targetPath)
 {
   std::string tPath = targetPath;
   if (targetPath.back()!='/') tPath=tPath+'/';
@@ -82,7 +82,7 @@ ofxOssiaNode& ofxOscQueryServer::findNode(const std::string& targetPath)
   auto found = find_if(nodes.begin(), nodes.end(),
        [&](ofxOssiaNode& n){return n.getPath()==tPath;});
   if (found!=nodes.end()) return *found;
-  return *nodes.begin();
+  return getRootNode();
 }
 
 
@@ -91,7 +91,7 @@ ofxOssiaNode& ofxOscQueryServer::findNode(ofAbstractParameter& targetParam)
   auto found = find_if(nodes.begin(), nodes.end(),
        [&](ofxOssiaNode& n) {return (n.getParam()->isReferenceTo(targetParam));});
   if (found!=nodes.end()) return *found;
-  return *nodes.begin();
+  return getRootNode();
 }
 
 

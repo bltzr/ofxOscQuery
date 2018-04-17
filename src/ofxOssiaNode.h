@@ -100,7 +100,7 @@ class ofxOssiaNode {
       //removeParamListener();
     }
 
-   /*
+    /*
    * Utilities
    */
     std::string getName() {return ofParam->getName();}
@@ -118,6 +118,7 @@ class ofxOssiaNode {
       }
     }
 
+    opp::node& getNode() {return currentNode;}
 
   private:
 
@@ -125,13 +126,13 @@ class ofxOssiaNode {
     ofAbstractParameter* ofParam = nullptr;
     std::string path;
     opp::callback_index callbackIt;
+    friend class ofxOscQueryServer;
 
 
 
-    //******************************************//
+    //////////////////////////////////////////////
     //            Private Methods               //
-    //******************************************//
-
+    //////////////////////////////////////////////
 
 
     template<typename DataValue>
@@ -178,7 +179,7 @@ class ofxOssiaNode {
     }
     */
 
-    opp::node& getNode() {return currentNode;}
+
 
     /*
     std::string getHierarchy(){
