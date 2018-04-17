@@ -2,70 +2,75 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	renderer1.setup("renderer1");
-	renderer2.setup("renderer2");
+  renderer1.setup("renderer1");
+  renderer2.setup("renderer2");
 
-	parameters.setName("settings");
-	parameters.add(vSync.set("vSync",true));
-	parameters.add(renderer1.parameters);
-	parameters.add(renderer2.parameters);
+  parameters.setName("settings");
+  parameters.add(vSync.set("vSync",true));
+  parameters.add(renderer1.parameters);
+  parameters.add(renderer2.parameters);
 
-	gui.setup(parameters);
-
-
-    //*************************************************//
-    //   This is where we setup our OSCQuery Servers:   //
-    server1.setup(renderer1.parameters, 1235, 4678, "Renderer1");
-    server2.setup(renderer2.parameters, 1236, 4679, "Renderer2");
-    //*************************************************//
-    // NB this is the only change with the ParameterGroupExample from of
+  gui.setup(parameters);
 
 
-	gui.loadFromFile("settings.xml");
+  //*************************************************//
+  //   This is where we setup our OSCQuery Servers:   //
+  server1.setup(renderer1.parameters, 1235, 4678, "Renderer1");
+  server2.setup(renderer2.parameters, 1236, 4679, "Renderer2");
+  //*************************************************//
+  // NB this is the only change with of's ParameterGroupExample
 
-	font.load( OF_TTF_SANS,9,true,true);
-	ofEnableAlphaBlending();
+  cout << server1.findNode("/position/").getName();
+  cout << server1.findNode("position/").getName();
+  cout << server2.findNode("/color").getName();
+
+
+
+  gui.loadFromFile("settings.xml");
+
+  font.load( OF_TTF_SANS,9,true,true);
+  ofEnableAlphaBlending();
 }
 
 void ofApp::vSyncChanged(bool & vSync){
-	ofSetVerticalSync(vSync);
+  ofSetVerticalSync(vSync);
 }
 
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	// frameNum is a readonly parameter so this will fail to compile
-	// unless we are inside the CirclesRenderer class
-	// renderer.frameNum = 5;
+  // frameNum is a readonly parameter so this will fail to compile
+  // unless we are inside the CirclesRenderer class
+  // renderer.frameNum = 5;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackgroundGradient(ofColor::white, ofColor::gray);
-	renderer1.draw();
-	renderer2.draw();
-	ofSetColor(255);
-	gui.draw();
-	font.drawString("frame: " + ofToString(renderer1.frameNum),ofGetWidth()-150,20);
-	font.drawString("fps: " + ofToString((int)ofGetFrameRate()),ofGetWidth()-150,40);
+  ofBackgroundGradient(ofColor::white, ofColor::gray);
+  renderer1.draw();
+  renderer2.draw();
+  ofSetColor(255);
+  gui.draw();
+  font.drawString("frame: " + ofToString(renderer1.frameNum),ofGetWidth()-150,20);
+  font.drawString("fps: " + ofToString((int)ofGetFrameRate()),ofGetWidth()-150,40);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	if(key=='s'){
-		settings.serialize(parameters);
-		settings.save("settings.xml");
-	}
-	if(key=='l'){
-		settings.load("settings.xml");
-		settings.deserialize(parameters);
-	}
-	if(key=='o'){
-		cout << renderer1.parameters;
-		cout << renderer2.parameters;
-	}
-	if(key=='r'){
-		renderer1.color = ofColor(127);
-		renderer2.color = ofColor(127);
-	}
+  if(key=='s'){
+    settings.serialize(parameters);
+    settings.save("settings.xml");
+  }
+  if(key=='l'){
+    settings.load("settings.xml");
+    settings.deserialize(parameters);
+  }
+  if(key=='o'){
+    cout << renderer1.parameters;
+    cout << renderer2.parameters;
+  }
+  if(key=='r'){
+    renderer1.color = ofColor(127);
+    renderer2.color = ofColor(127);
+  }
 }

@@ -45,7 +45,8 @@ class ofxOscQueryServer {
      **/
     opp::oscquery_server& getDevice(){return device;}
     ofxOssiaNode& getRootNode(){ return nodes.front();}
-
+    ofxOssiaNode& findNode(const string& targetPath);
+    ofxOssiaNode& findNode(ofAbstractParameter& targetParam);
 
   private:
     opp::oscquery_server device;

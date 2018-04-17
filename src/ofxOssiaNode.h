@@ -49,9 +49,6 @@ class ofxOssiaNode {
 
       ofParam->setName(currentNode.get_name());
 
-      std::cout << "Create Param " << param.getName() << " from  parent: " << parentNode.getNode().get_name() << " at address: " << path << "\n";
-
-      std::cout << "Min: " << param.getMin() << " / Max: " << param.getMax() << endl;
       //sets value
       currentNode.set_value(ossia_type::convert(param.get()));
 
@@ -103,10 +100,11 @@ class ofxOssiaNode {
       //removeParamListener();
     }
 
-    /*
+   /*
    * Utilities
-   * */
+   */
     std::string getName() {return ofParam->getName();}
+    ofAbstractParameter* getParam() {return ofParam;}
     std::string getPath() {return path;}
 
     //For callbacks

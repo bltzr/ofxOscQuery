@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  renderer1.setup("renderer");
-  renderer2.setup("renderer");
+  renderer1.setup("renderer.1");
+  renderer2.setup("renderer.2");
   // Note that both Groups are named the same, in order to demonstrate
   // ossia's behavior in the case of duplicated nodes (adds .1 to the name)
 
@@ -26,6 +26,10 @@ void ofApp::setup(){
   // will then be managed by the internal implmentation of libossia
   //*************************************************//
 
+  cout << "pathName: "<< server.findNode("/renderer.1/position").getName() << endl;
+  cout << "paramName: " << renderer1.position.getName()  << " & " << & renderer1.position << endl;
+  //cout << "foundName&: " << server.findNode(&renderer1.position).getName() << endl;
+  cout << "foundName*: " << server.findNode(renderer1.position).getParam() << endl;
 
   gui.loadFromFile("settings.xml");
 

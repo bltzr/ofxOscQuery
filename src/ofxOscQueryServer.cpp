@@ -43,36 +43,57 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
     } else {  // This is a Parameter
 
       // Check parameter type:
-      if(type == typeid(ofParameter <int32_t> ).name())
+      if(type == typeid(ofParameter <int32_t>).name())
         nodes.emplace_back(node, group.get<int32_t>(i));
-      else if(type == typeid(ofParameter <int> ).name())
+      else if(type == typeid(ofParameter <int>).name())
         nodes.emplace_back(node, group.get<int>(i));
-      else if(type == typeid(ofParameter <float> ).name())
+      else if(type == typeid(ofParameter <float>).name())
         nodes.emplace_back(node, group.get<float>(i));
-      else if(type == typeid(ofParameter <double> ).name())
+      else if(type == typeid(ofParameter <double>).name())
         nodes.emplace_back(node, group.get<double>(i));
-      else if(type == typeid(ofParameter <bool> ).name())
+      else if(type == typeid(ofParameter <bool>).name())
         nodes.emplace_back(node, group.get<bool>(i));
-      else if(type == typeid(ofParameter <ofVec2f> ).name())
+      else if(type == typeid(ofParameter <ofVec2f>).name())
         nodes.emplace_back(node, group.get<ofVec2f>(i));
-      else if(type == typeid(ofParameter <ofVec3f> ).name())
+      else if(type == typeid(ofParameter <ofVec3f>).name())
         nodes.emplace_back(node, group.get<ofVec3f>(i));
-      else if(type == typeid(ofParameter <ofVec4f> ).name())
+      else if(type == typeid(ofParameter <ofVec4f>).name())
         nodes.emplace_back(node, group.get<ofVec4f>(i));
-      else if(type == typeid(ofParameter <ofColor> ).name())
+      else if(type == typeid(ofParameter <ofColor>).name())
         nodes.emplace_back(node, group.get<ofColor>(i));
-      else if(type == typeid(ofParameter <ofFloatColor> ).name())
+      else if(type == typeid(ofParameter <ofFloatColor>).name())
         nodes.emplace_back(node, group.get<ofFloatColor>(i));
-      else if(type == typeid(ofParameter <std::string> ).name())
+      else if(type == typeid(ofParameter <std::string>).name())
         nodes.emplace_back(node, group.get<std::string>(i));
-      else{   ofLogWarning() <<
-              "ofxBaseGroup; no support for parameter of type " << type; break; }
+      else{ ofLogWarning() <<
+           "ofxBaseGroup; no support for parameter of type " << type; break; }
 
     }
 
   }
 
 }
+
+ofxOssiaNode& ofxOscQueryServer::findNode(const std::string& targetPath)
+{
+  std::string tPath = targetPath;
+  if (targetPath.back()!='/') tPath=tPath+'/';
+  if (targetPath.front()!='/') tPath='/'+tPath;
+  auto found = find_if(nodes.begin(), nodes.end(),
+       [&](ofxOssiaNode& n){return n.getPath()==tPath;});
+  if (found!=nodes.end()) return *found;
+  return *nodes.begin();
+}
+
+
+ofxOssiaNode& ofxOscQueryServer::findNode(ofAbstractParameter& targetParam)
+{
+  auto found = find_if(nodes.begin(), nodes.end(),
+       [&](ofxOssiaNode& n) {return (n.getParam()->isReferenceTo(targetParam));});
+  if (found!=nodes.end()) return *found;
+  return *nodes.begin();
+}
+
 
 
 
