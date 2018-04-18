@@ -12,11 +12,40 @@
 class ofxOssiaNode {
   public:
 
+
+    // Methods to set ossia nodes' attributes:
+
+    ofxOssiaNode& setUnit(std::string attrVal) {getNode().set_unit(attrVal); return *this;}
+    // see https://ossia.github.io/?cpp--ofx#units for a list of units
+
+    ofxOssiaNode& setDescription(std::string attrVal) {getNode().set_description(attrVal); return *this;}
+
+    ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
+
+    /*
+    template<typename DataValue>
+    ofxOssiaNode& setMin(std::string attrVal) {
+                  getNode().set_min(ossia::MatchingType<DataValue>::convert(attrVal));
+                  (*ofParam).cast<DataValue>.setMin(attrVal)}
+
+    template<typename DataValue>
+    ofxOssiaNode& setMax(std::string attrVal) {
+                  getNode().set_max(ossia::MatchingType<DataValue>::convert(attrVal));
+                  (*ofParam).cast<DataValue>.setMax(attrVal)}
+    */
+
+
+
+    /*
+   *Constructors for the Root Node
+   */
+
+
     ofxOssiaNode() = default;
 
     /*
    *Constructor for the Root Node
-   * */
+   */
 
     ofxOssiaNode(opp::oscquery_server& dev, ofParameterGroup& group):
       currentNode{dev.get_root_node()},
@@ -26,7 +55,7 @@ class ofxOssiaNode {
 
     /*
    *Constructor for ParameterGroup Nodes
-   * */
+   */
 
     ofxOssiaNode(ofxOssiaNode& parentNode, ofParameterGroup& group):
       currentNode{parentNode.getNode().create_child(group.getName())},
@@ -51,6 +80,7 @@ class ofxOssiaNode {
 
       //sets value
       currentNode.set_value(ossia_type::convert(param.get()));
+      currentNode.set_default_value(ossia_type::convert(param.get()));
 
       //sets domain
       currentNode.set_min(ossia_type::convert(param.getMin()));
@@ -118,8 +148,6 @@ class ofxOssiaNode {
       }
     }
 
-    opp::node& getNode() {return currentNode;}
-
   private:
 
     opp::node currentNode;
@@ -134,6 +162,7 @@ class ofxOssiaNode {
     //            Private Methods               //
     //////////////////////////////////////////////
 
+    opp::node& getNode() {return currentNode;}
 
     template<typename DataValue>
     void publishValue(DataValue val){
@@ -172,41 +201,6 @@ class ofxOssiaNode {
       }
     }
 
-    /*
-    template<typename DataValue>
-    void removeParamListener(){
-        ofParam->get<DataValue>->removeListener(this, &ofxOssiaNode::listen<DataValue>);
-    }
-    */
-
-
-
-    /*
-    std::string getHierarchy(){
-
-      std::string address = "";
-
-      if(!(*ofParam).isSerializable()) return address;
-
-      if(ofParam->type()==typeid(ofParameterGroup).name()){
-        address = "/";
-        const std::vector<std::string> hierarchy = ofParam->getGroupHierarchyNames();
-        for(size_t i=0;i<hierarchy.size()-1;i++){
-          address+=hierarchy[i] + "/";
-        }
-
-      }else{
-        address = "";
-        const std::vector<std::string> hierarchy = ofParam->getGroupHierarchyNames();
-        for(size_t i=0;i<hierarchy.size()-1;i++){
-          address+= "/" + hierarchy[i];
-        }
-        if(address.length()) address += "/";
-        //if (ofParam->getName() !="")
-      }
-      return address;
-    }
-    */
 
 
 };

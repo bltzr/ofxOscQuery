@@ -32,9 +32,10 @@ void ofApp::setup(){
   //cout << "foundName&: " << server.findNode(&renderer1.position).getName() << endl;
   cout << "foundName*: " << server.findNode(renderer1.position).getParam() << endl;
 
-  server.setUnit("/renderer.1/color", "color.rgba");
-  server.setUnit("/renderer.1/position", "cart2D");
-  server.setUnit(renderer2.position, "cart2D");
+  server.findNode("/renderer.1/color").setUnit("color.rgba");
+  server.findNode("/renderer.1/position").setUnit("cart2D");
+  server.findNode(renderer2.position).setUnit("xy")
+                                     .setDescription("A circle renderer position");
 
   gui.loadFromFile("settings.xml");
 

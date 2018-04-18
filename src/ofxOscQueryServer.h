@@ -44,15 +44,8 @@ class ofxOscQueryServer {
      * Address-space utilities:
      **/
     opp::oscquery_server& getDevice(){return device;}
+
     ofxOssiaNode& getRootNode(){ return nodes.front();}
-
-    void setUnit(std::string targetPath, std::string attrVal){
-      findNode(targetPath).getNode().set_unit(attrVal);
-    }
-
-    void setUnit(ofAbstractParameter& targetParam, std::string attrVal){
-      findNode(targetParam).getNode().set_unit(attrVal);
-    }
 
     // Find a specific node by:
     // - path (ossia, relative to the server)

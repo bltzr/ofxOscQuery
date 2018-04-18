@@ -228,6 +228,7 @@ public:
   node create_decibel(std::string addr);
   node create_midigain(std::string addr);
 
+
   // Set value and attributes of nodes and parameters:
   node& set_value(opp::value v);
   opp::value get_value() const;

@@ -74,6 +74,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 
 }
 
+
 ofxOssiaNode& ofxOscQueryServer::findNode(string targetPath)
 {
   std::string tPath = targetPath;
