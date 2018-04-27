@@ -71,18 +71,19 @@ common:
 
 linux64:
 	ADDON_LIBS += libs/ossia/lib/linux64/libossia.a
-        ADDON_CPPFLAGS += -std=c++11
+	ADDON_LIBS += libs/ossia/lib/linux64/libServus.a
+        ADDON_CPPFLAGS += -std=c++98
 	ADDON_LDFLAGS += -lavahi-client -lavahi-common
 
 linux:
-        ADDON_CPPFLAGS += -std=c++11
+        ADDON_CPPFLAGS += -std=c++98
 	ADDON_LDFLAGS += -lavahi-client -lavahi-common
 
 msys2:
 	ADDON_CPPFLAGS += NOMINMAX
 	ADDON_CPPFLAGS += _CRT_SECURE_NO_WARNINGS
 	ADDON_CPPFLAGS += WIN32_LEAN_AND_MEAN
-        ADDON_CPPFLAGS += -std=c++11
+        ADDON_CPPFLAGS += -std=c++98
 
 	ADDON_LIBS += Ws2_32
 	ADDON_LIBS += winmm
@@ -108,6 +109,7 @@ android/armeabi-v7a:
 osx:
 
 	ADDON_LIBS += libs/ossia/lib/osx/libossia.a
+	ADDON_LIBS += libs/ossia/lib/osx/libServus.a
         ADDON_CPPFLAGS += -std=c++98
     
 ios:
