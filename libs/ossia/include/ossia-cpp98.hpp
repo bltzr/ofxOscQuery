@@ -114,6 +114,8 @@ private:
 };
 
 typedef void (*value_callback)(void*, const opp::value&);
+typedef void (*connection_callback)(void*, const std::string&);
+typedef void (*disconnection_callback)(void*, const std::string&);
 
 struct OSSIA_EXPORT callback_index {
     callback_index();
@@ -127,7 +129,6 @@ struct OSSIA_EXPORT callback_index {
 
     struct impl;
     impl* index;
-
 };
 
 class OSSIA_EXPORT node
@@ -228,7 +229,6 @@ public:
   node create_decibel(std::string addr);
   node create_midigain(std::string addr);
 
-
   // Set value and attributes of nodes and parameters:
   node& set_value(opp::value v);
   opp::value get_value() const;
@@ -325,8 +325,20 @@ public:
   void setup(std::string name, int oscPort = 1234, int wsPort = 5678);
   node get_root_node() const;
 
+  void set_connection_callback(connection_callback c, void* ctx);
+  void remove_connection_callback();
+
+  void set_disconnection_callback(disconnection_callback c, void* ctx);
+  void remove_disconnection_callback();
+
 private:
+  void on_connection(const std::string&);
+  void on_disconnection(const std::string&);
   ossia::net::device_base* m_dev;
+  connection_callback m_con;
+  void* m_con_ctx;
+  disconnection_callback m_discon;
+  void* m_discon_ctx;
 };
 
 class OSSIA_EXPORT oscquery_mirror
