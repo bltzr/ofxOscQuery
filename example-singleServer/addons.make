@@ -1,2 +1,2 @@
 ofxGui
-ofxOssia
+ofxOscQuery
