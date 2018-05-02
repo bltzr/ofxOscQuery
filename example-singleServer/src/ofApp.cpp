@@ -17,7 +17,7 @@ void ofApp::setup(){
 
   //*************************************************//
   //   This is where we setup our OSCQuery Server:   //
-  // NB this is the only change from of's ParameterGroupExample
+  // NB this is the only change from of's gui/ParameterGroupExample
   server.setup(parameters, 1233, 4677, "ofxOscQueryDemo");
   // i.e. this will create an OSCquery server from 'parameters' ParameterGroup
   // scan all sub-ParameterGroups and children Parameters recursively
@@ -26,16 +26,11 @@ void ofApp::setup(){
   // will then be managed by the internal implementation of libossia
   //*************************************************//
 
-  cout << "pathName: "<< server.findNode("/renderer.1/position").getName() << endl;
-  cout << "pathName: "<< server.findNode("/renderer.1/posaedaition").getName() << endl;
-  cout << "paramName: " << renderer1.position.getName()  << " & " << & renderer1.position << endl;
-  //cout << "foundName&: " << server.findNode(&renderer1.position).getName() << endl;
-  cout << "foundName*: " << server.findNode(renderer1.position).getParam() << endl;
-
   server.findNode("/renderer.1/color").setUnit("color.rgba");
-  server.findNode("/renderer.1/position").setUnit("cart2D");
-  server.findNode(renderer2.position).setUnit("xy")
-                                     .setDescription("A circle renderer position");
+  server.findNode("/renderer.1/position").setUnit("position.cart2D"); // The cannonnical way to set the unit for a 2D position
+  server.findNode(renderer2.position).setUnit("xy")                   // A shorthand way to do the same
+                                     .setDescription("A circle renderer position") // More attributes can be added
+                                     .setTags({"a little tag", "some other tag", "another tag"});
 
   gui.loadFromFile("settings.xml");
 
