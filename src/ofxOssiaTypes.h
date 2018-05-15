@@ -210,8 +210,8 @@ template<> struct MatchingType<ofFloatColor> {
 
 
 template<> struct MatchingType<std::string> {
-    using ofx_type = string;
-    using ossia_type = string;
+    using ofx_type = std::string;
+    using ossia_type = std::string;
 
     static opp::node create_parameter(const std::string& name,
                                       opp::node parent)
