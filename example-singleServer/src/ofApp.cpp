@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  renderer1.setup("renderer.1");
-  renderer2.setup("renderer.2");
+  renderer1.setup("renderer");
+  renderer2.setup("renderer");
   // Note that both Groups are named the same, in order to demonstrate
   // ossia's behavior in the case of duplicated nodes (adds .1 to the name)
 
@@ -18,7 +18,7 @@ void ofApp::setup(){
   //*************************************************//
   //   This is where we setup our OSCQuery Server:   //
   // NB this is the only change from of's gui/ParameterGroupExample
-  server.setup(parameters, 1233, 4677, "ofxOscQueryDemo");
+  server.setup(parameters, 1213, 4477, "ofxOscQueryDemo");
   // i.e. this will create an OSCquery server from 'parameters' ParameterGroup
   // scan all sub-ParameterGroups and children Parameters recursively
   // and expose the whole thing to ports 1233 for OSC and 4677 for Websocket
@@ -26,9 +26,10 @@ void ofApp::setup(){
   // will then be managed by the internal implementation of libossia
   //*************************************************//
 
-  server.findNode("/renderer.1/color").setUnit("color.rgba");
-  server.findNode("/renderer.1/position").setUnit("position.cart2D"); // The cannonnical way to set the unit for a 2D position
-  server.findNode(renderer2.position).setUnit("xy")                   // A shorthand way to do the same
+  //server.findNode(renderer2.position).setMin(2).setMax(20);
+  server.findNode("/renderer/color/").setUnit("color.Yxy");
+  server.findNode("/renderer/position").setUnit("position.cart2D"); // The cannonnical way to set the unit for a 2D position
+  server.findNode(renderer2.position).setUnit("point2d")                   // A shorthand way to do the same
                                      .setDescription("A circle renderer position") // More attributes can be added
                                      .setTags({"a little tag", "some other tag", "another tag"});
 
