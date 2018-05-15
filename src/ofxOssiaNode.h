@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ossia-cpp98.hpp>
+#include "ofParameterGroup.h"
 #include "ofxOssiaTypes.h"
 #include "ofxOscQueryServer.h"
 
@@ -21,6 +22,7 @@ class ofxOssiaNode {
     ofxOssiaNode& setDescription(std::string attrVal) {getNode().set_description(attrVal); return *this;}
 
     ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
+
 
   /*
     template<typename DataValue>
