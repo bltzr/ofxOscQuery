@@ -14,24 +14,50 @@ void ofApp::setup(){
 
   gui.setup(parameters);
 
+  // ^ All this above is just the same that we have in of's gui/ParameterGroupExample
+  // i.e. one does not have to change their ofApp structure to use ofxOscQuery,
+  // as long as it uses ofParameters and ofParameterGroups
+  //*********************************************************************************//
 
-  //*************************************************//
-  //   This is where we setup our OSCQuery Server:   //
+
+
+  //*********************************************************************************//
+  //   This is where we setup our OSCQuery Server:
   // NB this is the only change from of's gui/ParameterGroupExample
   server.setup(parameters, 1213, 4477, "ofxOscQueryDemo");
   // i.e. this will create an OSCquery server from 'parameters' ParameterGroup
   // scan all sub-ParameterGroups and children Parameters recursively
-  // and expose the whole thing to ports 1233 for OSC and 4677 for Websocket
+  // and expose the whole thing to ports 1233 for OSC and 4477 for Websocket
   // All network communication (sending, receving, listening, queries and replies)
   // will then be managed by the internal implementation of libossia
-  //*************************************************//
+  //*********************************************************************************//
 
+
+
+  //*********************************************************************************//
+  //  Some extra OSCQuery/ossia-specific attributes can be set later on
+  // They requires that we find the node for which we want to set those attributes
+  // This can be achieved with the findNode method, which accepts as argument:
+  // - the object name ofParameter(Group) to which the ossia node is attached
+  // - the OSC path of the node we want to access
+  // Then we have just to use the appropriate set(Attribute) methods
+  //
   //server.findNode(renderer2.position).setMin(2).setMax(20);
-  server.findNode("/renderer/color/").setUnit("color.Yxy");
-  server.findNode("/renderer/position").setUnit("position.cart2D"); // The cannonnical way to set the unit for a 2D position
-  server.findNode(renderer2.position).setUnit("point2d")                   // A shorthand way to do the same
-                                     .setDescription("A circle renderer position") // More attributes can be added
-                                     .setTags({"a little tag", "some other tag", "another tag"});
+  server.findNode("/renderer/color/").setDescription("El Color maravilloso!!");       // A description of this node
+  server.findNode("/renderer/position").setUnit("position.cart2D");                   // The cannonnical way to set the unit for a 2D position
+  //
+  // As they return a ofxOssiaNode&, the set(Attribute) methods can be "cascaded" as demonstrateed below:
+  server.findNode(renderer2.position).setUnit("point2d")                              // A shorthand way to do the same
+                                     .setDescription("A circle renderer position")    // More attributes can be added
+                                     .setTags({"a little tag", "some other tag", "another tag"}); // In a cascading way
+  //
+  //*********************************************************************************//
+
+
+
+  //*********************************************************************************//
+  // v The rest below is the usual stuff from the example
+
 
   gui.loadFromFile("settings.xml");
 
