@@ -10,8 +10,8 @@
 
 
 void ofxOscQueryServer::setup(ofParameterGroup& group,
-                           int localportOSC, int localPortWS,
-                           std::string localname)
+                              int localportOSC, int localPortWS,
+                              std::string localname)
 {
 
   if(localname=="") localname = group.getName();
@@ -66,7 +66,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
       else if(type == typeid(ofParameter <std::string>).name())
         nodes.emplace_back(node, group.get<std::string>(i));
       else{ ofLogWarning() <<
-           "ofxBaseGroup; no support for parameter of type " << type; break; }
+                              "ofxBaseGroup; no support for parameter of type " << type; break; }
 
     }
 
@@ -81,7 +81,7 @@ ofxOssiaNode& ofxOscQueryServer::findNode(string targetPath)
   if (targetPath.back()!='/') tPath=tPath+'/';
   if (targetPath.front()!='/') tPath='/'+tPath;
   auto found = find_if(nodes.begin(), nodes.end(),
-       [&](ofxOssiaNode& n){return n.getPath()==tPath;});
+                       [&](ofxOssiaNode& n){return n.getPath()==tPath;});
   if (found!=nodes.end()) return *found;
   return getRootNode();
 }
@@ -90,7 +90,7 @@ ofxOssiaNode& ofxOscQueryServer::findNode(string targetPath)
 ofxOssiaNode& ofxOscQueryServer::findNode(ofAbstractParameter& targetParam)
 {
   auto found = find_if(nodes.begin(), nodes.end(),
-       [&](ofxOssiaNode& n) {return (n.getParam()->isReferenceTo(targetParam));});
+                       [&](ofxOssiaNode& n) {return (n.getParam()->isReferenceTo(targetParam));});
   if (found!=nodes.end()) return *found;
   return getRootNode();
 }

@@ -20,20 +20,20 @@ class ofCirclesRendererParam: public ofReadOnlyParameter<ParameterType,CirclesRe
 };
 
 class CirclesRenderer {
-public:
-	CirclesRenderer();
+  public:
+    CirclesRenderer();
 
-	void setup(string name);
-	void draw();
+    void setup(string name);
+    void draw();
 
-	ofParameterGroup parameters;
-	ofParameter<float> size;
-	ofParameter<int> number;
-	ofParameter<ofVec2f> position;
+    ofParameterGroup parameters;
+    ofParameter<float> size;
+    ofParameter<int> number;
+    ofParameter<ofVec2f> position;
 
-	ofParameter<ofColor> color;
+    ofParameter<ofColor> color;
 
-	ofCirclesRendererParam<int> frameNum;
+    ofCirclesRendererParam<int> frameNum;
 };
 
 #endif /* CIRCLESRENDERER_H_ */

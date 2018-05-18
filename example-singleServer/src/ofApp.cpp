@@ -48,8 +48,8 @@ void ofApp::setup(){
   //
   // As they return a ofxOssiaNode&, the set(Attribute) methods can be "cascaded" as demonstrateed below:
   server.findNode(renderer2.position).setUnit("point2d")                              // A shorthand way to do the same
-                                     .setDescription("A circle renderer position")    // More attributes can be added
-                                     .setTags({"a little tag", "some other tag", "another tag"}); // In a cascading way
+      .setDescription("A circle renderer position")    // More attributes can be added
+      .setTags({"a little tag", "some other tag", "another tag"}); // In a cascading way
   //
   //*********************************************************************************//
 
