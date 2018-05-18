@@ -71,7 +71,7 @@ common:
 
 linux64:
 	ADDON_LIBS += libs/ossia/lib/linux64/libossia.a
-	ADDON_LIBS += libs/ossia/lib/linux64/libServus.a
+
         ADDON_CPPFLAGS += -std=c++98
 	ADDON_LDFLAGS += -lavahi-client -lavahi-common
 
@@ -109,7 +109,6 @@ android/armeabi-v7a:
 osx:
 
 	ADDON_LIBS += libs/ossia/lib/osx/libossia.a
-	ADDON_LIBS += libs/ossia/lib/osx/libServus.a
         ADDON_CPPFLAGS += -std=c++98
     
 ios:
