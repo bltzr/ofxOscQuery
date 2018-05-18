@@ -6,3 +6,9 @@ CMakeLists.txt.user
 /build-example-twoServers-Desktop_Qt_5_8_0_clang_64bit-Debug
 /build-example-twoServers-Desktop_Qt_5_8_0_clang_64bit-Default
 bin
+/libs/ossia/include/ossia_export.h
+/libs/ossia/include/ossia-cpp98.hpp
+/libs/ossia/lib/osx/libossiaDebug.a
+*.a
+/build-example-singleServer-ninja_clang-Debug
+/build-example-singleServer-ninja_clang-Release
