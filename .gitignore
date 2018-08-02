@@ -12,3 +12,11 @@ bin
 *.a
 /build-example-singleServer-ninja_clang-Debug
 /build-example-singleServer-ninja_clang-Release
+.DS_Store
+*.make
+Makefile
+/example-singleServer/openFrameworks-Info.plist
+*.xcconfig
+/example-twoServers/openFrameworks-Info.plist
+/example-singleServer/example-singleServer.xcodeproj
+/example-twoServers/example-twoServers.xcodeproj
