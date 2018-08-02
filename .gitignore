@@ -20,3 +20,4 @@ Makefile
 /example-twoServers/openFrameworks-Info.plist
 /example-singleServer/example-singleServer.xcodeproj
 /example-twoServers/example-twoServers.xcodeproj
+/libs
