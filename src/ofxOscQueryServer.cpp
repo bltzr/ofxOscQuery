@@ -30,7 +30,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 
   // Traverse all children recursively and create Nodes for each of them
   for(std::size_t i = 0; i < group.size(); i++){
-    string type = group.get(i).type();
+    std::string type = group.get(i).type();
 
     if(type==typeid(ofParameterGroup).name()){
 
@@ -75,7 +75,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 }
 
 
-ofxOssiaNode& ofxOscQueryServer::findNode(string targetPath)
+ofxOssiaNode& ofxOscQueryServer::findNode(std::string targetPath)
 {
   std::string tPath = targetPath;
   if (targetPath.back()!='/') tPath=tPath+'/';

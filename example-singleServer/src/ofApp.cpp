@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  renderer1.setup("renderer");
-  renderer2.setup("renderer");
+  renderer1.setup("renderer1");
+  renderer2.setup("renderer2");
   // Note that both Groups are named the same, in order to demonstrate
   // ossia's behavior in the case of duplicated nodes (adds .1 to the name)
 
@@ -91,12 +91,12 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   if(key=='s'){
-    settings.serialize(parameters);
+    ofSerialize(settings,parameters);
     settings.save("settings.xml");
   }
   if(key=='l'){
     settings.load("settings.xml");
-    settings.deserialize(parameters);
+    ofDeserialize(settings, parameters);
   }
   if(key=='o'){
     cout << renderer1.parameters;

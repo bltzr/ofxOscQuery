@@ -19,7 +19,12 @@ class ofxOscQueryServer {
       device(){
       updatingParameter = false;
     }
-
+    
+    ofxOscQueryServer(std::string name, int localportOSC= 1234, int localPortWS=5678):
+      device(name, localportOSC, localPortWS){
+      updatingParameter = false;
+    }
+    
     ~ofxOscQueryServer(){
 
     }
@@ -49,7 +54,7 @@ class ofxOscQueryServer {
 
     // Find a specific node by:
     // - path (ossia, relative to the server)
-    ofxOssiaNode& findNode(string targetPath);
+    ofxOssiaNode& findNode(std::string targetPath);
     // - or ofParameter reference
     ofxOssiaNode& findNode(ofAbstractParameter& targetParam);
     // When no corresponding node is found, the reference to the root node
