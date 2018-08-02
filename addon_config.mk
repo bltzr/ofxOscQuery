@@ -17,7 +17,7 @@
 meta:
 	ADDON_NAME = ofxOscQuery
 	ADDON_DESCRIPTION = Addon for exposing parameters to the OSCQuery protocol
-        ADDON_AUTHOR = Pascal Baltazar
+	ADDON_AUTHOR = Pascal Baltazar
 	ADDON_TAGS = "bridge" "utilities" "networking"
 	ADDON_URL = http://github.com/bltzr/ofxOscQuery
 
@@ -71,19 +71,15 @@ common:
 
 linux64:
 	ADDON_LIBS += libs/ossia/lib/linux64/libossia.a
-
-        ADDON_CPPFLAGS += -std=c++98
 	ADDON_LDFLAGS += -lavahi-client -lavahi-common
 
 linux:
-        ADDON_CPPFLAGS += -std=c++98
-	ADDON_LDFLAGS += -lavahi-client -lavahi-common
+    ADDON_LDFLAGS += -lavahi-client -lavahi-common
 
 msys2:
 	ADDON_CPPFLAGS += NOMINMAX
 	ADDON_CPPFLAGS += _CRT_SECURE_NO_WARNINGS
 	ADDON_CPPFLAGS += WIN32_LEAN_AND_MEAN
-        ADDON_CPPFLAGS += -std=c++98
 
 	ADDON_LIBS += Ws2_32
 	ADDON_LIBS += winmm
@@ -109,7 +105,6 @@ android/armeabi-v7a:
 osx:
 
 	ADDON_LIBS += libs/ossia/lib/osx/libossia.a
-        ADDON_CPPFLAGS += -std=c++98
     
 ios:
-        ADDON_CPPFLAGS += -std=c++98
+
