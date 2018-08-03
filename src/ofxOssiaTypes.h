@@ -106,64 +106,63 @@ template<> struct MatchingType<double> {
       return float(f);
     }
 };
-
 template<> struct MatchingType<ofVec2f> {
     using ofx_type = ofVec2f;
     using ossia_type = opp::value::vec2f;
-
+    
     static opp::node create_parameter(const std::string& name, opp::node parent)
     {return parent.create_vec2f(name);}
-
+    
     static bool is_valid(opp::value v){ return v.is_vec2f(); }
-
+    
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec2f()[0], v.to_vec2f()[1]);
+        return ofx_type(v.to_vec2f()[0], v.to_vec2f()[1]);
     }
-
+    
     static ossia_type convert(ofx_type f)
     {
-      return ossia_type{f.x, f.y};
+        return ossia_type{f.x, f.y};
     }
 };
 
 template<> struct MatchingType<ofVec3f> {
     using ofx_type = ofVec3f;
     using ossia_type = opp::value::vec3f;
-
+    
     static opp::node create_parameter(const std::string& name, opp::node parent)
     {return parent.create_vec3f(name);}
-
+    
     static bool is_valid(opp::value v){ return v.is_vec3f(); }
-
+    
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec3f()[0], v.to_vec3f()[1], v.to_vec3f()[2]);
+        return ofx_type(v.to_vec3f()[0], v.to_vec3f()[1], v.to_vec3f()[2]);
     }
-
+    
     static ossia_type convert(ofx_type f)
     {
-      return ossia_type{f.x, f.y, f.z};
+        return ossia_type{f.x, f.y, f.z};
     }
 };
 
 template<> struct MatchingType<ofVec4f> {
     using ofx_type = ofVec4f;
     using ossia_type = opp::value::vec4f;
-
+    
     static opp::node create_parameter(const std::string& name, opp::node parent)
     {return parent.create_vec4f(name);}
-
+    
     static bool is_valid(opp::value v){ return v.is_vec4f(); }
-
+    
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
+        return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
     }
-
+    
     static ossia_type convert(ofx_type f)
     {
-      return ossia_type{f.x, f.y, f.z, f.w};
+        return ossia_type{f.x, f.y, f.z, f.w};
     }
 };
 

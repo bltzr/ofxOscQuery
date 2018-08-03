@@ -8,21 +8,23 @@
 
 #include "ofxOscQueryServer.h"
 
-
-void ofxOscQueryServer::setup(ofParameterGroup& group,
-                              int localportOSC, int localPortWS,
-                              std::string localname)
+void ofxOscQueryServer::setup(ofParameterGroup& group, int localportOSC, int localPortWS, std::string localname)
 {
-
-  if(localname=="") localname = group.getName();
-
-  // declare a distant program as an OSCQuery device
-  device.setup(localname, localportOSC, localPortWS);
-  nodes.emplace_back(device, group);
-
-  // Then build ossia tree up from the chosen parameterGroup
-  buildTreeFrom(group, nodes.front());
-
+    if (localportOSC != DEFAULT_OSC) OSCport = localportOSC;
+    if (localPortWS  != DEFAULT_WS)   WSport = localPortWS;
+    if (localname == "" && serverName == DEFAULT_NAME && group.getName() != "")
+                               {serverName = group.getName();}
+    else if (localname != "" ) {serverName = localname;}
+    
+    std::cout << "servername: " << serverName << std::endl;
+    
+    // set ports and name of the OSCQuery device
+    device.setup(serverName, OSCport, WSport);
+    nodes.emplace_back(device, group);
+    
+    // Then build ossia tree up from the chosen parameterGroup
+    buildTreeFrom(group, nodes.front());
+    
 }
 
 void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& node)
@@ -30,7 +32,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 
   // Traverse all children recursively and create Nodes for each of them
   for(std::size_t i = 0; i < group.size(); i++){
-    string type = group.get(i).type();
+    std::string type = group.get(i).type();
 
     if(type==typeid(ofParameterGroup).name()){
 
@@ -65,8 +67,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
         nodes.emplace_back(node, group.get<ofFloatColor>(i));
       else if(type == typeid(ofParameter <std::string>).name())
         nodes.emplace_back(node, group.get<std::string>(i));
-      else{ ofLogWarning() <<
-                              "ofxBaseGroup; no support for parameter of type " << type; break; }
+      else{ ofLogWarning() << "ofxBaseGroup; no support for parameter of type " << type; break; }
 
     }
 
@@ -75,7 +76,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 }
 
 
-ofxOssiaNode& ofxOscQueryServer::findNode(string targetPath)
+ofxOssiaNode& ofxOscQueryServer::findNode(std::string targetPath)
 {
   std::string tPath = targetPath;
   if (targetPath.back()!='/') tPath=tPath+'/';

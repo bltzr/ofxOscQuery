@@ -24,9 +24,14 @@ class ofApp : public ofBaseApp{
 		ofTrueTypeFont font;
 
         //*****************************************************//
-        //     This is where we setup our OSCQuery Servers     //
-        ofxOscQueryServer server1;
-        ofxOscQueryServer server2;
-        //We will set it up in ofApp.cpp
+        //     This is where we declare our OSCQuery Servers   //
+    
+        ofxOscQueryServer server1{1221, 4617};
+        ofxOscQueryServer server2{1222, 4616};
+    
+        // Notice that we need to declare ports to our servers //
+        // or they would get the same default ports            //
+        // and would conflict with each other.                 //
+        // We will attach them to ofParameterGroups in ofApp.cpp
         //*****************************************************//
 };
