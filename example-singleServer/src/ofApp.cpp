@@ -10,6 +10,7 @@ void ofApp::setup(){
   //parameters.setName("myOfxOscQueryApp"); // we remove this one so we get the default name
   // uncommenting it will name both the ofParameterGroup and the device with the provided string
   parameters.add(vSync.set("vSync",true));
+  vSync.addListener(this, &ofApp::vSyncChanged);
   parameters.add(renderer1.parameters);
   parameters.add(renderer2.parameters);
 
@@ -54,9 +55,9 @@ void ofApp::setup(){
   server.findNode("/renderer/position").setUnit("position.cart2D");                   // The cannonnical way to set the unit for a 2D position
   //
   // As they return a ofxOssiaNode&, the set(Attribute) methods can be "cascaded" as demonstrateed below:
-  server.findNode(renderer2.position).setUnit("point2d")                              // A shorthand way to do the same
-      .setDescription("A circle renderer position")    // More attributes can be added
-      .setTags({"a little tag", "some other tag", "another tag"}); // In a cascading way
+  server.findNode(renderer2.position).setUnit("point2d")                               // A shorthand way to do the same
+      .setDescription("A circle renderer position")                                    // More attributes can be added
+      .setTags({"a little tag", "some other tag", "another tag"});                     // In a cascading way
   //
   //*********************************************************************************//
 
@@ -74,6 +75,7 @@ void ofApp::setup(){
 
 void ofApp::vSyncChanged(bool & vSync){
   ofSetVerticalSync(vSync);
+  ofLogNotice() << "vSync changed: " << vSync;
 }
 
 
