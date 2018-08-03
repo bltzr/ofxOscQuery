@@ -23,22 +23,23 @@ void ofApp::setup(){
 
 
 
-  //*********************************************************************************//
-  //   This is where we setup our OSCQuery Server:
-  // NB this is the only change from of's gui/ParameterGroupExample
-    
-        server.setup(parameters);
-    
-  // i.e. this will attach our OSCquery server to the 'parameters' ParameterGroup
-  // scan all sub-ParameterGroups and children Parameters recursively
-  // and expose the whole thing to default ports 1234 for OSC and 4567 for Websocket
-  // Should we want to set specific ports and name, we could add them as arguments, e.g.:
-    
-       // server.setup(parameters, 4321, 8765, "myFirstOscQueryServer");
-    
-  // All network communication (sending, receving, listening, queries and replies)
-  // will then be managed by the internal implementation of libossia
-  //*********************************************************************************//
+  //******************************************************************************************//
+  //   This is where we setup our OSCQuery Server:                                            //
+  // NB this is the only change from of's gui/ParameterGroupExample                           //
+                                                                                              //
+        server.setup(parameters);                                                             //
+                                                                                              //
+  // i.e. this will attach our OSCquery server to the 'parameters' ParameterGroup             //
+  // scan all sub-ParameterGroups and children Parameters recursively                         //
+  // and expose the whole thing to default ports 1234 for OSC and 4567 for Websocket          //
+  //                                                                                          //
+  // Should we want to set specific ports and name, we could add them as arguments, e.g.:     //
+                                                                                              //
+       // server.setup(parameters, 4321, 8765, "myFirstOscQueryServer");                      //
+                                                                                              //
+  // All network communication (sending, receving, listening, queries and replies)            //
+  // will then be managed by the internal implementation of libossia                          //
+  //******************************************************************************************//
 
 
 
