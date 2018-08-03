@@ -101,12 +101,12 @@ void ofApp::exit(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   if(key=='s'){
-    ofSerialize(settings,parameters);
+    settings.serialize(parameters);
     settings.save("settings.xml");
   }
   if(key=='l'){
     settings.load("settings.xml");
-    ofDeserialize(settings, parameters);
+    settings.deserialize(parameters);
   }
   if(key=='o'){
     cout << renderer1.parameters;
