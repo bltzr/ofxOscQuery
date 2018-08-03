@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  renderer1.setup("renderer1");
-  renderer2.setup("renderer2");
+  renderer1.setup("renderer.1");
+  renderer2.setup("renderer.2");
 
   parameters.setName("settings");
   parameters.add(vSync.set("vSync",true));
@@ -11,14 +11,18 @@ void ofApp::setup(){
   parameters.add(renderer2.parameters);
 
   gui.setup(parameters);
+    
+    std::cout << "group names: " << renderer1.parameters.getName() << " / " << renderer2.parameters.getName() << std::endl;
 
 
   //*************************************************//
   //   This is where we setup our OSCQuery Servers:   //
-  server1.setup(renderer1.parameters, 1235, 4678, "Renderer1");
-  server2.setup(renderer2.parameters, 1236, 4679, "Renderer2");
+  server1.setup(renderer1.parameters);
+  server2.setup(renderer2.parameters);
+  // by attaching them to ofParaemeterGroups
   //*************************************************//
   // NB this is the only change with of's ParameterGroupExample
+  //
 
   cout << server1.findNode("/position/").getName();
   cout << server1.findNode("position/").getName();
@@ -58,12 +62,12 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   if(key=='s'){
-    settings.serialize(parameters);
+    ofSerialize(settings,parameters);
     settings.save("settings.xml");
   }
   if(key=='l'){
     settings.load("settings.xml");
-    settings.deserialize(parameters);
+    ofDeserialize(settings,parameters);
   }
   if(key=='o'){
     cout << renderer1.parameters;

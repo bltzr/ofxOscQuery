@@ -24,7 +24,7 @@ class ofxOssiaNode {
     ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
 
 
-  /*
+    /*
     template<typename DataValue>
     ofxOssiaNode& setMin(std::string attrVal) {
                   getNode().set_min(ossia::MatchingType<DataValue>::convert(attrVal));
