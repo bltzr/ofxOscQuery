@@ -66,11 +66,14 @@ void ofApp::setup(){
         .setTags({"a little tag", "some other tag", "another tag"})
         .setMin(ofVec2f{2,10});
     
-  // Bound values (aka in or Max can be set, and we can set what happens at the bounds:
+  // Bound values (aka Min or Max can be set, and we can decide what happens at the bounds:
   server.findNode(renderer2.number).setMin(5).setMax(15)
                                    .setBound("FOLD");
   // possible values are: FREE, CLIP, LOW, HIGH, WRAP and FOLD,
   // see: https://ossia.github.io/?cpp--98#bounding-mode
+    
+  // Retrieve the value of the minimum bound for a node
+  ofLogNotice() << "Renderer2's number's min: "  << server.findNode(renderer2.number).getMin<int>();
   
   // We can also provide a set of accepted values:
   server.findNode(renderer1.number).setValues(std::vector<int>{1,3,5,7,9,11,13,15,17,19})
