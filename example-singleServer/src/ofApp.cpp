@@ -2,12 +2,12 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  renderer1.setup("renderer1");
-  renderer2.setup("renderer2");
+  renderer1.setup("renderer");
+  renderer2.setup("renderer");
   // Note that both Groups are named the same, in order to demonstrate
   // ossia's behavior in the case of duplicated nodes (adds .1 to the name)
 
-  parameters.setName("settings");
+  //parameters.setName("myOfxOscQueryApp");
   parameters.add(vSync.set("vSync",true));
   parameters.add(renderer1.parameters);
   parameters.add(renderer2.parameters);
@@ -24,10 +24,13 @@ void ofApp::setup(){
   //*********************************************************************************//
   //   This is where we setup our OSCQuery Server:
   // NB this is the only change from of's gui/ParameterGroupExample
-  server.setup(parameters, 1213, 4477, "ofxOscQueryDemo");
-  // i.e. this will create an OSCquery server from 'parameters' ParameterGroup
+    
+        server.setup(parameters);
+    
+  // i.e. this will attach our OSCquery server to the 'parameters' ParameterGroup
   // scan all sub-ParameterGroups and children Parameters recursively
-  // and expose the whole thing to ports 1233 for OSC and 4477 for Websocket
+  // and expose the whole thing to default ports 1234 for OSC and 4567 for Websocket
+  // Should we want to set specific ports and name
   // All network communication (sending, receving, listening, queries and replies)
   // will then be managed by the internal implementation of libossia
   //*********************************************************************************//
@@ -88,6 +91,9 @@ void ofApp::draw(){
   font.drawString("fps: " + ofToString((int)ofGetFrameRate()),ofGetWidth()-150,40);
 }
 
+void ofApp::exit(){
+    
+}
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   if(key=='s'){

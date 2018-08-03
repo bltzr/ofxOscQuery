@@ -9,20 +9,32 @@
 #include "ofxOscQueryServer.h"
 
 
-void ofxOscQueryServer::setup(ofParameterGroup& group,
-                              int localportOSC, int localPortWS,
-                              std::string localname)
+void ofxOscQueryServer::setup(ofParameterGroup& group)
 {
-
-  if(localname=="") localname = group.getName();
-
-  // declare a distant program as an OSCQuery device
-  device.setup(localname, localportOSC, localPortWS);
+  if(serverName == "ofxOscQuery" && group.getName() != "") serverName = group.getName();
+  device.setup(serverName, OSCport, WSport);
   nodes.emplace_back(device, group);
 
   // Then build ossia tree up from the chosen parameterGroup
   buildTreeFrom(group, nodes.front());
 
+}
+
+void ofxOscQueryServer::setup(ofParameterGroup& group, int localportOSC, int localPortWS, std::string localname)
+{
+    OSCport = localportOSC;
+    WSport = localPortWS;
+    if(localname == "" && serverName == "ofxOscQuery" && group.getName() != "")
+    {serverName = group.getName();}
+    std::cout << "name: " << group.getName() << std::endl;
+    
+    // set ports and name of the OSCQuery device
+    device.setup(serverName, OSCport, WSport);
+    nodes.emplace_back(device, group);
+    
+    // Then build ossia tree up from the chosen parameterGroup
+    buildTreeFrom(group, nodes.front());
+    
 }
 
 void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& node)
@@ -53,6 +65,12 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
         nodes.emplace_back(node, group.get<double>(i));
       else if(type == typeid(ofParameter <bool>).name())
         nodes.emplace_back(node, group.get<bool>(i));
+      else if(type == typeid(ofParameter <glm::vec2>).name())
+          nodes.emplace_back(node, group.get<glm::vec2>(i));
+      else if(type == typeid(ofParameter <glm::vec3>).name())
+          nodes.emplace_back(node, group.get<glm::vec3>(i));
+      else if(type == typeid(ofParameter <glm::vec4>).name())
+          nodes.emplace_back(node, group.get<glm::vec4>(i));
       else if(type == typeid(ofParameter <ofVec2f>).name())
         nodes.emplace_back(node, group.get<ofVec2f>(i));
       else if(type == typeid(ofParameter <ofVec3f>).name())

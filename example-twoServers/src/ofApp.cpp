@@ -11,12 +11,14 @@ void ofApp::setup(){
   parameters.add(renderer2.parameters);
 
   gui.setup(parameters);
+    
+    std::cout << "group names: " << renderer1.parameters.getName() << " / " << renderer2.parameters.getName() << std::endl;
 
 
   //*************************************************//
   //   This is where we setup our OSCQuery Servers:   //
-  server1.setup(renderer1.parameters, 1234, 4677, "Renderer1");
-  server2.setup(renderer2.parameters, 1233, 4676, "Renderer2");
+  server1.setup(renderer1.parameters);
+  server2.setup(renderer2.parameters);
   //*************************************************//
   // NB this is the only change with of's ParameterGroupExample
 

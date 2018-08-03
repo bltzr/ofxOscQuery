@@ -12,32 +12,30 @@
 #include <iostream>
 #include <list>
 
+#define DEFAULT_OSC 1234
+#define DEFAULT_WS  5678
+
 class ofxOscQueryServer {
 
   public:
-    ofxOscQueryServer():
-      device(){
-      updatingParameter = false;
-    }
     
-    ofxOscQueryServer(std::string name, int localportOSC= 1234, int localPortWS=5678):
+    ofxOscQueryServer(int localportOSC = DEFAULT_OSC,
+                      int localPortWS  = DEFAULT_WS,
+                      std::string name = "ofxOscQuery"):
+      OSCport(localportOSC), WSport(localPortWS), serverName("ofxOscQuery"),
       device(name, localportOSC, localPortWS){
-      updatingParameter = false;
     }
     
-    ~ofxOscQueryServer(){
-
-    }
+    ~ofxOscQueryServer() = default;
 
     /**
      * setup for ossia Device:
      * Create a root node at the specified ParameterGroup
      * with optional specific ports for OSC and WS (default 1234 & 5678)
-     *  and optionnal device name  (defaults to the ParameterGroup's name)
+     * and optionnal device name  (defaults to the ParameterGroup's name)
      **/
-    void setup(ofParameterGroup & group,
-               int localportOSC= 1234, int localPortWS=5678,
-               std::string localname = "");
+    void setup(ofParameterGroup & group);
+    void setup(ofParameterGroup & group, int localportOSC, int localPortWS = DEFAULT_WS, std::string localname = "");
 
     /**
      * Build tree from a specific ofParameterGroup/ossia::node pair
@@ -62,10 +60,11 @@ class ofxOscQueryServer {
 
   private:
     opp::oscquery_server device;
+    std::string serverName;
+    int OSCport, WSport;
     std::list<ofxOssiaNode> nodes;
+    
     friend class ofxOssiaNode;
-
-    bool updatingParameter;
 
 };
 

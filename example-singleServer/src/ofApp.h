@@ -11,6 +11,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+    void exit();
 
 		void keyPressed  (int key);
 		
@@ -25,6 +26,10 @@ class ofApp : public ofBaseApp{
 
     //***********************************************************//
     //     This is where we declare our OSCQuery Server:         //
-    ofxOscQueryServer server;  //We will set it up in ofApp.cpp  //
+                                                                 //
+            ofxOscQueryServer server;                            //
+                                                                 //
+    // Here, we use the default name and ports, but we could     //
+    // specify them (see example-twoservers for that)            //
     //***********************************************************//
 };
