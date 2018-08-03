@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  renderer1.setup("renderer1");
-  renderer2.setup("renderer2");
+  renderer1.setup("renderer.1");
+  renderer2.setup("renderer.2");
 
   parameters.setName("settings");
   parameters.add(vSync.set("vSync",true));
@@ -19,8 +19,10 @@ void ofApp::setup(){
   //   This is where we setup our OSCQuery Servers:   //
   server1.setup(renderer1.parameters);
   server2.setup(renderer2.parameters);
+  // by attaching them to ofParaemeterGroups
   //*************************************************//
   // NB this is the only change with of's ParameterGroupExample
+  //
 
   cout << server1.findNode("/position/").getName();
   cout << server1.findNode("position/").getName();

@@ -8,25 +8,15 @@
 
 #include "ofxOscQueryServer.h"
 
-
-void ofxOscQueryServer::setup(ofParameterGroup& group)
-{
-  if(serverName == "ofxOscQuery" && group.getName() != "") serverName = group.getName();
-  device.setup(serverName, OSCport, WSport);
-  nodes.emplace_back(device, group);
-
-  // Then build ossia tree up from the chosen parameterGroup
-  buildTreeFrom(group, nodes.front());
-
-}
-
 void ofxOscQueryServer::setup(ofParameterGroup& group, int localportOSC, int localPortWS, std::string localname)
 {
-    OSCport = localportOSC;
-    WSport = localPortWS;
-    if(localname == "" && serverName == "ofxOscQuery" && group.getName() != "")
-    {serverName = group.getName();}
-    std::cout << "name: " << group.getName() << std::endl;
+    if (localportOSC != DEFAULT_OSC) OSCport = localportOSC;
+    if (localPortWS  != DEFAULT_WS)   WSport = localPortWS;
+    if (localname == "" && serverName == DEFAULT_NAME && group.getName() != "")
+                               {serverName = group.getName();}
+    else if (localname != "" ) {serverName = localname;}
+    
+    std::cout << "servername: " << serverName << std::endl;
     
     // set ports and name of the OSCQuery device
     device.setup(serverName, OSCport, WSport);

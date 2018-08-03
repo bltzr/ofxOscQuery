@@ -7,7 +7,8 @@ void ofApp::setup(){
   // Note that both Groups are named the same, in order to demonstrate
   // ossia's behavior in the case of duplicated nodes (adds .1 to the name)
 
-  //parameters.setName("myOfxOscQueryApp");
+  //parameters.setName("myOfxOscQueryApp"); // we remove this one so we get the default name
+  // uncommenting it will name both the ofParameterGroup and the device with the provided string
   parameters.add(vSync.set("vSync",true));
   parameters.add(renderer1.parameters);
   parameters.add(renderer2.parameters);
@@ -30,7 +31,10 @@ void ofApp::setup(){
   // i.e. this will attach our OSCquery server to the 'parameters' ParameterGroup
   // scan all sub-ParameterGroups and children Parameters recursively
   // and expose the whole thing to default ports 1234 for OSC and 4567 for Websocket
-  // Should we want to set specific ports and name
+  // Should we want to set specific ports and name, we could add them as arguments, e.g.:
+    
+       // server.setup(parameters, 4321, 8765, "myFirstOscQueryServer");
+    
   // All network communication (sending, receving, listening, queries and replies)
   // will then be managed by the internal implementation of libossia
   //*********************************************************************************//
