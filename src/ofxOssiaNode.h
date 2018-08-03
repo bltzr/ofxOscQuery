@@ -13,8 +13,26 @@
 class ofxOssiaNode {
     
   public:
+    
+    //************************************//
+    //           General utilities        //
+    //************************************//
+    
+    /**
+      @brief get this node's name
+      @return this node's name as a string
+     */
+    std::string getName() {return ofParam->getName();}
+    
+    /**
+     @brief get this node's OSC address, relative to the server
+     @return this node's OSC address as a string
+     */
+    std::string getPath() {return path;}
 
-    // Methods to set ossia nodes' attributes:
+    //************************************//
+    //           Manage attributes        //
+    //************************************//
 
     ofxOssiaNode& setUnit(const std::string& attrVal) {getNode().set_unit(attrVal); return *this;}
     // see https://ossia.github.io/?cpp--ofx#units for a list of units
@@ -23,6 +41,17 @@ class ofxOssiaNode {
 
     ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
 
+    //*********    Domain:    ************//
+    
+    /**Domains allow to set a range of accepted values for a given parameter.<br>
+     * This range can be continuous (between a min and max), or discrete:  a set of accepted values.<br>
+     * This function defines the minimum of a continuous range.<br>
+     * This is only meaningful for nodes with parameters of numerical types (ie ints, floats, vecnfs and some lists)<br>
+     * @brief sets the 'min' attribute of this node's parameter (minimum value)
+     * @param min a value with the desired minimum value
+     * @return a reference to this node
+     * @see setBound
+     */
     template<typename DataValue>
     ofxOssiaNode& setMin(const DataValue& attrVal) {
         getNode().set_min(ossia::MatchingType<DataValue>::convert(attrVal));
@@ -30,6 +59,24 @@ class ofxOssiaNode {
         return *this;
     }
 
+    /**
+    * @brief gets the 'min' attribute of this node's parameter (minimum value)
+    * @return a value with this node's parameter's minimum value
+    * @see setMin
+    * @see getBound
+    */
+    template<typename DataValue> DataValue getMin() {
+        return ossia::MatchingType<DataValue>::convertFromOssia(getNode().get_min());
+    }
+    
+    /**
+     * This function defines the minimum of a continuous range.<br>
+     * This is only meaningful for nodes with parameters of numerical types (ie ints, floats, vecnfs and some lists)<br>
+     * @brief sets the 'max' attribute of this node's parameter (maximum value)
+     * @param min a value with the desired mmaximum value
+     * @return a reference to this node
+     * @see opp::node::set_bounding
+     */
     template<typename DataValue>
     ofxOssiaNode& setMax(const DataValue& attrVal) {
         getNode().set_max(ossia::MatchingType<DataValue>::convert(attrVal));
@@ -37,6 +84,24 @@ class ofxOssiaNode {
         return *this;
     }
     
+    /**
+     * @brief gets the 'max' attribute of this node's parameter (maximum value)
+     * @return a value with this node's parameter's maximum value
+     * @see setMax
+     * @see getBound
+     */
+    template<typename DataValue> DataValue getMax() {
+        return ossia::MatchingType<DataValue>::convertFromOssia(getNode().get_max());
+    }
+    
+    /**Domains allow to set a range of accepted values for a given parameter.<br>
+     * This function defines a set of accepted values.<br>
+     * This is only meaningful for nodes with parameters of about any types except Impulse<br>
+     * @brief sets a list of the values accepted by this node's parameter ("values" attribute)
+     * @param v a std::vector of values with the desired list of accepted values
+     * @return a reference to this node
+     * @see opp::node::set_bounding
+     */
     template<typename DataValue>
     ofxOssiaNode& setValues(const std::vector<DataValue>& attrVals) {
         using ossia_type = ossia::MatchingType<DataValue>;
@@ -60,6 +125,8 @@ class ofxOssiaNode {
         return *this;
     }
     
+    
+    ofAbstractParameter* getParam() {return ofParam;}
     
     /*
    *    Constructors for the Root Node
@@ -155,12 +222,7 @@ class ofxOssiaNode {
       //removeParamListener();
     }
 
-    /*
-   * Utilities
-   */
-    std::string getName() {return ofParam->getName();}
-    ofAbstractParameter* getParam() {return ofParam;}
-    std::string getPath() {return path;}
+ 
     
 
     //For callbacks
