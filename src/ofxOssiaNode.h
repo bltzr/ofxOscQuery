@@ -11,35 +11,58 @@
  * */
 
 class ofxOssiaNode {
+    
   public:
-
 
     // Methods to set ossia nodes' attributes:
 
-    ofxOssiaNode& setUnit(std::string attrVal) {getNode().set_unit(attrVal); return *this;}
+    ofxOssiaNode& setUnit(const std::string& attrVal) {getNode().set_unit(attrVal); return *this;}
     // see https://ossia.github.io/?cpp--ofx#units for a list of units
 
-    ofxOssiaNode& setDescription(std::string attrVal) {getNode().set_description(attrVal); return *this;}
+    ofxOssiaNode& setDescription(const std::string& attrVal) {getNode().set_description(attrVal); return *this;}
 
     ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
 
-
-    /*
     template<typename DataValue>
-    ofxOssiaNode& setMin(std::string attrVal) {
-                  getNode().set_min(ossia::MatchingType<DataValue>::convert(attrVal));
-                  (*ofParam).cast<DataValue>.setMin(attrVal)}
+    ofxOssiaNode& setMin(const DataValue& attrVal) {
+        getNode().set_min(ossia::MatchingType<DataValue>::convert(attrVal));
+        static_cast<ofParameter<DataValue>*>(ofParam)->setMin(attrVal);
+        return *this;
+    }
 
     template<typename DataValue>
-    ofxOssiaNode& setMax(std::string attrVal) {
-                  getNode().set_max(ossia::MatchingType<DataValue>::convert(attrVal));
-                  (*ofParam).cast<DataValue>.setMax(attrVal)}
-  */
-
-
-
+    ofxOssiaNode& setMax(const DataValue& attrVal) {
+        getNode().set_max(ossia::MatchingType<DataValue>::convert(attrVal));
+        static_cast<ofParameter<DataValue>*>(ofParam)->setMax(attrVal);
+        return *this;
+    }
+    
+    template<typename DataValue>
+    ofxOssiaNode& setValues(const std::vector<DataValue>& attrVals) {
+        using ossia_type = ossia::MatchingType<DataValue>;
+        std::vector<opp::value> res;
+        for (const auto & v : attrVals) { res.push_back(ossia_type::convert(v)); }
+        getNode().set_accepted_values(res);
+        return *this;
+    }
+    
+    // possible values are: FREE, CLIP, LOW, HIGH, WRAP and FOLD
+    ofxOssiaNode& setBound(const std::string& attrVal) {
+        std::string a = attrVal;
+        opp::bounding_mode mode;
+        if      (a == "CLIP") mode = opp::bounding_mode::Clip;
+        else if (a == "LOW" ) mode = opp::bounding_mode::Low;
+        else if (a == "HIGH") mode = opp::bounding_mode::High;
+        else if (a == "WRAP") mode = opp::bounding_mode::Wrap;
+        else if (a == "FOLD") mode = opp::bounding_mode::Fold;
+        else                  mode = opp::bounding_mode::Free;
+        getNode().set_bounding(mode);
+        return *this;
+    }
+    
+    
     /*
-   *Constructors for the Root Node
+   *    Constructors for the Root Node
    */
 
 
@@ -97,7 +120,7 @@ class ofxOssiaNode {
       callbackIt = currentNode.set_value_callback([](void* context, const opp::value& val)
       {
         ofParameter<DataValue>* self = reinterpret_cast<ofParameter<DataValue>*>(context);
-        //using value_type = const typename ossia_type::ossia_type;
+          
         if(ossia_type::is_valid(val))
         {
           DataValue data = ossia_type::convertFromOssia(val);
@@ -109,7 +132,6 @@ class ofxOssiaNode {
         else
         {
           std::cerr << "error [ofxOscQuery::enableRemoteUpdate()] : of and ossia types do not match \n" ;
-          // Was: "<< (int) val.getType()  << " " << (int) ossia_type::val << "\n" ;
           return;
         }
       },  ofParam);
@@ -139,6 +161,7 @@ class ofxOssiaNode {
     std::string getName() {return ofParam->getName();}
     ofAbstractParameter* getParam() {return ofParam;}
     std::string getPath() {return path;}
+    
 
     //For callbacks
     template<typename DataValue>
@@ -181,29 +204,25 @@ class ofxOssiaNode {
       try
       {
         auto val = currentNode.get_value();
-        if(ossia_type::is_valid(val))
-          return ossia_type::convertFromOssia(val);
+          if(ossia_type::is_valid(val)){
+              return ossia_type::convertFromOssia(val);
+          }
         else
-          std::cerr <<  "error [ofxOssia::pullNodeValue()] : of and ossia types do not match \n" ; // Was:
-        // <<(int) val.getType()  << " " << (int) ossia_type::val << "\n" ; // Can we still do that with safeC++ ??
+          std::cerr <<  "error [ofxOssia::pullNodeValue()] : of and ossia types do not match \n" ;
         return {};
       }
       catch(std::exception& e)
       {
         std::cerr <<  "error [ofxOssia::pullNodeValue()] : " << e.what() << "\n" ;
         return {};
-
       }
 
       catch(...)
       {
         auto val = currentNode.get_value();
-        std::cerr <<  "error [ofxOssia::pullNodeValue()] : : of and ossia types do not match \n" ; // Was:
-        // << ossia::value_to_pretty_string(val)  << " " << (int) ossia_type::val << "\n" ; // Can we still do that with safeC++ ??
+        std::cerr <<  "error [ofxOssia::pullNodeValue()] : : of and ossia types do not match \n" ;
         return {};
       }
     }
-
-
 
 };

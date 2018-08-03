@@ -73,8 +73,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
         nodes.emplace_back(node, group.get<ofFloatColor>(i));
       else if(type == typeid(ofParameter <std::string>).name())
         nodes.emplace_back(node, group.get<std::string>(i));
-      else{ ofLogWarning() <<
-                              "ofxBaseGroup; no support for parameter of type " << type; break; }
+      else{ ofLogWarning() << "ofxBaseGroup; no support for parameter of type " << type; break; }
 
     }
 

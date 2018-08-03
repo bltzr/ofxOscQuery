@@ -44,22 +44,39 @@ void ofApp::setup(){
 
 
   //*********************************************************************************//
-  //  Some extra OSCQuery/ossia-specific attributes can be set later on
+  // Some extra OSCQuery/ossia-specific attributes can be set later on
   // They requires that we find the node for which we want to set those attributes
   // This can be achieved with the findNode method, which accepts as argument:
   // - the object name ofParameter(Group) to which the ossia node is attached
   // - the OSC path of the node we want to access
   // Then we have just to use the appropriate set(Attribute) methods
   //
-  //server.findNode(renderer2.position).setMin(2).setMax(20);
-  server.findNode("/renderer/color/").setDescription("El Color maravilloso!!");       // A description of this node
-  server.findNode("/renderer/position").setUnit("position.cart2D");                   // The cannonnical way to set the unit for a 2D position
-  //
-  // As they return a ofxOssiaNode&, the set(Attribute) methods can be "cascaded" as demonstrateed below:
-  server.findNode(renderer2.position).setUnit("point2d")                               // A shorthand way to do the same
-      .setDescription("A circle renderer position")                                    // More attributes can be added
-      .setTags({"a little tag", "some other tag", "another tag"});                     // In a cascading way
-  //
+  // Add a description of this node
+  server.findNode("/renderer/color/").setDescription("El Color maravilloso!!");
+    
+  // The cannonnical way to set the unit for a 2D position
+  server.findNode("/renderer/position").setUnit("position.cart2D");
+  // A shorthand way to do the same:
+  server.findNode(renderer2.position).setUnit("point2d");
+
+  // As they return a ofxOssiaNode&, the set(Attribute) methods
+  // can be "cascaded" as demonstrateed below:
+  server.findNode(renderer2.position)
+        .setDescription("A circle renderer position")
+        .setTags({"a little tag", "some other tag", "another tag"})
+        .setMin(ofVec2f{2,10});
+    
+  // Bound values (aka in or Max can be set, and we can set what happens at the bounds:
+  server.findNode(renderer2.number).setMin(5).setMax(15)
+                                   .setBound("FOLD");
+  // possible values are: FREE, CLIP, LOW, HIGH, WRAP and FOLD,
+  // see: https://ossia.github.io/?cpp--98#bounding-mode
+  
+  // We can also provide a set of accepted values:
+  server.findNode(renderer1.number).setValues(std::vector<int>{1,3,5,7,9,11,13,15,17,19})
+                                   .setBound("CLIP");
+  // and restrict the parameter's value to those with the CLIP boundmode
+    
   //*********************************************************************************//
 
 
