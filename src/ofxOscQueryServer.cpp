@@ -55,12 +55,6 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
         nodes.emplace_back(node, group.get<double>(i));
       else if(type == typeid(ofParameter <bool>).name())
         nodes.emplace_back(node, group.get<bool>(i));
-      else if(type == typeid(ofParameter <glm::vec2>).name())
-          nodes.emplace_back(node, group.get<glm::vec2>(i));
-      else if(type == typeid(ofParameter <glm::vec3>).name())
-          nodes.emplace_back(node, group.get<glm::vec3>(i));
-      else if(type == typeid(ofParameter <glm::vec4>).name())
-          nodes.emplace_back(node, group.get<glm::vec4>(i));
       else if(type == typeid(ofParameter <ofVec2f>).name())
         nodes.emplace_back(node, group.get<ofVec2f>(i));
       else if(type == typeid(ofParameter <ofVec3f>).name())
@@ -73,8 +67,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
         nodes.emplace_back(node, group.get<ofFloatColor>(i));
       else if(type == typeid(ofParameter <std::string>).name())
         nodes.emplace_back(node, group.get<std::string>(i));
-      else{ ofLogWarning() <<
-                              "ofxBaseGroup; no support for parameter of type " << type; break; }
+      else{ ofLogWarning() << "ofxBaseGroup; no support for parameter of type " << type; break; }
 
     }
 

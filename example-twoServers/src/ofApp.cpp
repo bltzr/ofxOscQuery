@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  renderer1.setup("renderer.1");
-  renderer2.setup("renderer.2");
+  renderer1.setup("renderer1");
+  renderer2.setup("renderer2");
 
   parameters.setName("settings");
   parameters.add(vSync.set("vSync",true));
@@ -62,12 +62,12 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   if(key=='s'){
-    ofSerialize(settings,parameters);
+    settings.serialize(parameters);
     settings.save("settings.xml");
   }
   if(key=='l'){
     settings.load("settings.xml");
-    ofDeserialize(settings,parameters);
+    settings.deserialize(parameters);
   }
   if(key=='o'){
     cout << renderer1.parameters;
