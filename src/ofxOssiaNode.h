@@ -22,28 +22,28 @@ class ofxOssiaNode {
       @brief get this node's name
       @return this node's name as a string
      */
-    std::string getName() {return ofParam->getName();}
+    std::string getName()
+        {return ofParam->getName();}
     
     /**
      @brief get this node's OSC address, relative to the server
      @return this node's OSC address as a string
      */
-    std::string getPath() {return path;}
+    std::string getPath()
+        {return path;}
     
     /**
      @brief get this node's ofParameter object
      @return a pointer to this node's ofAbstractParameter object
      */
-     ofAbstractParameter* getParam() {return ofParam;}
+     ofAbstractParameter* getParam()
+        {return ofParam;}
 
     //************************************//
     //           Manage attributes        //
     //************************************//
 
-    ofxOssiaNode& setDescription(const std::string& attrVal) {getNode().set_description(attrVal); return *this;}
-
-    ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
-
+    
     //*********    Access mode:    ************//
     
     
@@ -85,6 +85,7 @@ class ofxOssiaNode {
     }
     
     //*********    Domain:    ************//
+    
     
     /**Domains allow to set a range of accepted values for a given parameter.<br>
      * This range can be continuous (between a min and max), or discrete:  a set of accepted values.<br>
@@ -167,6 +168,7 @@ class ofxOssiaNode {
         return res;
     }
     
+    
     //*********    Bounding mode:    ************//
     
     
@@ -215,7 +217,9 @@ class ofxOssiaNode {
         return res;
     }
     
+    
     //*********    Units:    ************//
+    
     
     /**Units give a semantic meaning to the value of a parameter. <br>
      * Units are sorted by categories (coined "dataspace" ): every unit in a category is convertible to the other units in the same category. <br>
@@ -345,6 +349,244 @@ class ofxOssiaNode {
     }
     
     
+    //*********    Other value management attributes:    ************//
+    
+    
+    /**A default value for a given node. Useful for resetting to a default state.
+     * @brief sets the default_value attribute of this node's parameter
+     * @param v a value with this node's parameter's default value
+     * @return a reference to this node
+     */
+    template<typename DataValue>
+    ofxOssiaNode& setDefault(DataValue v){
+        getNode().set_default_value(ossia::MatchingType<DataValue>::convert(v));
+        return *this;
+    }
+    /**
+     * @brief gets the default_value attribute of this node's parameter
+     * @return a value with this node's parameter's default value
+     */
+    template<typename DataValue>
+    DataValue getDefault()
+        { return ossia::MatchingType<DataValue>::convertFromOssia(getNode().get_default_value()); }
+    
+    /**When the repetition filter is enabled, if the same value is sent twice, the second time will be filtered out.
+     * @brief sets the repetition_filter attribute of this node's parameter
+     * @param v a bool: true to filter out this node's parameter's value repetitions
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setRepetitionFilter(bool v){
+        getNode().set_repetition_filter( v );
+        return *this;
+    }
+    /**
+     * @brief gets the repetition_filter attribute of this node's parameter
+     * @return a bool: true if this node's parameter's value repetitions are filtered out
+     */
+    bool getRepetitionFilter()
+        { return getNode().get_repetition_filter();}
+    
+    /**An optional value that says how often a value should be updated.
+     * @brief sets the refresh_rate attribute of this node's parameter
+     * @param v an int with this node's parameter's refresh_rate value
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setRefreshRate(int v){
+        getNode().set_refresh_rate( v );
+        return *this;
+    }
+    /**
+     * @brief unsets the refresh_rate attribute of this node's parameter
+     * @return a reference to this node
+     */
+    ofxOssiaNode& unsetRefreshRate(){
+        getNode().unset_refresh_rate();
+        return *this;
+    }
+    /**
+     * @brief gets the refresh_rate attribute of this node's parameter
+     * @return a float with this node's parameter's refresh_rate value
+     */
+    int getRefreshRate()
+        { return getNode().get_refresh_rate();}
+    
+    /**An optional value that says by which increment a value should change, for instance in a value editor.
+     * @brief sets the value_step_size attribute of this node's parameter
+     * @param v the increment size
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setValueStepSize(double v){
+        getNode().set_value_step_size( v );
+        return *this;
+    }
+    /**
+     * @brief unsets the value_step_size attribute of this node's parameter
+     * @return a reference to this node
+     */
+    ofxOssiaNode& unsetValueStepSize(){
+        getNode().unset_value_step_size();
+        return *this;
+    }
+    /**
+     * @brief gets the value_step_size attribute of this node's parameter
+     * @return a float with this node's parameter's refresh_rate value
+     */
+    double getValueStepSize()
+        { return getNode().get_value_step_size();}
+    
+    /**Nodes with the highest priority should execute first.
+     * @brief sets the priority attribute of this node's parameter
+     * @param v a float with this node's parameter's priority value (higher numbers for higher priorities)
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setPriority(float v){
+        getNode().set_priority( v );
+        return *this;
+    }
+    /**
+     * @brief unsets the priority attribute of this node's parameter
+     * @return a reference to this node
+     */
+    ofxOssiaNode& unsetPriority(){
+        getNode().unset_priority();
+        return *this;
+    }
+    /**
+     * @brief gets the priority attribute of this node's parameter
+     * @return a float with this node's parameter's priority value (higher numbers for higher priorities)
+     */
+    float getPriority()
+        { return getNode().get_priority();}
+    
+    /**This attribute will disable a node: it will stop receiving and sending messages from/to the network.
+     * @brief sets the disabled attribute of this node's parameter
+     * @param v a bool: true to disable this node's parameter
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setDisabled(bool v){
+        getNode().set_disabled( v );
+        return *this;
+    }
+    /**
+     * @brief gets the disabled attribute of this node's parameter
+     * @return a bool: true if the node's parameter is disabled
+     */
+    bool getDisabled()
+        { return getNode().get_disabled();}
+    
+    /**This attribute will disable a node: it will stop sending messages to the network. <br>
+     * Unlike the "disabled" attribute, it won't propagate to other mirrored servers.
+     * @brief sets the muted attribute of this node's parameter
+     * @param v a bool: true to mute this node's parameter
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setMuted(bool v){
+        getNode().set_muted( v );
+        return *this;
+    }
+    /**
+     * @brief gets the muted attribute of this node's parameter
+     * @return a bool: true if the node's parameter is muted
+     */
+    bool getMuted()
+        { return getNode().get_muted();}
+    
+    /**This attribute informs the network protocol that the value has a particular importance
+     * and should if possible use a protocol not subject to message loss, eg TCP instead of UDP.
+     * This is useful for instance for "play" messages.
+     * @brief sets the critical attribute of this node's parameter
+     * @param v a bool: true to mark this node's parameter  as critical
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setCritical(bool v) {
+        getNode().set_critical( v );
+        return *this;
+    }
+    /**
+     * @brief gets the critical attribute of this node's parameter
+     * @return a bool: true if the node's parameter  is critical
+     */
+    bool getCritical()
+        { return getNode().get_critical();}
+    
+    
+    
+    //*********    Other informative attributes:    ************//
+    
+    
+    /**An optional textual description.
+     * @brief sets this node's description attribute
+     * @param v a string with the textual description of this node
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setDescription(const std::string& attrVal)
+        {getNode().set_description(attrVal); return *this;}
+    
+    /**
+     * @brief gets this node's description attribute
+     * @return a string with the textual description of this node
+     */
+    std::string getDescription()
+        { return getNode().get_description();}
+    
+    /**An optional array of tags for nodes, expressed as one string per tag.
+     * @brief sets his node's tags attribute
+     * @param v a vector of strings with the desired tags of this node'
+     * @return a reference to this node
+     */
+     ofxOssiaNode& setTags(std::vector<std::string> attrVal)
+        {getNode().set_tags(attrVal); return *this; }
+    /**
+     * @brief gets this node's tags attribute
+     * @return a string with this node's tags
+     */
+    std::vector<std::string> getTags()
+        { return getNode().get_tags();}
+    
+    /**For nodes that can have instantiatable children, this sets the minimum and maximum number of children that can exist.
+     * This is an optional attribute: it is not enforced and is only to be relied upon as a metadata.
+     * @brief sets how many instances this node can have
+     * @param min the minimum number of instances this node can have
+     * @param max the maximum number of instances this node can have
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setInstanceBounds(int min, int max)
+        {getNode().set_instance_bounds(min, max); return *this;}
+    /**
+     * @brief unset how many instances this node can have
+     * @return a reference to this node
+     */
+    ofxOssiaNode& unsetInstanceBounds()
+        {getNode().unset_instance_bounds(); return *this;}
+    /**
+     * @brief gets how many instances this node can have
+     * @return a std::pair with the minimum and maxium number sof instances this node can have
+     */
+    std::pair<int, int> getInstanceBounds()
+        { return getNode().get_instance_bounds();}
+    
+    /**This attribute is to use for nodes that are not to be exposed to the network.
+     * @brief sets this node's hidden attribute
+     * @param v a bool: true to hide this node
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setHidden(bool v)
+        {getNode().set_hidden(v); return *this;}
+    /**
+     * @brief gets this node's hidden attribute
+     * @return a bool: true if the node is hidden
+     */
+    bool getHidden()
+        { return getNode().get_hidden();}
+    
+    /**This is a read-only attribute: it informs of whether a node is in a zombie state.
+     * A zombie node is an node in a remote device, whose source has been removed.
+     * It is kept in the mirrors but marked as such.
+     * @brief gets the zombie attribute of this node's parameter
+     * @return a bool: true if the node has been zombified
+     */
+    bool getZombie()
+        { return getNode().get_zombie();}
     
     
     
