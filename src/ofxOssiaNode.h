@@ -111,6 +111,26 @@ class ofxOssiaNode {
         return *this;
     }
     
+    //*********    Bounding mode:    ************//
+    
+    
+    /**The bounding mode tells what happens when a value is outside of the min / max:
+     *
+     * * **FREE** : no clipping; domain is only indicative.
+     * * **CLIP** : clipped to the closest value in the range.
+     * * **LOW** : only clips values lower than the min.
+     * * **HIGH** : only clips values higher than the max.
+     * * **WRAP** : wraps values around the range
+     * * **FOLD** : folds back values into the range
+     *
+     * The default is **FREE**.
+     * @brief sets the bounding_mode attribute of this node's parameter
+     * @param v a string describing the chosen mode
+     * @return a reference to this node
+     * @see setMin
+     * @see setMax
+     */
+    
     // possible values are: FREE, CLIP, LOW, HIGH, WRAP and FOLD
     ofxOssiaNode& setBound(const std::string& attrVal) {
         std::string a = attrVal;
