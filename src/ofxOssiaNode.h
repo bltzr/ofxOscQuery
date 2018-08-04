@@ -29,18 +29,61 @@ class ofxOssiaNode {
      @return this node's OSC address as a string
      */
     std::string getPath() {return path;}
+    
+    /**
+     @brief get this node's ofParameter object
+     @return a pointer to this node's ofAbstractParameter object
+     */
+     ofAbstractParameter* getParam() {return ofParam;}
 
     //************************************//
     //           Manage attributes        //
     //************************************//
 
-    ofxOssiaNode& setUnit(const std::string& attrVal) {getNode().set_unit(attrVal); return *this;}
-    // see https://ossia.github.io/?cpp--ofx#units for a list of units
-
     ofxOssiaNode& setDescription(const std::string& attrVal) {getNode().set_description(attrVal); return *this;}
 
     ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
 
+    //*********    Access mode:    ************//
+    
+    
+    /**Access mode is a metadata that categorizes parameters between:
+     *
+     * - GET / RO : read-only
+     * - SET / WO : write-only
+     * -  BI / RW : read-write
+     *
+     * For instance:
+     *
+     * - The value of a vu-meter should be GET
+     * - A "play" button should be SET.
+     * - The cutoff of a filter or a controllable color should be BI.
+     * @brief sets the access_mode attribute of this node's parameter
+     * @param v an opp::access_mode of the chosen mode
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setAccess(std::string m){
+        opp::access_mode mode;
+        if      (m == "GET" || m == "RO") mode = opp::access_mode::Get;
+        else if (m == "SET" || m == "WO") mode = opp::access_mode::Set;
+        else if (m == "BI"  || m == "RW") mode = opp::access_mode::Bi;
+        getNode().set_access(mode);
+        return *this;
+    }
+    /**
+     * @brief gets the access_mode attribute of this node's parameter
+     * @return an opp::access_mode with this node's parameter's access mode
+     * @see opp::node::set_acess
+     */
+    std::string getAccess() {
+        opp::access_mode mode = getNode().get_access();
+        std::string m;
+        if      ( mode == opp::access_mode::Get ) (m = "GET" );
+        else if ( mode == opp::access_mode::Set ) (m = "SET" );
+        else if ( mode == opp::access_mode::Bi )  (m = "BI"  );
+        return m;
+    }
+    
     //*********    Domain:    ************//
     
     /**Domains allow to set a range of accepted values for a given parameter.<br>
@@ -110,6 +153,19 @@ class ofxOssiaNode {
         getNode().set_accepted_values(res);
         return *this;
     }
+    /**
+     * @brief gets a list of the values accepted by this node's parameter ("values" attribute)
+     * @return a vector of values with the list of this node's parameter's accepted values
+     * @see setValues
+     * @see setBound
+     */
+    template<typename DataValue> std::vector<DataValue> getValues() {
+        using ossia_type = ossia::MatchingType<DataValue>;
+        auto vals = getNode().get_accepted_values();
+        std::vector<DataValue> res;
+        for (auto& v : vals) res.push_back(ossia_type::convertFromOssia(v));
+        return res;
+    }
     
     //*********    Bounding mode:    ************//
     
@@ -130,8 +186,6 @@ class ofxOssiaNode {
      * @see setMin
      * @see setMax
      */
-    
-    // possible values are: FREE, CLIP, LOW, HIGH, WRAP and FOLD
     ofxOssiaNode& setBound(const std::string& attrVal) {
         std::string a = attrVal;
         opp::bounding_mode mode;
@@ -145,8 +199,159 @@ class ofxOssiaNode {
         return *this;
     }
     
+    /**
+     * @brief gets the bounding_mode attribute of this node's parameter
+     * @return a std::string with this node's parameter's access mode
+     */
+    std::string getBound() {
+        auto mode = getNode().get_bounding();
+        std::string res;
+        if       (mode == opp::bounding_mode::Clip) res = "CLIP" ;
+        else if  (mode == opp::bounding_mode::Low)  res = "LOW"  ;
+        else if  (mode == opp::bounding_mode::High) res = "HIGH" ;
+        else if  (mode == opp::bounding_mode::Wrap) res = "WRAP" ;
+        else if  (mode == opp::bounding_mode::Fold) res = "FOLD" ;
+        else if  (mode == opp::bounding_mode::Free) res = "FREE" ;
+        return res;
+    }
     
-    ofAbstractParameter* getParam() {return ofParam;}
+    //*********    Units:    ************//
+    
+    /**Units give a semantic meaning to the value of a parameter. <br>
+     * Units are sorted by categories (coined "dataspace" ): every unit in a category is convertible to the other units in the same category. <br>
+     * Every category has a neutral unit to/from which conversions are made. <br>
+     *
+     * An unit, when setting it as a parameter's attribute, can be expressed as a string in the form:<br>
+     * - "category.unit" (such as "position.cart2D"),<br>
+     * - only with the unit name (such as "cart2D", those being all unique), <br>
+     * - or with "nicknames", that are indicated in parentheses, after the unit name <br>
+     * A list of all supported units is given below.
+     *
+     * @brief sets the unit attribute of this node's parameter
+     * @param v a string with this unit's name
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setUnit(const std::string& attrVal) {getNode().set_unit(attrVal); return *this;}
+    /**< @details
+     *
+     * - **Position**
+     *
+     *   + **cart3D** (*xyz*, *pos*, *point*, *point3d*, *3d*, *cartesian3d*, *coord*, *coordinate*, *coordinates*, *pvector* *, *vertex*):
+     * Cartesian 3-dimensional position (ie. X, Y, Z) in the OpenGL coordinate reference system
+     *   + **cart2D** (*xy*, *complex*, *point2d*, *2d*, *cartesian2d*):
+     * Cartesian 2-dimensional position (i.e. X, Y)
+     *   + **opengl** (*gl*, *position.gl*):
+     * Cartesian 3-dimensional position (ie. X, Y, Z) in the OpenGL coordinate reference system
+     *   + **spherical** (*aed*):
+     * Polar 3-dimensional position (ie. aed: amplitude, elevation, distance)
+     *   + **polar** (*ad*):
+     * Polar 2-dimensional position (ie. ad: amplitude, distance)
+     *   + **cylindrical** (*daz*):
+     * Mixed 3-dimensional position (ie. daz: distance, amplitude, Z)
+     *
+     *
+     *
+     * - **Orientation**
+     *
+     *   + **quaternion**:
+     * An extension of the complex numbers for 3D orientation, in the form a+bi+cj+dk
+     *   + **euler**:
+     * A triplet of angles (in degrees) describing the orientation of a rigid body with respect to a fixed coordinate system
+     *   + **axis**:
+     * An angle (a, in degrees) relative to a 3-dimensional vector, expressed in the order X, Y, Z, a
+     *
+     *
+     *
+     * - **Color**
+     *
+     *   + **argb** (*col*):
+     * 4 float numbers between 0. and 1. describing respectively Alpha, Red, Green and Blue color values
+     *   + **rgba**:
+     * 4 float numbers between 0. and 1. describing respectively Red, Green, Blue and Alpha color values
+     *   + **rgb**:
+     * 3 float numbers between 0. and 1. describing respectively Red, Green and Blue color values
+     *   + **bgr**:
+     * 3 float numbers between 0. and 1. describing respectively Blue, Green and Red color values
+     *   + **argb8**:
+     * 4 int numbers between 0 and 255 describing respectively Alpha, Red, Green and Blue color values
+     *   + **hsv**:
+     * 3 float numbers between 0. and 1. describing respectively Hue, Saturation and Value (Luminosity) color values in the * HSV colorspace
+     *   + **cmy8**:
+     * 3 int numbers between 0 and 255 describing respectively Cyan, Magenta, and Yellow color values
+     *   + **cmyk8**:
+     * 4 int numbers between 0 and 255 describing respectively Cyan, Magenta, Yellow and Black color values
+     *
+     * - **Angle**
+     *
+     *   + **radian**
+     *   + **degree**
+     *
+     *
+     * - **Distance**
+     *
+     *   + **meter**
+     *   + **kilometer**
+     *   + **decimeter**
+     *   + **centimeter**
+     *   + **millimeter**
+     *   + **micrometer**
+     *   + **nanometer**
+     *   + **picometer**
+     *   + **inch**
+     *   + **foot**
+     *   + **mile**
+     *
+     * - **Time**
+     *
+     *   + **second**
+     *   + **bark**
+     *   + **bpm**
+     *   + **cent**
+     *   + **frequency** (*freq*, *frequence*, *Hz*, *hz*, *Hertz*):
+     *   + **mel**
+     *   + **midi_pitch** (*midinote*):
+     *   + **millisecond** (*ms*)
+     *   + **playback_speed**
+     *   + **sample** (the length of a sample, for a sample_rate of 44100Hz)
+     *
+     * - **Gain**
+     *
+     *   + **linear**:
+     * A linear gain in the [0. 1.] range, with 1. being the nominal level
+     *   + **midigain**:
+     * A value in the [0 127] range mimicing a MIDI gain controller. 100 for the nominal level, 127 for +12dB
+     *   + **decibel** (*db*, *dB*):
+     * A single float value expressed in a logarithmic scale, typically to describe an audio gain (0dB being the nominal * gain, < 0dB describing a signal attenuation, clipped at -96dB)
+     *   + **decibel_raw**
+     * Same as deciBel, but unclipped.
+     *
+     * - **Speed**
+     *
+     *   + **meter_per_second**
+     *   + **miles_per_hour**
+     *   + **kilometer_per_hour**
+     *   + **knot**
+     *   + **foot_per_second**
+     *   + **foot_per_hour**
+     */
+    
+    /**
+     * @brief gets the unit of this node's parameter
+     * @return a string with this node's parameter's unit name
+     * @see ossia::unit_t
+     */
+    std::string getUnit() {
+        return getNode().get_unit();
+    }
+    
+    
+    
+    
+    
+    //*********************//
+    //     Constructors    //
+    //*********************//
+
     
     /*
    *    Constructors for the Root Node
@@ -298,7 +503,7 @@ class ofxOssiaNode {
     //            Private Methods               //
     //////////////////////////////////////////////
 
-    opp::node& getNode() {return currentNode;}
+    opp::node& getNode()       {return currentNode;}
 
     template<typename DataValue>
     void publishValue(DataValue val){
