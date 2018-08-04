@@ -235,14 +235,36 @@ class ofxOssiaNode {
     ofxOssiaNode& operator=(ofxOssiaNode&&) = default;
 
     /*
-   * Destructor
-   * */
-    ~ofxOssiaNode (){
-      if (callbackIt) currentNode.remove_value_callback(callbackIt);
-      //removeParamListener();
+    * Destructor
+    * */
+    ~ofxOssiaNode () {
+        if (callbackIt) currentNode.remove_value_callback(callbackIt);
+        
+        auto type = ofParam->type();
+        if(type == typeid(ofParameter <int32_t>).name())
+            static_cast<ofParameter<int32_t>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<int32_t>);
+        else if(type == typeid(ofParameter <int>).name())
+            static_cast<ofParameter<int>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<int>);
+        else if(type == typeid(ofParameter <float>).name())
+            static_cast<ofParameter<float>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<float>);
+        else if(type == typeid(ofParameter <double>).name())
+            static_cast<ofParameter<double>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<double>);
+        else if(type == typeid(ofParameter <bool>).name())
+            static_cast<ofParameter<bool>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<bool>);
+        else if(type == typeid(ofParameter <ofVec2f>).name())
+            static_cast<ofParameter<ofVec2f>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<ofVec2f>);
+        else if(type == typeid(ofParameter <ofVec3f>).name())
+            static_cast<ofParameter<ofVec3f>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<ofVec3f>);
+        else if(type == typeid(ofParameter <ofVec4f>).name())
+            static_cast<ofParameter<ofVec4f>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<ofVec4f>);
+        else if(type == typeid(ofParameter <ofColor>).name())
+            static_cast<ofParameter<ofColor>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<ofColor>);
+        else if(type == typeid(ofParameter <ofFloatColor>).name())
+            static_cast<ofParameter<ofFloatColor>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<ofFloatColor>);
+        else if(type == typeid(ofParameter <std::string>).name())
+            static_cast<ofParameter<std::string>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<std::string>);
     }
-
- 
+    
     
 
     //For callbacks
