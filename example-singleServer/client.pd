@@ -1,0 +1,107 @@
+#N canvas 111 95 778 310 10;
+#X obj 29 146 ossia.client;
+#X msg 28 82 connect oscquery;
+#X obj 29 168 print;
+#X obj 28 61 loadbang;
+#X obj 493 203 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 511 201 ossia.remote vSync;
+#X msg 63 114 namespace;
+#X text 143 84 since we are using the default ports we don't need to
+specify them for the connect message, f 93;
+#X text 167 19 To make this patcher work \, install the ossia package
+from deken, f 93;
+#X text 167 36 Then build and run the example singleserver \, then
+click the connect message or relaod this patch, f 96;
+#X text 137 114 this message dumps the whole namespace of our ofApp
+\, ie. the list of Parameters and their values, f 102;
+#X text 156 157 ossia.remote objects allow to remotely control and
+monitor the Parameters of our ofApp:, f 102;
+#X text 178 195 try to toggle the vSync here or from your ofApp \,
+they should always stay in sync, f 51;
+#N canvas 107 428 782 295 view 1;
+#X obj 45 89 ossia.view renderer;
+#X obj 41 167 ossia.remote size;
+#X floatatom 57 146 5 0 0 0 - - -, f 5;
+#X floatatom 54 214 5 0 0 0 - - -, f 5;
+#X obj 40 237 ossia.remote number;
+#X floatatom 268 256 5 0 0 0 - - -, f 5;
+#X floatatom 311 255 5 0 0 0 - - -, f 5;
+#N canvas 0 151 450 300 set 0;
+#X floatatom 161 105 5 0 0 0 - - -, f 5;
+#X floatatom 195 105 5 0 0 0 - - -, f 5;
+#X obj 195 133 t b f;
+#X obj 161 185 outlet;
+#X obj 161 163 pack 0 0;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 1 4 1;
+#X connect 4 0 3 0;
+#X coords 0 -1 1 1 130 25 1 100 100;
+#X restore 226 153 pd set;
+#N canvas 0 151 450 300 set 0;
+#X obj 161 163 pack 0 0 0 0;
+#X floatatom 161 105 5 0 0 0 - - -, f 5;
+#X floatatom 201 105 5 0 0 0 - - -, f 5;
+#X floatatom 241 105 5 0 0 0 - - -, f 5;
+#X floatatom 281 105 5 0 0 0 - - -, f 5;
+#X obj 281 133 t b f;
+#X obj 241 133 t b f;
+#X obj 201 133 t b f;
+#X obj 161 185 outlet;
+#X connect 0 0 8 0;
+#X connect 1 0 0 0;
+#X connect 2 0 7 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 5 1 0 3;
+#X connect 6 0 1 0;
+#X connect 6 1 0 2;
+#X connect 7 0 1 0;
+#X connect 7 1 0 1;
+#X coords 0 -1 1 1 220 25 1 100 100;
+#X restore 434 156 pd set;
+#X obj 227 186 ossia.remote position;
+#X floatatom 457 263 5 0 0 0 - - -, f 5;
+#X floatatom 500 262 5 0 0 0 - - -, f 5;
+#X floatatom 543 262 5 0 0 0 - - -, f 5;
+#X floatatom 586 263 5 0 0 0 - - -, f 5;
+#X obj 459 222 unpack set 0 0 0 0, f 22;
+#X obj 228 211 unpack set 0 0, f 15;
+#X obj 436 191 ossia.remote color;
+#X msg 44 25 address renderer.1;
+#X msg 74 60 address renderer;
+#X text 204 60 of course \, we can switch back to the original view
+set as argument, f 90;
+#X text 204 87 when a valid address is set as an argument to ossia.view
+\, it will bind to it at startup, f 90;
+#X text 203 11 we can "bind" the view to the adress of another similar
+object \, here for instance renderer.1 this will update all values
+from ossia.remotes and allow us to control them, f 90;
+#X connect 1 0 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 3 0;
+#X connect 7 0 9 0;
+#X connect 8 0 16 0;
+#X connect 9 0 15 0;
+#X connect 14 1 10 0;
+#X connect 14 2 11 0;
+#X connect 14 3 12 0;
+#X connect 14 4 13 0;
+#X connect 15 1 5 0;
+#X connect 15 2 6 0;
+#X connect 16 0 14 0;
+#X connect 17 0 0 0;
+#X connect 18 0 0 0;
+#X restore 503 258 pd view;
+#X text 178 247 when we have several instances of the same object we
+can control them with ossia.views \, to see that \, open:, f 53;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;

@@ -12,9 +12,23 @@ It works in a similar way to ofxOscParameterSync from the ofxOsc addon:
 * libossia will manage all network communication and queries from then on.
 * supplementary OSCQuery attributes can be set to the OSCQuery nodes attached to *ofParameter*s and *ofParameterGroup*s
 
-This is all demonstrated in **example-singleServer** 
+This is all demonstrated in **example-singleServer** - further documentation is included in the source, and in particular in ofxOssiaNode, which is the core of it all.
 
 Several Servers can be set up in the same ofApp by attaching them to several *ofParameterGroup*s (see **example-twoServers**)
+
+## OSCQuery Clients
+
+Several client examples are provided in the **example-singleServer** folder: for pure-data, Max, and with a simple html example.
+
+It's also possible to view the ofApp's namespace as JSON by opening a browser (preferably FireFox for pretty formatting), by opening the URL: [http://yourServersIP:port/](http://localhost:5678/) - the default port (e.g. in **example-singleServer**  being 5678).
+
+One can also download mrRay's nice [OSCQueryBrowser](https://docs.vidvox.net/freebies_oscquery_browser.html) for more advanced browsing.
+
+
+Of course it really gets interesting when trying to control your ofApp, which you can do with those OSCQuery-supporting sequencers:
+- [ossia score](https://ossia.io) 
+- [Vezér](https://imimot.com/vezer/) 
+
 
 ## Dependencies 
 
