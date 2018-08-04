@@ -80,11 +80,11 @@ void ofApp::setup(){
     server.findNode("/renderer/position").setUnit("position.cart2D");
     // A shorthand way to do the same:
     server.findNode(renderer2.position).setUnit("point2d");
+    // For a list of all available units and their shorthand "nicknmames", see:
+    // http://ossia.github.io/libossia/html/classopp_1_1node.html#a5b06de6a111af5996d4216ee8c8392c1
 
-
-
-
-
+    
+    
     //*********************************************************************************//
 
 
