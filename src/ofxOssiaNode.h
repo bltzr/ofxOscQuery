@@ -22,24 +22,29 @@ class ofxOssiaNode {
       @brief get this node's name
       @return this node's name as a string
      */
-    std::string getName() {return ofParam->getName();}
+    virtual std::string getName() {return ofParam->getName();}
     
     /**
      @brief get this node's OSC address, relative to the server
      @return this node's OSC address as a string
      */
-    std::string getPath() {return path;}
+    virtual std::string getPath() {return path;}
+    
+    /**
+     @brief get this node's ofParameter object
+     @return a pointer to this node's ofAbstractParameter object
+     */
+    virtual ofAbstractParameter* getParam() {return ofParam;}
+    
+
 
     //************************************//
     //           Manage attributes        //
     //************************************//
 
-    ofxOssiaNode& setUnit(const std::string& attrVal) {getNode().set_unit(attrVal); return *this;}
-    // see https://ossia.github.io/?cpp--ofx#units for a list of units
+    virtual ofxOssiaNode& setDescription(const std::string& attrVal) {getNode().set_description(attrVal); return *this;}
 
-    ofxOssiaNode& setDescription(const std::string& attrVal) {getNode().set_description(attrVal); return *this;}
-
-    ofxOssiaNode& setTags(std::vector<std::string> attrVal) {getNode().set_tags(attrVal); return *this; }
+    virtual ofxOssiaNode& setTags(const std::vector<std::string>& attrVal) {getNode().set_tags(attrVal); return *this; }
 
     //*********    Domain:    ************//
     
@@ -52,12 +57,8 @@ class ofxOssiaNode {
      * @return a reference to this node
      * @see setBound
      */
-    template<typename DataValue>
-    ofxOssiaNode& setMin(const DataValue& attrVal) {
-        getNode().set_min(ossia::MatchingType<DataValue>::convert(attrVal));
-        static_cast<ofParameter<DataValue>*>(ofParam)->setMin(attrVal);
-        return *this;
-    }
+
+    virtual ofxOssiaNode& setMin() { return *this; }
 
     /**
     * @brief gets the 'min' attribute of this node's parameter (minimum value)
@@ -145,8 +146,12 @@ class ofxOssiaNode {
         return *this;
     }
     
+    //*********         Units:          ************//
     
-    ofAbstractParameter* getParam() {return ofParam;}
+    ofxOssiaNode& setUnit(const std::string& attrVal) {getNode().set_unit(attrVal); return *this;}
+    // see https://ossia.github.io/?cpp--ofx#units for a list of units
+    
+ 
     
     /*
    *    Constructors for the Root Node
@@ -241,9 +246,6 @@ class ofxOssiaNode {
       if (callbackIt) currentNode.remove_value_callback(callbackIt);
       //removeParamListener();
     }
-
- 
-    
 
     //For callbacks
     template<typename DataValue>
