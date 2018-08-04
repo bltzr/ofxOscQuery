@@ -67,6 +67,7 @@ void ofApp::setup(){
 
     // Retrieve the value of the minimum bound for a node
     ofLogNotice() << "Renderer2's number's min: "  << server.findNode(renderer2.number).getMin<int>();
+    // Notice that we need to pass the node's type as a template argument to getMin()
 
     // We can also provide a set of accepted values:
     server.findNode(renderer1.number).setValues(std::vector<int>{1,3,5,7,9,11,13,15,17,19})
