@@ -203,7 +203,7 @@ template<> struct MatchingType<ofFloatColor> {
 
     static ossia_type convert(ofx_type f)
     {
-      return ossia_type{f.a, f.r, f.g, f.b};
+      return ossia_type{f.r, f.g, f.b, f.a};
     }
 };
 
