@@ -231,18 +231,18 @@ template<> struct MatchingType<ofColor> {
     using ossia_type = opp::value::vec4f;
 
     static opp::node create_parameter(const std::string& name, opp::node parent)
-    {return parent.create_rgba(name);}
+    {return parent.create_rgba8(name);}
 
     static bool is_valid(opp::value v){ return v.is_vec4f(); }
 
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec4f()[0]*255., v.to_vec4f()[1]*255., v.to_vec4f()[2]*255., v.to_vec4f()[3]*255.);
+      return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
     }
 
     static ossia_type convert(ofx_type f)
     {
-      return ossia_type{float(f.r / 255.), float(f.g / 255.), float(f.b / 255.), float(f.a / 255.)};
+      return ossia_type{float(f.r), float(f.g), float(f.b), float(f.a)};
     }
 };
 
@@ -251,7 +251,7 @@ template<> struct MatchingType<ofFloatColor> {
     using ossia_type = opp::value::vec4f;
 
     static opp::node create_parameter(const std::string& name, opp::node parent)
-    {return parent.create_argb8(name);}
+    {return parent.create_rgba(name);}
 
     static bool is_valid(opp::value v){ return v.is_vec4f(); }
 

@@ -24,19 +24,19 @@ void ofApp::setup(){
 
 
     //******************************************************************************************//
-    //   This is where we setup our OSCQuery Server:                                            //
+    //   This is where we setup our OSCQuery oscQuery:                                            //
     // NB this is the only change from of's gui/ParameterGroupExample                           //
-                                                                                              //
-        server.setup(parameters);                                                             //
-                                                                                              //
-    // i.e. this will attach our OSCquery server to the 'parameters' ParameterGroup             //
+                                                                                                //
+          //oscQuery.setup(parameters);                                                             //
+                                                                                                //
+    // i.e. this will attach our OSCquery oscQuery to the 'parameters' ParameterGroup             //
     // scan all sub-ParameterGroups and children Parameters recursively                         //
     // and expose the whole thing to default ports 1234 for OSC and 4567 for Websocket          //
     //                                                                                          //
     // Should we want to set specific ports and name, we could add them as arguments, e.g.:     //
-                                                                                              //
-       // server.setup(parameters, 4321, 8765, "myFirstOscQueryServer");                      //
-                                                                                              //
+                                                                                                //
+        oscQuery.setup(parameters, 4321, 8765, "ofxOSCQuery");                            //
+                                                                                                //
     // All network communication (sending, receving, listening, queries and replies)            //
     // will then be managed by the internal implementation of libossia                          //
     //******************************************************************************************//
@@ -54,33 +54,34 @@ void ofApp::setup(){
     
     // As they return a ofxOssiaNode&, the set(Attribute) methods
     // can be "cascaded" as demonstrated below:
-    server.findNode(renderer2.position).setDescription("A circle renderer position")
-                                       .setTags({"a little tag", "some other tag", "another tag"})
-                                       .setMin(ofVec2f{2,10})
-                                       .setBound("CLIP");
+    oscQuery[renderer2.position].setDescription("A circle renderer position")
+                                .setTags({"a little tag", "some other tag", "another tag"})
+                                .setMin(ofVec2f{2,10})
+                                .setBound("CLIP");
+    
 
     // Bound values (aka Min or Max can be set, and we can decide what happens at the bounds:
-    server.findNode(renderer2.number).setMin(5).setMax(15)
-                             .setBound("FOLD");
+    oscQuery[renderer2.number].setMin(5).setMax(15)
+                              .setBound("FOLD");
     // possible values are: FREE, CLIP, LOW, HIGH, WRAP and FOLD,
     // see: https://ossia.github.io/?cpp--98#bounding-mode
 
     // Retrieve the value of the minimum bound for a node
-    ofLogNotice() << "Renderer2's number's min: "  << server.findNode(renderer2.number).getMin<int>();
+    ofLogNotice() << "Renderer2's number's min: "  << oscQuery[renderer2.number].getMin<int>();
     // Notice that we need to pass the node's type as a template argument to getMin()
 
     // We can also provide a set of accepted values:
-    server.findNode(renderer1.number).setValues(std::vector<int>{1,3,5,7,9,11,13,15,17,19})
-                                     .setBound("CLIP");
+    oscQuery[renderer1.number].setValues(std::vector<int>{1,3,5,7,9,11,13,15,17,19})
+                              .setBound("CLIP");
     // and restrict the parameter's value to those with the CLIP boundmode
 
     // Add a description of this node
-    server.findNode("/renderer/color/").setDescription("El Color maravilloso!!");
+    oscQuery["/renderer/color/"].setDescription("El Color maravilloso!!");
 
     // The cannonnical way to set the unit for a 2D position
-    server.findNode("/renderer/position").setUnit("position.cart2D");
+    oscQuery["/renderer/position"].setUnit("position.cart2D");
     // A shorthand way to do the same:
-    server.findNode(renderer2.position).setUnit("point2d");
+    oscQuery[renderer2.position].setUnit("point2d");
     // For a list of all available units and their shorthand "nicknmames", see:
     // http://ossia.github.io/libossia/html/classopp_1_1node.html#a5b06de6a111af5996d4216ee8c8392c1
 
