@@ -27,7 +27,7 @@ class ofApp : public ofBaseApp{
     //***********************************************************//
     //     This is where we declare our OSCQuery Server:         //
                                                                  //
-            ofxOscQueryServer server;                            //
+            ofxOscQueryServer oscQuery;                            //
                                                                  //
     // Here, we use the default name and ports, but we could     //
     // specify them (see example-twoservers for that)            //

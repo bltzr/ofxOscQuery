@@ -76,7 +76,7 @@ void ofxOscQueryServer::buildTreeFrom(ofParameterGroup& group, ofxOssiaNode& nod
 }
 
 
-ofxOssiaNode& ofxOscQueryServer::findNode(std::string targetPath)
+ofxOssiaNode& ofxOscQueryServer::operator[](std::string targetPath)
 {
   std::string tPath = targetPath;
   if (targetPath.back()!='/') tPath=tPath+'/';
@@ -87,8 +87,7 @@ ofxOssiaNode& ofxOscQueryServer::findNode(std::string targetPath)
   return getRootNode();
 }
 
-
-ofxOssiaNode& ofxOscQueryServer::findNode(ofAbstractParameter& targetParam)
+ofxOssiaNode& ofxOscQueryServer::operator[](ofAbstractParameter& targetParam)
 {
   auto found = find_if(nodes.begin(), nodes.end(),
                        [&](ofxOssiaNode& n) {return (n.getParam()->isReferenceTo(targetParam));});
@@ -97,6 +96,29 @@ ofxOssiaNode& ofxOscQueryServer::findNode(ofAbstractParameter& targetParam)
 }
 
 
+// Those are deprecated and will go away soon:
+
+ofxOssiaNode& ofxOscQueryServer::findNode(std::string targetPath)
+{
+    ofLogNotice() << "deprecated function call: ofxOscQueryServer::findNode -> use subscript instead";
+    std::string tPath = targetPath;
+    if (targetPath.back()!='/') tPath=tPath+'/';
+    if (targetPath.front()!='/') tPath='/'+tPath;
+    auto found = find_if(nodes.begin(), nodes.end(),
+                         [&](ofxOssiaNode& n){return n.getPath()==tPath;});
+    if (found!=nodes.end()) return *found;
+    return getRootNode();
+}
+
+
+ofxOssiaNode& ofxOscQueryServer::findNode(ofAbstractParameter& targetParam)
+{
+    ofLogNotice() << "deprecated function call: ofxOscQueryServer::findNode -> use subscript instead";
+    auto found = find_if(nodes.begin(), nodes.end(),
+                         [&](ofxOssiaNode& n) {return (n.getParam()->isReferenceTo(targetParam));});
+    if (found!=nodes.end()) return *found;
+    return getRootNode();
+}
 
 
 
