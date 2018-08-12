@@ -189,21 +189,20 @@ template<> struct MatchingType<ofColor> {
 template<> struct MatchingType<ofFloatColor> {
     using ofx_type = ofFloatColor;
     using ossia_type = opp::value::vec4f;
-
+    
     static opp::node create_parameter(const std::string& name, opp::node parent)
     {return parent.create_rgba(name);}
-
+    
     static bool is_valid(opp::value v){ return v.is_vec4f(); }
-
-    // For those conversions, as there is no rgba8 type in ossia, we swap the 1st and 4th values
+    
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
+        return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
     }
-
+    
     static ossia_type convert(ofx_type f)
     {
-      return ossia_type{f.r, f.g, f.b, f.a};
+        return ossia_type{f.r, f.g, f.b, f.a};
     }
 };
 

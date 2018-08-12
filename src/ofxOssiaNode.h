@@ -247,11 +247,11 @@ class ofxOssiaNode {
      *   + **opengl** (*gl*, *position.gl*):
      * Cartesian 3-dimensional position (ie. X, Y, Z) in the OpenGL coordinate reference system
      *   + **spherical** (*aed*):
-     * Polar 3-dimensional position (ie. aed: amplitude, elevation, distance)
+     * Polar 3-dimensional position (ie. aed: azimuth, elevation, distance)
      *   + **polar** (*ad*):
-     * Polar 2-dimensional position (ie. ad: amplitude, distance)
+     * Polar 2-dimensional position (ie. ad: azimuth, distance)
      *   + **cylindrical** (*daz*):
-     * Mixed 3-dimensional position (ie. daz: distance, amplitude, Z)
+     * Mixed 3-dimensional position (ie. daz: distance, azimuth, Z)
      *
      *
      *
