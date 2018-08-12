@@ -646,10 +646,6 @@ class ofxOssiaNode {
       currentNode.set_min(ossia_type::convert(param.getMin())); // TODO: fix this in ossia-cpp
       currentNode.set_max(ossia_type::convert(param.getMax())); // TODO: fix this in ossia-cpp
 
-      //adds callback from ofParameter to ossia Node
-      param.addListener(this, &ofxOssiaNode::listen<DataValue>);
-
-
       //adds callback from ossia Node to ofParameter
       callbackIt = currentNode.set_value_callback([](void* context, const opp::value& val)
       {
@@ -669,8 +665,21 @@ class ofxOssiaNode {
           return;
         }
       },  ofParam);
+        
+      //adds callback from ofParameter to ossia Node
+      param.addListener(this, &ofxOssiaNode::listen<DataValue>);
 
 
+    }
+    
+    template<typename DataValue>
+    void listen(DataValue &data)
+    {
+        // check if the value to be published is not already published
+        if(pullNodeValue<DataValue>() != data)
+        { // i-score->GUI OK
+            publishValue(data);
+        }
     }
 
     /*
@@ -712,18 +721,6 @@ class ofxOssiaNode {
             static_cast<ofParameter<std::string>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<std::string>);
     }
     
-    
-
-    //For callbacks
-    template<typename DataValue>
-    void listen(DataValue &data)
-    {
-      // check if the value to be published is not already published
-      if(pullNodeValue<DataValue>() != data)
-      { // i-score->GUI OK
-        publishValue(data);
-      }
-    }
 
   private:
 
@@ -745,6 +742,7 @@ class ofxOssiaNode {
     void publishValue(DataValue val){
       using ossia_type = ossia::MatchingType<DataValue>;
       currentNode.set_value(ossia_type::convert(val));
+        std::cout << val << " / " << ossia_type::convertFromOssia(currentNode.get_value()) << std::endl;
     }
 
     template<typename DataValue>
