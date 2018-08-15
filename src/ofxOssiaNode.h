@@ -42,16 +42,27 @@ class ofxOssiaNode {
     //************************************//
     //           Manage attributes        //
     //************************************//
-
+    
+    //*********                                      ************//
+    //*********    Standard OSCQuery atrributes :    ************//
+    //*********                                      ************//
+    
+    
+    // The following methods allow to set and get most of the standard OSCQuery attributes, as defined in:
+    // https://github.com/Vidvox/OSCQueryProposal
+    
+    // The libossia libraryther underlying this of addon allowing for more, non-standard attributes, they are made accessible by a extended set of appropraite methods below
+    
+    
     
     //*********    Access mode:    ************//
     
-    
     /**Access mode is a metadata that categorizes parameters between:
      *
-     * - GET / RO : read-only
-     * - SET / WO : write-only
-     * -  BI / RW : read-write
+     * - 0            : no parameter (or value)
+     * - 1 (GET / RO) : read-only
+     * - 2 (SET / WO) : write-only
+     * - 3 ( BI / RW) : read-write
      *
      * For instance:
      *
@@ -59,7 +70,22 @@ class ofxOssiaNode {
      * - A "play" button should be SET.
      * - The cutoff of a filter or a controllable color should be BI.
      * @brief sets the access_mode attribute of this node's parameter
-     * @param v an opp::access_mode of the chosen mode
+     * @param v an int corresponding to the chosen mode
+     * @return a reference to this node
+     */
+     ofxOssiaNode& setAccess(int m){
+     opp::access_mode mode;
+     if      (m == 1) mode = opp::access_mode::Get;
+     else if (m == 2) mode = opp::access_mode::Set;
+     else if (m == 3) mode = opp::access_mode::Bi;
+     getNode().set_access(mode);
+     return *this;
+     }
+     
+     /**
+     * A more descriptive way to define access modes with strings is give here
+     * @brief sets the access_mode attribute of this node's parameter
+     * @param v a string describing the chosen mode
      * @return a reference to this node
      */
     ofxOssiaNode& setAccess(std::string m){
@@ -75,16 +101,16 @@ class ofxOssiaNode {
      * @return an opp::access_mode with this node's parameter's access mode
      * @see opp::node::set_acess
      */
-    std::string getAccess() {
+    int getAccess() {
         opp::access_mode mode = getNode().get_access();
-        std::string m;
-        if      ( mode == opp::access_mode::Get ) (m = "GET" );
-        else if ( mode == opp::access_mode::Set ) (m = "SET" );
-        else if ( mode == opp::access_mode::Bi )  (m = "BI"  );
+        int m;
+        if      ( mode == opp::access_mode::Get ) (m = 1 );
+        else if ( mode == opp::access_mode::Set ) (m = 2 );
+        else if ( mode == opp::access_mode::Bi )  (m = 3  );
         return m;
     }
     
-    //*********    Domain:    ************//
+    //*********    Range (domain):    ************//
     
     
     /**Domains allow to set a range of accepted values for a given parameter.<br>
@@ -97,7 +123,7 @@ class ofxOssiaNode {
      * @see setBound
      */
     template<typename DataValue>
-    ofxOssiaNode& setMin(const DataValue& attrVal) {
+    ofxOssiaNode& setRangeMin(const DataValue& attrVal) {
         getNode().set_min(ossia::MatchingType<DataValue>::convert(attrVal));
         static_cast<ofParameter<DataValue>*>(ofParam)->setMin(attrVal);
         return *this;
@@ -106,10 +132,10 @@ class ofxOssiaNode {
     /**
     * @brief gets the 'min' attribute of this node's parameter (minimum value)
     * @return a value with this node's parameter's minimum value
-    * @see setMin
+    * @see setRangeMin
     * @see getBound
     */
-    template<typename DataValue> DataValue getMin() {
+    template<typename DataValue> DataValue getRangeMin() {
         return ossia::MatchingType<DataValue>::convertFromOssia(getNode().get_min());
     }
     
@@ -122,7 +148,7 @@ class ofxOssiaNode {
      * @see opp::node::set_bounding
      */
     template<typename DataValue>
-    ofxOssiaNode& setMax(const DataValue& attrVal) {
+    ofxOssiaNode& setRangeMax(const DataValue& attrVal) {
         getNode().set_max(ossia::MatchingType<DataValue>::convert(attrVal));
         static_cast<ofParameter<DataValue>*>(ofParam)->setMax(attrVal);
         return *this;
@@ -131,10 +157,10 @@ class ofxOssiaNode {
     /**
      * @brief gets the 'max' attribute of this node's parameter (maximum value)
      * @return a value with this node's parameter's maximum value
-     * @see setMax
+     * @see setRangeMax
      * @see getBound
      */
-    template<typename DataValue> DataValue getMax() {
+    template<typename DataValue> DataValue getRangeMax() {
         return ossia::MatchingType<DataValue>::convertFromOssia(getNode().get_max());
     }
     
@@ -147,7 +173,7 @@ class ofxOssiaNode {
      * @see opp::node::set_bounding
      */
     template<typename DataValue>
-    ofxOssiaNode& setValues(const std::vector<DataValue>& attrVals) {
+    ofxOssiaNode& setRangeValues(const std::vector<DataValue>& attrVals) {
         using ossia_type = ossia::MatchingType<DataValue>;
         std::vector<opp::value> res;
         for (const auto & v : attrVals) { res.push_back(ossia_type::convert(v)); }
@@ -157,10 +183,10 @@ class ofxOssiaNode {
     /**
      * @brief gets a list of the values accepted by this node's parameter ("values" attribute)
      * @return a vector of values with the list of this node's parameter's accepted values
-     * @see setValues
+     * @see setRangeValues
      * @see setBound
      */
-    template<typename DataValue> std::vector<DataValue> getValues() {
+    template<typename DataValue> std::vector<DataValue> getRangeValues() {
         using ossia_type = ossia::MatchingType<DataValue>;
         auto vals = getNode().get_accepted_values();
         std::vector<DataValue> res;
@@ -169,33 +195,34 @@ class ofxOssiaNode {
     }
     
     
-    //*********    Bounding mode:    ************//
+    //*********    ClipMode:    ************//
     
     
-    /**The bounding mode tells what happens when a value is outside of the min / max:
+    /**The clipmode determines what happens when a value is outside of the min / max:
      *
-     * * **FREE** : no clipping; domain is only indicative.
-     * * **CLIP** : clipped to the closest value in the range.
-     * * **LOW** : only clips values lower than the min.
-     * * **HIGH** : only clips values higher than the max.
-     * * **WRAP** : wraps values around the range
-     * * **FOLD** : folds back values into the range
+     * * **none** : no clipping; domain is only indicative.
+     * * **both** : clipped to the closest value in the range.
+     * * **low** : only clips values lower than the min.
+     * * **high** : only clips values higher than the max.
+     * The next two modes are not part of the OSCQuery Specs, but are supported by libossia:
+     * * **wrap** : wraps values around the range
+     * * **fold** : folds back values into the range
      *
-     * The default is **FREE**.
-     * @brief sets the bounding_mode attribute of this node's parameter
+     * The default is **none**.
+     * @brief sets the clipmode attribute of this node's parameter
      * @param v a string describing the chosen mode
      * @return a reference to this node
-     * @see setMin
-     * @see setMax
+     * @see setRangeMin
+     * @see setRangeMax
      */
-    ofxOssiaNode& setBound(const std::string& attrVal) {
+    ofxOssiaNode& setClipMode(const std::string& attrVal) {
         std::string a = attrVal;
         opp::bounding_mode mode;
-        if      (a == "CLIP") mode = opp::bounding_mode::Clip;
-        else if (a == "LOW" ) mode = opp::bounding_mode::Low;
-        else if (a == "HIGH") mode = opp::bounding_mode::High;
-        else if (a == "WRAP") mode = opp::bounding_mode::Wrap;
-        else if (a == "FOLD") mode = opp::bounding_mode::Fold;
+        if      (a == "both") mode = opp::bounding_mode::Clip;
+        else if (a == "low" ) mode = opp::bounding_mode::Low;
+        else if (a == "high") mode = opp::bounding_mode::High;
+        else if (a == "wrap") mode = opp::bounding_mode::Wrap;
+        else if (a == "fold") mode = opp::bounding_mode::Fold;
         else                  mode = opp::bounding_mode::Free;
         getNode().set_bounding(mode);
         return *this;
@@ -205,15 +232,15 @@ class ofxOssiaNode {
      * @brief gets the bounding_mode attribute of this node's parameter
      * @return a std::string with this node's parameter's access mode
      */
-    std::string getBound() {
+    std::string getClipMode() {
         auto mode = getNode().get_bounding();
         std::string res;
-        if       (mode == opp::bounding_mode::Clip) res = "CLIP" ;
-        else if  (mode == opp::bounding_mode::Low)  res = "LOW"  ;
-        else if  (mode == opp::bounding_mode::High) res = "HIGH" ;
-        else if  (mode == opp::bounding_mode::Wrap) res = "WRAP" ;
-        else if  (mode == opp::bounding_mode::Fold) res = "FOLD" ;
-        else if  (mode == opp::bounding_mode::Free) res = "FREE" ;
+        if       (mode == opp::bounding_mode::Clip) res = "both" ;
+        else if  (mode == opp::bounding_mode::Low)  res = "low"  ;
+        else if  (mode == opp::bounding_mode::High) res = "high" ;
+        else if  (mode == opp::bounding_mode::Wrap) res = "wrap" ;
+        else if  (mode == opp::bounding_mode::Fold) res = "fold" ;
+        else if  (mode == opp::bounding_mode::Free) res = "none" ;
         return res;
     }
     
@@ -347,6 +374,68 @@ class ofxOssiaNode {
     std::string getUnit() {
         return getNode().get_unit();
     }
+    
+    /**This attribute informs the network protocol that the value has a particular importance
+     * and should if possible use a protocol not subject to message loss, eg TCP instead of UDP.
+     * This is useful for instance for "play" messages.
+     * @brief sets the critical attribute of this node's parameter
+     * @param v a bool: true to mark this node's parameter  as critical
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setCritical(bool v) {
+        getNode().set_critical( v );
+        return *this;
+    }
+    /**
+     * @brief gets the critical attribute of this node's parameter
+     * @return a bool: true if the node's parameter  is critical
+     */
+    bool getCritical()
+    { return getNode().get_critical();}
+    
+    
+    
+    //*********    Other informative attributes:    ************//
+    
+    
+    /**An optional textual description.
+     * @brief sets this node's description attribute
+     * @param v a string with the textual description of this node
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setDescription(const std::string& attrVal)
+    {getNode().set_description(attrVal); return *this;}
+    
+    /**
+     * @brief gets this node's description attribute
+     * @return a string with the textual description of this node
+     */
+    std::string getDescription()
+    { return getNode().get_description();}
+    
+    /**An optional array of tags for nodes, expressed as one string per tag.
+     * @brief sets his node's tags attribute
+     * @param v a vector of strings with the desired tags of this node'
+     * @return a reference to this node
+     */
+    ofxOssiaNode& setTags(std::vector<std::string> attrVal)
+    {getNode().set_tags(attrVal); return *this; }
+    /**
+     * @brief gets this node's tags attribute
+     * @return a string with this node's tags
+     */
+    std::vector<std::string> getTags()
+    { return getNode().get_tags();}
+    
+    
+    //*********                                                     ************//
+    //*********    Non-Standard (libossia-specific) atrributes :    ************//
+    //*********                                                     ************//
+    
+    // As explained abobe, libossia allows for more attributes than OSCQuery specifies.
+    // Those can be useful for a number of situations, in particular when connecting
+    // two (or more) libossia-powered applications/devices
+    
     
     
     //*********    Other value management attributes:    ************//
@@ -491,58 +580,7 @@ class ofxOssiaNode {
     bool getMuted()
         { return getNode().get_muted();}
     
-    /**This attribute informs the network protocol that the value has a particular importance
-     * and should if possible use a protocol not subject to message loss, eg TCP instead of UDP.
-     * This is useful for instance for "play" messages.
-     * @brief sets the critical attribute of this node's parameter
-     * @param v a bool: true to mark this node's parameter  as critical
-     * @return a reference to this node
-     */
-    ofxOssiaNode& setCritical(bool v) {
-        getNode().set_critical( v );
-        return *this;
-    }
-    /**
-     * @brief gets the critical attribute of this node's parameter
-     * @return a bool: true if the node's parameter  is critical
-     */
-    bool getCritical()
-        { return getNode().get_critical();}
-    
-    
-    
-    //*********    Other informative attributes:    ************//
-    
-    
-    /**An optional textual description.
-     * @brief sets this node's description attribute
-     * @param v a string with the textual description of this node
-     * @return a reference to this node
-     */
-    ofxOssiaNode& setDescription(const std::string& attrVal)
-        {getNode().set_description(attrVal); return *this;}
-    
-    /**
-     * @brief gets this node's description attribute
-     * @return a string with the textual description of this node
-     */
-    std::string getDescription()
-        { return getNode().get_description();}
-    
-    /**An optional array of tags for nodes, expressed as one string per tag.
-     * @brief sets his node's tags attribute
-     * @param v a vector of strings with the desired tags of this node'
-     * @return a reference to this node
-     */
-     ofxOssiaNode& setTags(std::vector<std::string> attrVal)
-        {getNode().set_tags(attrVal); return *this; }
-    /**
-     * @brief gets this node's tags attribute
-     * @return a string with this node's tags
-     */
-    std::vector<std::string> getTags()
-        { return getNode().get_tags();}
-    
+
     /**For nodes that can have instantiatable children, this sets the minimum and maximum number of children that can exist.
      * This is an optional attribute: it is not enforced and is only to be relied upon as a metadata.
      * @brief sets how many instances this node can have
@@ -642,7 +680,7 @@ class ofxOssiaNode {
       currentNode.set_default_value(ossia_type::convert(param.get()));
 
       //sets domain
-      // cout << getName() << ": " << param.getMin() << " / " << param.getMax() << endl;
+      // cout << getName() << ": " << param.getRangeMin() << " / " << param.getRangeMax() << endl;
       currentNode.set_min(ossia_type::convert(param.getMin())); // TODO: fix this in ossia-cpp
       currentNode.set_max(ossia_type::convert(param.getMax())); // TODO: fix this in ossia-cpp
 
