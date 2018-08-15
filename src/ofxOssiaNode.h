@@ -106,7 +106,7 @@ class ofxOssiaNode {
         int m;
         if      ( mode == opp::access_mode::Get ) (m = 1 );
         else if ( mode == opp::access_mode::Set ) (m = 2 );
-        else if ( mode == opp::access_mode::Bi )  (m = 3  );
+        else if ( mode == opp::access_mode::Bi )  (m = 3 );
         return m;
     }
     
