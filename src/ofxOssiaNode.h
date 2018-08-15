@@ -736,6 +736,12 @@ class ofxOssiaNode {
             static_cast<ofParameter<double>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<double>);
         else if(type == typeid(ofParameter <bool>).name())
             static_cast<ofParameter<bool>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<bool>);
+        else if(type == typeid(ofParameter <glm::vec2>).name())
+            static_cast<ofParameter<glm::vec2>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<glm::vec2>);
+        else if(type == typeid(ofParameter <glm::vec3>).name())
+            static_cast<ofParameter<glm::vec3>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<glm::vec3>);
+        else if(type == typeid(ofParameter <glm::vec4>).name())
+            static_cast<ofParameter<glm::vec4>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<glm::vec4>);
         else if(type == typeid(ofParameter <ofVec2f>).name())
             static_cast<ofParameter<ofVec2f>*>(ofParam)->removeListener(this, &ofxOssiaNode::listen<ofVec2f>);
         else if(type == typeid(ofParameter <ofVec3f>).name())

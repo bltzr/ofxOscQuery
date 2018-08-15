@@ -192,7 +192,7 @@ template<> struct MatchingType<ofFloatColor> {
     
     static opp::node create_parameter(const std::string& name, opp::node parent)
     {return parent.create_rgba(name);}
-    
+
     static bool is_valid(opp::value v){ return v.is_vec4f(); }
     
     static ofx_type convertFromOssia(const opp::value& v)
