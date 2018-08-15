@@ -56,23 +56,23 @@ void ofApp::setup(){
     // can be "cascaded" as demonstrated below:
     oscQuery[renderer2.position].setDescription("A circle renderer position")
                                 .setTags({"a little tag", "some other tag", "another tag"})
-                                .setMin(ofVec2f{2,10})
-                                .setBound("CLIP");
+                                .setRangeMin(ofVec2f{2,10})
+                                .setClipMode("both");
     
 
     // Bound values (aka Min or Max can be set, and we can decide what happens at the bounds:
-    oscQuery[renderer2.number].setMin(5).setMax(15)
-                              .setBound("FOLD");
-    // possible values are: FREE, CLIP, LOW, HIGH, WRAP and FOLD,
+    oscQuery[renderer2.number].setRangeMin(5).setRangeMax(15)
+                              .setClipMode("fold");
+    // possible values are: none, low, high, both, wrap and fold,
     // see: https://ossia.github.io/?cpp--98#bounding-mode
 
     // Retrieve the value of the minimum bound for a node
-    ofLogNotice() << "Renderer2's number's min: "  << oscQuery[renderer2.number].getMin<int>();
+    ofLogNotice() << "Renderer2's number's min: "  << oscQuery[renderer2.number].getRangeMin<int>();
     // Notice that we need to pass the node's type as a template argument to getMin()
 
     // We can also provide a set of accepted values:
-    oscQuery[renderer1.number].setValues(std::vector<int>{1,3,5,7,9,11,13,15,17,19})
-                              .setBound("CLIP");
+    oscQuery[renderer1.number].setRangeValues(std::vector<int>{1,3,5,7,9,11,13,15,17,19})
+                              .setClipMode("both");
     // and restrict the parameter's value to those with the CLIP boundmode
 
     // Add a description of this node
@@ -131,12 +131,12 @@ void ofApp::exit(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   if(key=='s'){
-    settings.serialize(parameters);
+    ofSerialize(settings, parameters);
     settings.save("settings.xml");
   }
   if(key=='l'){
     settings.load("settings.xml");
-    settings.deserialize(parameters);
+    ofDeserialize(settings, parameters);
   }
   if(key=='o'){
     cout << renderer1.parameters;
