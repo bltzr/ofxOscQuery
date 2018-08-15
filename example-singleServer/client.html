@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<title>
+			OSCQuery Remote example
+		</title>
+<style>
+	body {
+		font: 14px/1.7 -apple-system-font, HelveticaNeue-Light, "Helvetica Neue", Helvetica, sans-serif;
+	}
+		</style>
+		<script type="text/javascript">
+function init() { 
+		var ws = new WebSocket("ws://127.0.0.1:5678");
+		ws.onopen = function(mess) {
+		  // This way the protocol will always try to send 
+		  // data through websockets.
+		  ws.send("/?SET_PORT=0");
+		  ws.send("/");
+		}
+		var size = document.getElementById('size');
+		var number = document.getElementById('number');
+
+
+		ws.onmessage = function(mess) {
+		  // An OSCQuery value json looks like 
+		  // { "/the/addr" : 123 }
+		  console.log(mess.data);
+		  var json = JSON.parse(mess.data);
+		  var keys = Object.keys(json);
+
+		  var size_k = keys.findIndex(function(val) { return val == "/renderer/size"; });
+		  var number_k = keys.findIndex(function(val) { return val == "/renderer/number"; });
+		  
+
+		  if(size_k != -1)
+		  {
+			  size.value = json["/renderer/size"];
+		  };
+
+		  if(number_k != -1)
+		  {
+			  number.value = json["/renderer/number"];
+		  };
+
+		}
+		
+		
+		size.oninput = function(ev) {
+			  ws.send('{ "/renderer/size": ' + size.value + '}');
+			  console.log('{ "/renderer/size": ' + size.value + '}');
+		};
+
+		number.oninput = function(ev) {
+			  ws.send('{ "/renderer/number": ' + number.value + '}');
+			  console.log('{ "/renderer/number": ' + number.value + '}');
+		};
+
+
+
+		};
+		</script>
+	</head>
+	<body onload="init()">
+		<h2>An HTML example interface using websocket</h2>
+		<table>
+			<tr>
+				<td>
+					Size of balls (first renderer)
+				</td>
+				<td>
+					<input id="size" type="range" min="0" max="100">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Number of balls (first renderer)
+				</td>
+				<td>
+					<input id="number" type="range" min="0" max="20">
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

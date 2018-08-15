@@ -12,7 +12,7 @@ It works in a similar way to ofxOscParameterSync from the ofxOsc addon:
 * libossia will manage all network communication and queries from then on.
 * supplementary OSCQuery attributes can be set to the OSCQuery nodes attached to *ofParameter*s and *ofParameterGroup*s
 
-This is all demonstrated in **example-singleServer** 
+This is all demonstrated in **example-singleServer** - further documentation is included in the source, and in particular in ofxOssiaNode, which is the core of it all.
 
 Several Servers can be set up in the same ofApp by attaching them to several *ofParameterGroup*s (see **example-twoServers**)
 
