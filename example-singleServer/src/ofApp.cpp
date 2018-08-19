@@ -24,10 +24,10 @@ void ofApp::setup(){
 
 
     //******************************************************************************************//
-    //   This is where we setup our OSCQuery oscQuery:                                            //
+    //   This is where we setup our OSCQuery server:                                            //
     // NB this is the only change from of's gui/ParameterGroupExample                           //
                                                                                                 //
-          //oscQuery.setup(parameters);                                                             //
+        oscQuery.setup(parameters);                                                             //
                                                                                                 //
     // i.e. this will attach our OSCquery oscQuery to the 'parameters' ParameterGroup             //
     // scan all sub-ParameterGroups and children Parameters recursively                         //
@@ -35,7 +35,7 @@ void ofApp::setup(){
     //                                                                                          //
     // Should we want to set specific ports and name, we could add them as arguments, e.g.:     //
                                                                                                 //
-        oscQuery.setup(parameters, 4321, 8765, "ofxOSCQuery");                            //
+         //oscQuery.setup(parameters, 4321, 8765, "ofxOSCQuery");                               //
                                                                                                 //
     // All network communication (sending, receving, listening, queries and replies)            //
     // will then be managed by the internal implementation of libossia                          //
@@ -82,6 +82,8 @@ void ofApp::setup(){
     oscQuery["/renderer/position"].setUnit("position.cart2D");
     // A shorthand way to do the same:
     oscQuery[renderer2.position].setUnit("point2d");
+    // Orher units are available:
+    oscQuery[renderer1.size].setUnit("distance.m");
     // For a list of all available units and their shorthand "nicknmames", see:
     // http://ossia.github.io/libossia/html/classopp_1_1node.html#a5b06de6a111af5996d4216ee8c8392c1
 
