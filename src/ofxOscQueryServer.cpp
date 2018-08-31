@@ -22,6 +22,9 @@ void ofxOscQueryServer::setup(ofParameterGroup& group, int localportOSC, int loc
     device.setup(serverName, OSCport, WSport);
     nodes.emplace_back(device, group);
     
+    // This will echo the controls from clients to the output
+    device.set_echo(true);
+    
     // Then build ossia tree up from the chosen parameterGroup
     buildTreeFrom(group, nodes.front());
     
