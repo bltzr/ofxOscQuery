@@ -4,15 +4,15 @@
 	<renderer>
 		<size>17.807</size>
 		<number>17</number>
-		<position>874.733, 716.42</position>
-		<color>122, 9, 0, 255</color>
-		<frameNum>55999</frameNum>
+		<position>645.491, 480.12</position>
+		<color>37, 9, 255, 255</color>
+		<frameNum>59459</frameNum>
 	</renderer>
 	<renderer_1>
 		<size>57.5432</size>
 		<number>6</number>
-		<position>824.45, 86.3177</position>
+		<position>608.173, 86.3177</position>
 		<color>125, 0, 2, 255</color>
-		<frameNum>55999</frameNum>
+		<frameNum>59459</frameNum>
 	</renderer_1>
 </group>
