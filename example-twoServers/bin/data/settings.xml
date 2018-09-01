@@ -1,0 +1,17 @@
+<settings>
+	<vSync>1</vSync>
+	<renderer1>
+		<size>10</size>
+		<number>2</number>
+		<position>512, 384</position>
+		<color>127, 127, 127, 255</color>
+		<UnknownName>0</UnknownName>
+	</renderer1>
+	<renderer2>
+		<size>10</size>
+		<number>2</number>
+		<position>512, 384</position>
+		<color>127, 127, 127, 255</color>
+		<UnknownName>0</UnknownName>
+	</renderer2>
+</settings>
