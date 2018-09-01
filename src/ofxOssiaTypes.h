@@ -233,17 +233,17 @@ template<> struct MatchingType<ofColor> {
 
     static opp::node create_parameter(const std::string& name, opp::node parent)
     {return parent.create_rgba8(name);}
-
+    
     static bool is_valid(opp::value v){ return v.is_vec4f(); }
 
     static ofx_type convertFromOssia(const opp::value& v)
     {
-      return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
+        return ofx_type(v.to_vec4f()[0], v.to_vec4f()[1], v.to_vec4f()[2], v.to_vec4f()[3]);
     }
 
     static ossia_type convert(ofx_type f)
     {
-      return ossia_type{float(f.r), float(f.g), float(f.b), float(f.a)};
+        return ossia_type{float(f.r), float(f.g), float(f.b), float(f.a)};
     }
 };
 
