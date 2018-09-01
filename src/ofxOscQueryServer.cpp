@@ -22,6 +22,9 @@ void ofxOscQueryServer::setup(ofParameterGroup& group, int localportOSC, int loc
     device.setup(serverName, OSCport, WSport);
     nodes.emplace_back(device, group);
     
+    // This will echo the controls from clients to the output
+    device.set_echo(true);
+    
     // Then build ossia tree up from the chosen parameterGroup
     buildTreeFrom(group, nodes.front());
     
@@ -96,29 +99,7 @@ ofxOssiaNode& ofxOscQueryServer::operator[](ofAbstractParameter& targetParam)
 }
 
 
-// Those are deprecated and will go away soon:
 
-ofxOssiaNode& ofxOscQueryServer::findNode(std::string targetPath)
-{
-    ofLogNotice() << "deprecated function call: ofxOscQueryServer::findNode -> use subscript instead";
-    std::string tPath = targetPath;
-    if (targetPath.back()!='/') tPath=tPath+'/';
-    if (targetPath.front()!='/') tPath='/'+tPath;
-    auto found = find_if(nodes.begin(), nodes.end(),
-                         [&](ofxOssiaNode& n){return n.getPath()==tPath;});
-    if (found!=nodes.end()) return *found;
-    return getRootNode();
-}
-
-
-ofxOssiaNode& ofxOscQueryServer::findNode(ofAbstractParameter& targetParam)
-{
-    ofLogNotice() << "deprecated function call: ofxOscQueryServer::findNode -> use subscript instead";
-    auto found = find_if(nodes.begin(), nodes.end(),
-                         [&](ofxOssiaNode& n) {return (n.getParam()->isReferenceTo(targetParam));});
-    if (found!=nodes.end()) return *found;
-    return getRootNode();
-}
 
 
 

@@ -91,7 +91,7 @@ vs:
 
 	ADDON_LIBS += Ws2_32
 	ADDON_LIBS += winmm
-	ADDON_LIBS += libs/ossia/win64/ossia.dll
+	ADDON_LIBS += libs/ossia/lib/vs/ossia_x64.dll
 
 linuxarmv6l:
 

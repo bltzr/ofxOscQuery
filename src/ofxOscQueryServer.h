@@ -53,10 +53,8 @@ class ofxOscQueryServer {
     // Find a specific node by:
     // - path (ossia, relative to the server)
     ofxOssiaNode& operator[](std::string targetPath);
-    ofxOssiaNode& findNode(std::string targetPath); // <- this one is deprecated, please use subscripting
     // - or ofParameter reference
     ofxOssiaNode& operator[](ofAbstractParameter& targetParam);
-    ofxOssiaNode& findNode(ofAbstractParameter& targetParam); // <- this one is deprecated, please use subscripting
     // When no corresponding node is found, the reference to the root node
     // (aka serverName.getRootNode()) is returned
 
