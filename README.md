@@ -3,7 +3,7 @@
 ## Introduction
 
 This openFrameworks addon allows to create an OSCQuery server, based on the specifications available at: https://github.com/mrRay/OSCQueryProposal.
-Basically it is a wrapper for [libossia](https://github.com/OSSIA/libossia) ([safeC++ implementation](https://ossia.github.io/?cpp--98)) but follows OSC Query’s dialect instead of ossia’s.
+Basically it is a wrapper for [libossia](https://github.com/OSSIA/libossia) ([safeC++ implementation](https://ossia.github.io/?cpp--98)) but it follows OSC Query’s dialect instead of ossia’s.
 
 It works in a similar way to ofxOscParameterSync from the ofxOsc addon: 
 * declare an ofxOscQueryServer in your ofApp, 
@@ -14,7 +14,7 @@ It works in a similar way to ofxOscParameterSync from the ofxOsc addon:
 
 This is all demonstrated in **example-singleServer** - further documentation is included in the source, and in particular in ofxOssiaNode, which is the core of it all.
 
-Several Servers can be set up in the same ofApp by attaching them to several *ofParameterGroup*s (see **example-twoServers**). As mentioned in the Roadmap below
+Several Servers can be set up in the same ofApp by attaching them to several *ofParameterGroup*s (see **example-twoServers**). As mentioned in the Roadmap below, this might change soon to using one pool object for holding several servers.
 
 ## OSCQuery Clients
 
@@ -30,6 +30,7 @@ Of course it really gets interesting when trying to control your ofApp, which yo
 
 ## Compatibility
 
+* Works with of 0.10 - for 0.9.8, see specific legacy release  
 * Tested on macOS and Ubuntu 
 * ARM (aka raspberry Pi) and Win (VS) support should come soon
 * CodeBlocks support for Win should be doable if one wants to investigate on that - Please feel free to ask for help and guidance in the issue, and as always, PRs are welcome!
@@ -50,8 +51,12 @@ A compiled version of [libossia](https://ossia.github.io/?cpp--98#introduction) 
 ### Version 1.0 (09/2018):
 Operational version, complying with the official OSC Query specs.
 - updated with the final 1.0 version of the OSC Query specifications
+- updated for of 0.10
 - methods have been added to manage OSC Query Attributes 
 - the `findNode` method has been replaced by subscripting 
+
+## version 0.9.8 (09/2018)
+Legacy release for openframworks 0.9.8 - Same as version 1.0, except that it will build in 0.9.8 
     
 ### Version 0.1 (04/2018):
 Initial version of the addon, with only basic functionality
