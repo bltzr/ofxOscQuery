@@ -2,15 +2,27 @@
 
 ## Introduction
 
-This openFrameworks addon allows to create an OSCQuery server, based on the specifications available at: https://github.com/mrRay/OSCQueryProposal.
-Basically it is a wrapper for [libossia](https://github.com/OSSIA/libossia) ([safeC++ implementation](https://ossia.github.io/?cpp--98)) but it follows OSC Query’s dialect instead of ossia’s.
+This openFrameworks addon allows to create an OSCQuery server, based on the specifications available at: https://github.com/Vidvox/OSCQueryProposal.
 
-It works in a similar way to ofxOscParameterSync from the ofxOsc addon: 
+
+What will this addon do ? 
+It will expose all of your `ofParameter`s (and `ofPArameterGroup`s) as a tree of OSC nodes, create OSC senders and receivers, and implement an OSCQuery server in order to manage queries and replies.  
+
+
+Basically it is a wrapper for [libossia](https://github.com/OSSIA/libossia) ([safeC++ API](https://ossia.github.io/?cpp--98)) but it follows OSC Query’s dialect instead of ossia’s. Though, as does ossia, it covers all the features from the OSCQuery specifications (including listening, and notification for path changes).
+
+Here is [a video showing the addon in use with two other apps (VDMX and Vezér)](https://vimeo.com/288203374)
+
+
+
+This addon works in a similar way to ofxOscParameterSync from the ofxOsc addon: 
 * declare an ofxOscQueryServer in your ofApp, 
 * set it up by attaching it to an *ofParameterGroup*, and declaring OSC and WS ports. 
 * All children *ofParameter*s and *ofParameterGroup*s will then be scanned recursively, exposed to the OSCQuery protocol
 * libossia will manage all network communication and queries from then on.
 * supplementary OSCQuery attributes can be set to the OSCQuery nodes attached to *ofParameter*s and *ofParameterGroup*s
+
+Here is [a video showing how to add OSCQuery support to one of of's "vanilla" examples](https://vimeo.com/288202877) 
 
 This is all demonstrated in **example-singleServer** - further documentation is included in the source, and in particular in ofxOssiaNode, which is the core of it all.
 
