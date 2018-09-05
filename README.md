@@ -56,8 +56,8 @@ A compiled version of [libossia](https://ossia.github.io/?cpp--98#introduction) 
 
 - add a, more generic, ofxOscQuery object, that acts as a pool of servers, and allows to add them dynamically 
 - make the OSC Query namespace dynamic (i.e. adding OSC nodes when adding `ofParameter`s and `ofParameterGroup`s)
--  first manually by adding a method to add specific nodes (should come soon)
--  then automatically by adding some listener to `ofParameterGroup` when a new child `ofParameter` is created
+  -  first manually by adding a method to add specific nodes (should come soon)
+  -  then automatically by adding some listener to `ofParameterGroup` when a new child `ofParameter` is created
 
 ## Version history
 
