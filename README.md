@@ -6,6 +6,7 @@ This openFrameworks addon allows to create an OSCQuery server, based on the spec
 
 
 What will this addon do ? 
+
 It will expose all of your `ofParameter`s (and `ofPArameterGroup`s) as a tree of OSC nodes, create OSC senders and receivers, and implement an OSCQuery server in order to manage queries and replies.  
 
 
@@ -26,7 +27,7 @@ Here is [a video showing how to add OSCQuery support to one of of's "vanilla" ex
 
 This is all demonstrated in **example-singleServer** - further documentation is included in the source, and in particular in ofxOssiaNode, which is the core of it all.
 
-Several Servers can be set up in the same ofApp by attaching them to several *ofParameterGroup*s (see **example-twoServers**). As mentioned in the Roadmap below, this might change soon to using one pool object for holding several servers.
+Several Servers can be set up in the same ofApp by attaching them to several *ofParameterGroup*s (see **example-twoServers**). As mentioned in the Roadmap below, another option will soon be added (without breaking the current usage) for managing this better: by using one pool object for holding several servers. Stay tuned!
 
 ## OSCQuery Clients
 
