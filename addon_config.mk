@@ -74,7 +74,7 @@ linux64:
 	ADDON_LDFLAGS += -lavahi-client -lavahi-common
 
 linux:
-    ADDON_LDFLAGS += -lavahi-client -lavahi-common
+	ADDON_LDFLAGS += -lavahi-client -lavahi-common
 
 msys2:
 	ADDON_CPPFLAGS += NOMINMAX
@@ -89,9 +89,8 @@ vs:
 	ADDON_CPPFLAGS += -D_CRT_SECURE_NO_WARNINGS
 	ADDON_CPPFLAGS += -DWIN32_LEAN_AND_MEAN
 
-	ADDON_LIBS += Ws2_32
-	ADDON_LIBS += winmm
-	ADDON_LIBS += libs/ossia/lib/vs/ossia_x64.dll
+	ADDON_LIBS += libs/ossia/lib/vs/ossia.lib
+	ADDON_LIBS += libs/ossia/lib/vs/ossia_x64.lib
 
 linuxarmv6l:
 
@@ -103,7 +102,6 @@ android/armeabi:
 android/armeabi-v7a:
 
 osx:
-
 	ADDON_LIBS += libs/ossia/lib/osx/libossia.a
     
 ios:
