@@ -44,8 +44,11 @@ Of course it really gets interesting when trying to control your ofApp, which yo
 ## Compatibility
 
 * Works with of 0.10 - for 0.9.8, see specific legacy release  
-* Available for macOS, Ubuntu (should work on other distros) and Windows (32 and 64 bits) 
-* ARM (aka raspberry Pi) and Win (VS) support should come soon
+* Available for:
+  - macOS, 
+  - Linux (tested on Ubuntu and archlinux, should work on other distros with gcc >= 6)
+  - Windows (32 and 64 bits) 
+* ARM (aka raspberry Pi) should come soon
 * CodeBlocks support for Win should be doable if one wants to investigate on that - Please feel free to ask for help and guidance in the issue, and as always, PRs are welcome!
 
 ## Dependencies 
