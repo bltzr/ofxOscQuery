@@ -44,7 +44,7 @@ Of course it really gets interesting when trying to control your ofApp, which yo
 ## Compatibility
 
 * Works with of 0.10 - for 0.9.8, see specific legacy release  
-* 0.9.8 version works with ofNode (aka with cmake), 0.10 doesn't since ofNode hasn't been ported to 0.10 (yet)
+* 0.9.8 version works with ofNode (aka with cmake), 1.0.0 doesn't since ofNode hasn't been ported to 0.10 (yet)
 * Available for:
   - macOS, 
   - Linux (tested on Ubuntu and archlinux, should work on other distros with gcc >= 6)
