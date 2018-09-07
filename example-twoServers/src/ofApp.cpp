@@ -62,12 +62,12 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   if(key=='s'){
-    settings.serialize(parameters);
+    ofSerialize(settings, parameters);
     settings.save("settings.xml");
   }
   if(key=='l'){
     settings.load("settings.xml");
-    settings.deserialize(parameters);
+    ofSerialize(settings, parameters);
   }
   if(key=='o'){
     cout << renderer1.parameters;
