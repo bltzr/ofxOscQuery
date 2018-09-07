@@ -24,9 +24,9 @@ void ofApp::setup(){
   // NB this is the only change with of's ParameterGroupExample
   //
 
-  cout << server1.findNode("/position/").getName();
-  cout << server1.findNode("position/").getName();
-  cout << server2.findNode("/color").getName();
+  cout << server1["/position/"].getName();
+  cout << server1["/position"].getName();
+  cout << server2["/color"].getName();
 
 
 
