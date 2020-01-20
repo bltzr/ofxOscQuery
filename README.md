@@ -29,6 +29,11 @@ This is all demonstrated in **example-singleServer** - further documentation is 
 
 Several Servers can be set up in the same ofApp by attaching them to several *ofParameterGroup*s (see **example-twoServers**). As mentioned in the Roadmap below, another option will soon be added (without breaking the current usage) for managing this better: by using one pool object for holding several servers. Stay tuned!
 
+## Installation
+
+1. Download the latest .zip from the [releases](https://github.com/bltzr/ofxOscQuery/releases).
+2. Unzip and move the directory to the openFrameworks addon directory.
+
 ## OSCQuery Clients
 
 Several client examples are provided in the **example-singleServer** folder: for pure-data, Max, and with a simple html example.
